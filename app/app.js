@@ -1,6 +1,5 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 var appName = "app";
 angular.module(appName, [
     'ngAnimate',
@@ -10,10 +9,7 @@ angular.module(appName, [
     'ui.bootstrap',
     'angular.filter',
     'ngRoute',
-    'app.env',
-    'myApp.view1',
-    'myApp.view2',
-    'myApp.version'
+    'app.env'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -52,8 +48,8 @@ angular.module(appName, [
             controller: 'HeaderCtrl as headerCtrl'
           },
           'content@': {
-            templateUrl: 'view1/view1.html'
-            //controller: 'FlotChartDemoCtrl'
+            templateUrl: 'view1/view1.html',
+            controller: 'View1Ctrl as view1Ctrl'
           },
           'footer@': {
             templateUrl: 'partials/blocks/footer.html'
