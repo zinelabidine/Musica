@@ -25,6 +25,9 @@ angular.module(appName, [
         url: '/home',
 
         views: {
+          'top@': {
+            templateUrl: "partials/blocks/top.html"
+          },
           'header@': {
             templateUrl: "partials/blocks/header.html",
             controller: 'HeaderCtrl as headerCtrl'
@@ -34,7 +37,7 @@ angular.module(appName, [
             controller: 'HomeCtrl as home'
           },
           'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
+            templateUrl: 'partials/blocks/footer2.html'
             //controller: 'AppCtrl as AppCtrl'
           }
         }
@@ -52,7 +55,7 @@ angular.module(appName, [
             controller: 'View1Ctrl as view1Ctrl'
           },
           'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
+            templateUrl: 'partials/blocks/footer2.html'
           }
         }
       });
