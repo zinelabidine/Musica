@@ -23,6 +23,8 @@
     "ngstorage": "^0.3.11",
     "owl.carousel": "^2.2.0",
     "bootstrap-hover-dropdown": "^2.2.1",
-    "waypoints": "^4.0.1"
+    "waypoints": "^4.0.1",
+    "angular-touch": "^1.5.8",
+    "angular-owl-carousel": "^0.2.3"
   }
 }

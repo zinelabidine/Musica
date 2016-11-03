@@ -167,7 +167,7 @@ h1 {
 }
 #hot .product-slider .item {
   margin: 0 25px;
-  visibility: hidden;
+  visibility: visible;
 }
 #hot .product-slider .owl-controls {
   position: relative;
@@ -219,8 +219,8 @@ h1 {
 #main-slider {
   margin-bottom: 30px;
   border: solid 1px #fff;
-  opacity: 0;
-  filter: alpha(opacity=0);
+  /*opacity: 0;*/
+  /*filter: alpha(opacity=0);*/
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -494,9 +494,9 @@ h1 {
   width: 100%;
 }
 #content .product .flipper {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  backface-visibility: visible;
   -webkit-transition: 0.6s;
   transition: 0.6s;
   -webkit-transform-style: preserve-3d;
@@ -507,9 +507,9 @@ h1 {
 }
 #content .product .front,
 #content .product .back {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  backface-visibility: visible;
   -webkit-transition: 0.6s;
   transition: 0.6s;
   -webkit-transform-style: preserve-3d;
@@ -970,7 +970,7 @@ h1 {
 /*!
  * Yamm!3
  * Yet another megamenu for Bootstrap 3
- * 
+ *
  * http://geedmo.github.com/yamm3
  */
 .yamm .nav,

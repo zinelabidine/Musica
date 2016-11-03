@@ -34,9 +34,9 @@
     <!--<link href="css/font-awesome.css" rel="stylesheet">-->
     <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
     <!--<link href="css/animate.min.css" rel="stylesheet">-->
-    <link href="bower_components/owl.carousel/dist/assets/owl.carousel.css" type="text/css"/>
+    <link href="./bower_components/owl.carousel/dist/assets/owl.carousel.css" type="stylesheet"/>
     <!--<link href="css/owl.carousel.css" rel="stylesheet">-->
-    <link href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" type="text/css"/>
+    <link rel="stylesheet" href="./bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
 
     <!-- theme stylesheet -->
     <link href="css/style.default.css" rel="stylesheet" id="theme-stylesheet">
@@ -56,7 +56,6 @@
 <div id="top" ui-view="top"></div>
 <div class="navbar navbar-default yamm" role="navigation" id="navbar" ui-view="header"></div>
 <div class="container-fluid" id="wrapper" ui-view="content"></div>
-
 <div id="all" ui-view="footer"></div>
 <!--<div bs-alert></div>-->
 
@@ -95,11 +94,19 @@ _________________________________________________________ -->
 <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
 <!--<script src="js/owl.carousel.min.js"></script>-->
 <script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
+<script src="bower_components/angular-owl-carousel/src/angular-owl-carousel.js"></script>
 <script src="js/front.js"></script>
 
 
 <script src="app-env.js"></script>
 <script src="app.js"></script>
+
+<!-- Components -->
+
+<script src="components/carousel-directive.js"></script>
+<script src="components/owlCarousel-directive.js"></script>
+
+
 <script src="partials/blocks/header-controller.js"></script>
 <script src="home/home-service.js"></script>
 <script src="home/home-controller.js"></script>

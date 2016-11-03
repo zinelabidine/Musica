@@ -1,59 +1,54 @@
 <div id="content">
 
-    <!--<div class="container">-->
-    <!--<div class="col-md-12">-->
-    <!--<div id="main-slider">-->
-    <!--<div class="item">-->
-    <!--<img src="img/main-slider1.jpg" alt="" class="img-responsive">-->
+    <!--<wrap-owlcarousel class="owl-carousel"-->
+    <!--data-options="{items:2}">-->
+    <!--<div>-->
+    <!--<img src="img/product1.jpg"/>-->
     <!--</div>-->
-    <!--<div class="item">-->
-    <!--<img class="img-responsive" src="img/main-slider2.jpg" alt="">-->
+    <!--<div>-->
+    <!--<img src="img/product2.jpg"/>-->
     <!--</div>-->
-    <!--<div class="item">-->
-    <!--<img class="img-responsive" src="img/main-slider3.jpg" alt="">-->
+    <!--<div>-->
+    <!--<img src="img/product3.jpg"/>-->
     <!--</div>-->
-    <!--<div class="item">-->
-    <!--<img class="img-responsive" src="img/main-slider4.jpg" alt="">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; /#main-slider &ndash;&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="container">-->
-    <!--<div class="col-md-12">-->
-    <!--<div class="owl-carousel main-slider owl-theme owl-loaded">-->
-    <!--<div class="owl-stage-outer">-->
-    <!--<div class="owl-stage">-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider1.jpg" alt="">-->
-    <!--</div>-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider2.jpg" alt="">-->
-    <!--</div>-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider3.jpg" alt="">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div class="owl-controls">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-nav">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-prev">prev</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-next">next</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-dots">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-dot active"><span></span></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-dot"><span></span></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="owl-dot"><span></span></div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <!--</wrap-owlcarousel>-->
 
     <div class="container">
         <div class="col-md-12 large-12 columns">
-            <div class="owl-carousel owl-theme">
+            <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{
+      items: 1,
+      loop: true,
+      margin: 10,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true
+    }">
+                <div class="item">
+                    <img src="img/main-slider1.jpg" alt="" class="img-responsive">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="img/main-slider2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="img/main-slider3.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="img/main-slider4.jpg" alt="">
+                </div>
+            </wrap-owlcarousel>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12">
+            <div id="main-slider">
+                <carousel links="promotions" go-to="goToInstrument(id)"></carousel>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 large-12 columns">
+            <div class="owl-carousel owl-theme" id="main-slider1">
                 <div class="item">
                     <h4>1</h4>
                 </div>
@@ -94,25 +89,6 @@
         </div>
     </div>
 
-    <!--<div class="container">-->
-    <!--<div class="col-md-12">-->
-    <!--<div id="main-slider" class="owl-carousel owl-theme owl-loaded">-->
-    <!--<div class="owl-stage-outer">-->
-    <!--<div class="owl-stage">-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider1.jpg" alt="">-->
-    <!--</div>-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider2.jpg" alt="">-->
-    <!--</div>-->
-    <!--<div class="owl-item">-->
-    <!--<img src="img/main-slider3.jpg" alt="">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
     <!-- *** ADVANTAGES HOMEPAGE ***
 _________________________________________________________ -->
     <div id="advantages">
