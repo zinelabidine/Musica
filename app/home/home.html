@@ -37,55 +37,6 @@
     <!--</div>-->
     <!--</div>-->
     <!--</div>-->
-    <!-- *** ADVANTAGES HOMEPAGE ***
-_________________________________________________________ -->
-    <div id="advantages">
-
-        <div class="container">
-            <div class="same-height-row">
-                <div class="col-sm-4">
-                    <div class="box same-height clickable">
-                        <div class="icon"><i class="fa fa-heart"></i>
-                        </div>
-
-                        <h3><a href="#">We love our customers</a></h3>
-
-                        <p>We are known to provide best possible service ever</p>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="box same-height clickable">
-                        <div class="icon"><i class="fa fa-tags"></i>
-                        </div>
-
-                        <h3><a href="#">Best prices</a></h3>
-
-                        <p>You can check that the height of the boxes adjust when longer text like this one is used
-                            in one of them.</p>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <div class="box same-height clickable">
-                        <div class="icon"><i class="fa fa-thumbs-up"></i>
-                        </div>
-
-                        <h3><a href="#">100% satisfaction guaranteed</a></h3>
-
-                        <p>Free returns on everything for 3 months.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /#advantages -->
-
-    <!-- *** ADVANTAGES END *** -->
 
     <!-- *** HOT PRODUCT SLIDESHOW ***
 _________________________________________________________ -->
@@ -107,31 +58,31 @@ _________________________________________________________ -->
       autoplaySpeed: 1000,
       autoplayHoverPause: true
     }">
-                <div owl-carousel-item="" ng-repeat="item in bestSales">
+                <div owl-carousel-item="" ng-repeat="bestSale in bestSales">
                     <div class="item">
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front">
-                                        <a href="" ng-click="goToInstrument(item.id)">
-                                            <img src="{{item.src.front}}" alt="" class="img-responsive">
+                                        <a href="" ng-click="goToInstrument(bestSale.id)">
+                                            <img src="{{bestSale.src.front}}" alt="" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="back">
-                                        <a href="" ng-click="goToInstrument(item.id)">
-                                            <img src="{{item.src.back}}" alt="" class="img-responsive">
+                                        <a href="" ng-click="goToInstrument(bestSale.id)">
+                                            <img src="{{bestSale.src.back}}" alt="" class="img-responsive">
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <a href="" ng-click="goToInstrument(item.id)" class="invisible">
-                                <img src="{{item.src.front}}" alt="" class="img-responsive">
+                            <a href="" ng-click="goToInstrument(bestSale.id)" class="invisible">
+                                <img src="{{bestSale.src.front}}" alt="" class="img-responsive">
                             </a>
 
                             <div class="text">
-                                <h3><a href="" ng-click="goToInstrument(item.id)">{{item.caption.title}}</a></h3>
+                                <h3><a href="" ng-click="goToInstrument(bestSale.id)">{{bestSale.caption.title}}</a></h3>
 
-                                <p class="price">{{item.caption.price}}</p>
+                                <p class="price">{{bestSale.caption.price}}</p>
                             </div>
                             <!-- /.text -->
                         </div>
