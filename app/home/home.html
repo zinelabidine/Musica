@@ -113,23 +113,23 @@ _________________________________________________________ -->
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front">
-                                        <a href="detail.html">
+                                        <a href="" ng-click="goToInstrument(item.id)">
                                             <img src="{{item.src.front}}" alt="" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="back">
-                                        <a href="detail.html">
+                                        <a href="" ng-click="goToInstrument(item.id)">
                                             <img src="{{item.src.back}}" alt="" class="img-responsive">
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <a href="detail.html" class="invisible">
+                            <a href="" ng-click="goToInstrument(item.id)" class="invisible">
                                 <img src="{{item.src.front}}" alt="" class="img-responsive">
                             </a>
 
                             <div class="text">
-                                <h3><a href="detail.html">{{item.caption.title}}</a></h3>
+                                <h3><a href="" ng-click="goToInstrument(item.id)">{{item.caption.title}}</a></h3>
 
                                 <p class="price">{{item.caption.price}}</p>
                             </div>
