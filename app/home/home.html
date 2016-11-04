@@ -23,8 +23,8 @@
       autoplaySpeed: 1000,
       autoplayHoverPause: true
     }">
-                <div owl-carousel-item="" ng-repeat="promotion in promotions | filter : { src : '' }" style="height: 100%" class="item">
-                    <img src="{{promotion.src}}" alt="" class="img-responsive">
+                <div owl-carousel-item="" style="height: 600px;width: 600px" ng-repeat="promotion in promotions | filter : { src : '' }" class="item">
+                    <img src="{{promotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
                 </div>
             </wrap-owlcarousel>
         </div>
