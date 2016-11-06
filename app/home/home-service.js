@@ -4,9 +4,6 @@
   angular.module('app').factory('homeService', ['$http', '$cookies', 'EnvironmentConfig', '$filter', function ($http, $cookies, EnvironmentConfig, $filter) {
     return {
 
-      /**
-       *  Retrieve Trips
-       */
       getLastTrips: function () {
         return $http.get(EnvironmentConfig.GlobalBaseUrl + "/trip/lastTrips/")
           .then(function (response) {

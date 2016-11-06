@@ -25,9 +25,9 @@ angular.module(appName, [
         url: '/home',
 
         views: {
-          'top@': {
-            templateUrl: "partials/blocks/top.html"
-          },
+          //'top@': {
+          //  templateUrl: "partials/blocks/top.html"
+          //},
           'header@': {
             templateUrl: "partials/blocks/header.html",
             controller: 'HeaderCtrl as headerCtrl'
@@ -46,9 +46,9 @@ angular.module(appName, [
         url: '/instrument/:instrumentId',
 
         views: {
-          'top@': {
-            templateUrl: "partials/blocks/top.html"
-          },
+          //'top@': {
+          //  templateUrl: "partials/blocks/top.html"
+          //},
           'header@': {
             templateUrl: "partials/blocks/header.html",
             controller: 'HeaderCtrl as headerCtrl'
