@@ -17,9 +17,12 @@
                 <span class="sr-only">Toggle search</span>
                 <i class="fa fa-search"></i>
             </button>
-            <a class="btn btn-default navbar-toggle" href="basket.html">
-                <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">3 items in cart</span>
-            </a>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#logout">
+                <span class="sr-only">Toggle logout</span>
+                <i class="fa fa-user"></i>
+            </button>
+
             <a class="btn btn-default navbar-toggle" href="basket.html">
                 <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">3 items in cart</span>
             </a>
@@ -50,14 +53,17 @@
         <!--/.nav-collapse -->
 
         <div class="navbar-collapse collapse right">
-            <a href="" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true"
+            <a href="" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown" role="button"
+               aria-haspopup="true"
                aria-expanded="false"><span class="fa fa-user"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="#">Mon profile</a></li>
+                <li><a href="#">A propos</a></li>
+                <li>
+                    <button type="button" class="dropdown-toggle btn btn-primary navbar-btn">
+                        <span class="fa fa-sign-out"></span> Se déconnecter
+                    </button>
+                </li>
             </ul>
         </div>
 
@@ -67,6 +73,22 @@
                 <i class="fa fa-search"></i>
             </button>
         </div>
+
+    </div>
+
+    <div class="collapse clearfix" id="logout">
+
+        <form class="navbar-form" role="logout">
+            <ul>
+                <li><a href="#">Mon profile</a></li>
+                <li><a href="#">A propos</a></li>
+                <li>
+                    <button type="button" class="dropdown-toggle btn btn-primary navbar-btn">
+                        <span class="fa fa-sign-out"></span> Se déconnecter
+                    </button>
+                </li>
+            </ul>
+        </form>
 
     </div>
 
