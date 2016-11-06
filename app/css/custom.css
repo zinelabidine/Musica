@@ -14,6 +14,10 @@
         max-height: none;
     }
 
+    .content {
+        margin-top: 10px;
+    }
+
     body {
         margin: 0;
     }
@@ -33,6 +37,10 @@
         max-height: none;
     }
 
+    .content {
+        margin-top: 10px;
+    }
+
     body {
         margin: 0;
     }
@@ -43,10 +51,18 @@
     .logo {
         width: 150px;
     }
+
+    .content {
+        margin-top: 100px;
+    }
 }
 
 @media (min-width: 1200px) {
     .logo {
         width: 200px;
+    }
+
+    .content {
+        margin-top: 100px;
     }
 }
