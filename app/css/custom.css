@@ -4,17 +4,47 @@
     .logo {
         width: 130px;
     }
+
+    .navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+
+    .navbar-collapse {
+        max-height: none;
+    }
+
+    body {
+        margin: 0;
+    }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
     .logo {
         width: 140px;
     }
+
+    .navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+
+    .navbar-collapse {
+        max-height: none;
+    }
+
+    body {
+        margin: 0;
+    }
+
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
     .logo {
         width: 150px;
     }
 }
+
 @media (min-width: 1200px) {
     .logo {
         width: 200px;
