@@ -4,14 +4,29 @@
   angular.module('app').factory('homeService', ['$http', '$cookies', 'EnvironmentConfig', '$filter', function ($http, $cookies, EnvironmentConfig, $filter) {
     return {
 
-      getLastTrips: function () {
-        return $http.get(EnvironmentConfig.GlobalBaseUrl + "/trip/lastTrips/")
+      getMeilleurVente: function () {
+        //return $http.get(EnvironmentConfig.GlobalBaseUrl + "/test/meilleur-vente")
+        return $http.get("http://localhost:8080/MusicaServerWSRS/app/test/meilleur-vente")
           .then(function (response) {
             return response.data;
           }, function (errResponse) {
             console.log('Error in AJAX call :' + errResponse);
           });
       },
+
+      /*
+
+       getMeilleurVente: function () {
+       //return $http.get(EnvironmentConfig.GlobalBaseUrl + "/test/meilleur-vente")
+       return $http.jsonp("http://localhost:8080/MusicaServerWSRS/app/test/meilleur-vente")
+       .success(function (response) {
+       return response;
+       })
+       .error(function (errResponse) {
+       console.log('Error in AJAX call :' + errResponse);
+       });
+       },
+       */
 
       getPromotions: function () {
         return [

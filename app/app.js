@@ -17,7 +17,13 @@ angular.module(appName, [
 
     $stateProvider
       .state('app', {
-        abstract: true
+        abstract: true,
+        views: {
+          'header@': {
+            templateUrl: "header/header.html",
+            controller: 'HeaderCtrl as headerCtrl'
+          }
+        }
         //url: '/app',
         //templateUrl: 'app.html'
       })
@@ -28,10 +34,10 @@ angular.module(appName, [
           //'top@': {
           //  templateUrl: "partials/blocks/top.html"
           //},
-          'header@': {
-            templateUrl: "partials/blocks/header.html",
-            controller: 'HeaderCtrl as headerCtrl'
-          },
+          //'header@': {
+          //  templateUrl: "partials/blocks/header.html",
+          //  controller: 'HeaderCtrl as headerCtrl'
+          //},
           'content@': {
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl as home'
@@ -49,10 +55,10 @@ angular.module(appName, [
           //'top@': {
           //  templateUrl: "partials/blocks/top.html"
           //},
-          'header@': {
-            templateUrl: "partials/blocks/header.html",
-            controller: 'HeaderCtrl as headerCtrl'
-          },
+          //'header@': {
+          //  templateUrl: "partials/blocks/header.html",
+          //  controller: 'HeaderCtrl as headerCtrl'
+          //},
           'content@': {
             templateUrl: './instrument/details-instrument.html',
             controller: 'DetailsInstCtrl as detailsInstCtrl'

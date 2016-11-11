@@ -8,6 +8,10 @@
       var self = this;
 
       var instrumentDestination = "instrument";
+      $scope.meilleurVente = [];
+      homeService.getMeilleurVente().then(function (response) {
+        $scope.meilleurVente = response;
+      });
       $scope.promotions = homeService.getPromotions();
       $scope.bestSales = homeService.getBestSales();
 
