@@ -19,6 +19,11 @@ We have two kinds of dependencies in this project: tools and angular framework c
 ```
 npm install
 ```
+___
+# Bug
+I get problem with this command, i have run 'sudo apt install nodejs-legacy' to fix it.
+Problem is due because node not exist, but nodejs have been already installed.
+___
 
 Behind the scenes this will also call `bower install`.  You should find that you have two new
 folders in your project.
