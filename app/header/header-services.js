@@ -7,7 +7,7 @@
   angular.module('app').factory('headerService', ['$http', '$cookies', 'EnvironmentConfig', '$filter', function ($http, $cookies, EnvironmentConfig, $filter) {
     return {
 
-      initAccueil: function () {
+      initHeader: function () {
         //return $http.get(EnvironmentConfig.GlobalBaseUrl + "/init-accueil")
         return $http.get("header/data.json")
           .then(function (response) {

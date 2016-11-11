@@ -5,8 +5,8 @@
     .controller('HeaderCtrl', ['$scope', '$log', 'headerService', function ($scope, $log, headerService) {
 
       var self = this;
-      headerService.initAccueil().then(function (response) {
-        $log.log("initAccueil-service");
+      headerService.initHeader().then(function (response) {
+        $log.log("initHeader-service");
         $scope.categories = response;
       });
 

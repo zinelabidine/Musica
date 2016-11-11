@@ -1,370 +1,73 @@
-    <!--<wrap-owlcarousel class="owl-carousel"-->
-    <!--data-options="{items:2}">-->
-    <!--<div>-->
-    <!--<img src="img/product1.jpg"/>-->
-    <!--</div>-->
-    <!--<div>-->
-    <!--<img src="img/product2.jpg"/>-->
-    <!--</div>-->
-    <!--<div>-->
-    <!--<img src="img/product3.jpg"/>-->
-    <!--</div>-->
-    <!--</wrap-owlcarousel>-->
-
-    <div>
-        {{meilleurVente}}
+<div class="container">
+    <div class="col-md-12 large-12 columns">
+        <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{{owlCarouselMainOptions}}">
+            <div owl-carousel-item style="height: 600px;width: 600px"
+                 ng-repeat="promotion in promotions track by promotion.promotionId" class="item">
+                <img ng-src="{{promotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
+            </div>
+        </wrap-owlcarousel>
     </div>
+</div>
 
+<!--<div class="container">-->
+<!--<div class="col-md-12">-->
+<!--<div id="main-slider">-->
+<!--<carousel links="promotions" go-to="goToInstrument(id)"></carousel>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
-    <div class="container">
-        <div class="col-md-12 large-12 columns">
-            <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{
-      items: 1,
-      loop: true,
-      margin: 10,
-      navigation: false,
-      pagination: true,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      autoplayHoverPause: true
-    }">
-                <div owl-carousel-item style="height: 600px;width: 600px" ng-repeat="promotion in promotions | filter : { src : '' }" class="item">
-                    <img src="{{promotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
-                </div>
-            </wrap-owlcarousel>
-        </div>
-    </div>
-
-    <!--<div class="container">-->
-    <!--<div class="col-md-12">-->
-    <!--<div id="main-slider">-->
-    <!--<carousel links="promotions" go-to="goToInstrument(id)"></carousel>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!-- *** HOT PRODUCT SLIDESHOW ***
+<!-- *** HOT PRODUCT SLIDESHOW ***
 _________________________________________________________ -->
-    <div id="hot">
-        <div class="box">
-            <div class="container">
-                <div class="col-md-12">
-                    <h2>Les plus vendus cette semaine</h2>
-                </div>
+<div id="hot">
+    <div class="box">
+        <div class="container">
+            <div class="col-md-12">
+                <h2>Les plus vendus cette semaine</h2>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <wrap-owlcarousel class="owl-carousel owl-theme product-slider" data-options="{
-      items: 5,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      autoplayHoverPause: true
-    }">
-                <div owl-carousel-item="" ng-repeat="bestSale in bestSales">
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front">
-                                        <a href="" ng-click="goToInstrument(bestSale.id)">
-                                            <img src="{{bestSale.src.front}}" alt="" class="img-responsive">
-                                        </a>
-                                    </div>
-                                    <div class="back">
-                                        <a href="" ng-click="goToInstrument(bestSale.id)">
-                                            <img src="{{bestSale.src.back}}" alt="" class="img-responsive">
-                                        </a>
-                                    </div>
+    <div class="container">
+        <wrap-owlcarousel class="owl-carousel owl-theme product-slider"
+                          data-options="{{owlCarouselMeilleurVentesOptions}}">
+            <div owl-carousel-item="" ng-repeat="meilleurVente in meilleurVentes">
+                <div class="item">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="" ng-click="goToInstrument(meilleurVente.id)">
+                                        <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="" ng-click="goToInstrument(meilleurVente.id)">
+                                        <img src="{{meilleurVente.src.back}}" alt="" class="img-responsive">
+                                    </a>
                                 </div>
                             </div>
-                            <a href="" ng-click="goToInstrument(bestSale.id)" class="invisible">
-                                <img src="{{bestSale.src.front}}" alt="" class="img-responsive">
-                            </a>
-
-                            <div class="text">
-                                <h3><a href="" ng-click="goToInstrument(bestSale.id)">{{bestSale.caption.title}}</a></h3>
-
-                                <p class="price">{{bestSale.caption.price}}</p>
-                            </div>
-                            <!-- /.text -->
                         </div>
-                        <!-- /.product -->
+                        <a href="" ng-click="goToInstrument(meilleurVente.id)" class="invisible">
+                            <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
+                        </a>
+
+                        <div class="text">
+                            <h3><a href=""
+                                   ng-click="goToInstrument(meilleurVente.id)">{{meilleurVente.caption.title}}</a></h3>
+
+                            <p class="price">{{meilleurVente.caption.price}}</p>
+                        </div>
+                        <!-- /.text -->
                     </div>
+                    <!-- /.product -->
                 </div>
+            </div>
 
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">White Blouse Armani</a></h3>-->
-
-                <!--<p class="price">-->
-                <!--<del>$280</del>-->
-                <!--$143.00-->
-                <!--</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-
-                <!--<div class="ribbon sale">-->
-                <!--<div class="theribbon">SALE</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-
-                <!--<div class="ribbon new">-->
-                <!--<div class="theribbon">NEW</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-
-                <!--<div class="ribbon gift">-->
-                <!--<div class="theribbon">GIFT</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">Black Blouse Versace</a></h3>-->
-
-                <!--<p class="price">$143.00</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">Black Blouse Versace</a></h3>-->
-
-                <!--<p class="price">$143.00</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">White Blouse Versace</a></h3>-->
-
-                <!--<p class="price">$143.00</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-
-                <!--<div class="ribbon new">-->
-                <!--<div class="theribbon">NEW</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product1.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product1_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product1.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">Fur coat</a></h3>-->
-
-                <!--<p class="price">$143.00</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-
-                <!--<div class="ribbon gift">-->
-                <!--<div class="theribbon">GIFT</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.col-md-4 &ndash;&gt;-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product2_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">White Blouse Armani</a></h3>-->
-
-                <!--<p class="price">-->
-                <!--<del>$280</del>-->
-                <!--$143.00-->
-                <!--</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-
-                <!--<div class="ribbon sale">-->
-                <!--<div class="theribbon">SALE</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-
-                <!--<div class="ribbon new">-->
-                <!--<div class="theribbon">NEW</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-
-                <!--<div class="ribbon gift">-->
-                <!--<div class="theribbon">GIFT</div>-->
-                <!--<div class="ribbon-background"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-                <!--<div class="item">-->
-                <!--<div class="product">-->
-                <!--<div class="flip-container">-->
-                <!--<div class="flipper">-->
-                <!--<div class="front">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="back">-->
-                <!--<a href="detail.html">-->
-                <!--<img src="img/product3_2.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<a href="detail.html" class="invisible">-->
-                <!--<img src="img/product3.jpg" alt="" class="img-responsive">-->
-                <!--</a>-->
-
-                <!--<div class="text">-->
-                <!--<h3><a href="detail.html">Black Blouse Versace</a></h3>-->
-
-                <!--<p class="price">$143.00</p>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.text &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.product &ndash;&gt;-->
-                <!--</div>-->
-
-            </wrap-owlcarousel>
-            <!-- /.product-slider -->
-        </div>
-        <!-- /.container -->
-
+        </wrap-owlcarousel>
+        <!-- /.product-slider -->
     </div>
-    <!-- /#hot -->
+    <!-- /.container -->
+
+</div>
+<!-- /#hot -->

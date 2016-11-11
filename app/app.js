@@ -9,6 +9,7 @@ angular.module(appName, [
     'ui.bootstrap',
     'angular.filter',
     'ngRoute',
+    'app.config',
     'app.env'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
