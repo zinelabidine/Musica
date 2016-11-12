@@ -13,8 +13,10 @@
       $scope.owlCarouselMainOptions = ApplicationConfig.OWL_CAROUSEL_MAIN_OPTIONS;
       $scope.owlCarouselMeilleurVentesOptions = {
         items: 5,
-        loop: true,
+        loop: false,
         margin: 10,
+        dots:true,
+        pagination: true,
         autoplay: true,
         autoplaySpeed: 1000,
         autoplayHoverPause: true

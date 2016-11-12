@@ -147,6 +147,20 @@ h1 {
 .navbar #basket-overview {
   padding: 0;
 }
+
+.owl-theme .owl-dots .owl-dot {
+  display: inline-block;
+}
+.owl-theme .owl-dots .owl-dot span {
+  background: none repeat scroll 0 0 #869791;
+  border-radius: 20px;
+  display: block;
+  height: 12px;
+  margin: 5px 7px;
+  opacity: 0.5;
+  width: 12px;
+}
+
 #hot h2 {
   text-transform: uppercase;
   font-size: 36px;
@@ -169,15 +183,16 @@ h1 {
   margin: 0 25px;
   visibility: visible;
 }
-#hot .product-slider .owl-controls {
+#hot .product-slider .owl-dots {
   position: relative;
   top: -30px;
+  text-align: center;
 }
-#hot .product-slider .owl-controls .owl-buttons {
+#hot .product-slider .owl-dots .owl-buttons {
   display: none;
 }
-#hot .product-slider .owl-controls .owl-page.active span,
-#hot .product-slider .owl-controls.clickable .owl-page:hover span {
+#hot .product-slider .owl-dots .owl-dot.active span,
+#hot .product-slider .owl-dots.clickable .owl-dot:hover span {
   background: #4fbfa8;
 }
 #advantages {
@@ -242,6 +257,23 @@ h1 {
 #main-slider .owl-controls .owl-page.active span,
 .box.slideshow .owl-controls.clickable .owl-page:hover span,
 #main-slider .owl-controls.clickable .owl-page:hover span {
+  background: #4fbfa8;
+}
+
+.box.slideshow .owl-dots,
+#main-slider .owl-dots {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.box.slideshow .owl-dots .owl-buttons,
+#main-slider .owl-dots .owl-buttons {
+  display: none;
+}
+.box.slideshow .owl-dots .owl-dot.active span,
+#main-slider .owl-dots .owl-dot.active span,
+.box.slideshow .owl-dots.clickable .owl-dot:hover span,
+#main-slider .owl-dots.clickable .owl-dot:hover span {
   background: #4fbfa8;
 }
 .breadcrumb {
