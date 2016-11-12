@@ -5,29 +5,27 @@
   "use strict";
 
   angular.module('app')
-    .directive('wrapOwlcarousel', function () {
+    .directive('wrapOwlcarousel', ['$timeout', function ($timeout) {
       return {
         restrict: 'E',
         transclude: false,
         link: function (scope, element, attrs) {
           scope.initCarousel = function (element) {
-            // provide any default options you want
-            var defaultOptions = {};
-            var customOptions = scope.$eval($(element).attr('data-options'));
-            // combine the two options objects
-            for (var key in customOptions) {
-              defaultOptions[key] = customOptions[key];
-            }
-            // init carousel
-            var curOwl = $(element).data('owlCarousel');
-            if (!angular.isDefined(curOwl)) {
+            $timeout(function () {
+              // provide any default options you want
+              var defaultOptions = {};
+              var customOptions = scope.$eval($(element).attr('data-options'));
+              // combine the two options objects
+              for (var key in customOptions) {
+                defaultOptions[key] = customOptions[key];
+              }
+              // init carousel
               $(element).owlCarousel(defaultOptions);
-            }
-            scope.cnt++;
+            }, 50);
           };
         }
       };
-    }).directive('owlCarouselItem', [function () {
+    }]).directive('owlCarouselItem', [function () {
     return {
       restrict: 'A',
       transclude: false,

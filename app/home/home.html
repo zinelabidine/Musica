@@ -2,7 +2,7 @@
     <div class="col-md-12 large-12 columns">
         <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{{owlCarouselMainOptions}}">
             <div owl-carousel-item style="height: 600px;width: 600px"
-                 ng-repeat="promotion in promotions track by promotion.promotionId" class="item">
+                 ng-repeat="promotion in promotions" class="item">
                 <img ng-src="{{promotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
             </div>
         </wrap-owlcarousel>
@@ -71,3 +71,7 @@ _________________________________________________________ -->
 
 </div>
 <!-- /#hot -->
+
+<!--<div ng-hide="pageReady" class="loading-spinner">-->
+    <!--<img src="../img/patientez.gif" class="ajax-loader"/>-->
+<!--</div>-->
