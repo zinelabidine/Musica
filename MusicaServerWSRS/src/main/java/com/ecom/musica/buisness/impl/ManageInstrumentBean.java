@@ -39,4 +39,8 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
 		return req.getResultList();
 	}
 
+	public Instrument getInstrumentWithId(int instrument_id) {
+		return entityManager.find(Instrument.class, instrument_id);
+	}
+
 }

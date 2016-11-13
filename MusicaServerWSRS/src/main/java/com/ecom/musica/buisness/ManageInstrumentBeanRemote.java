@@ -10,4 +10,5 @@ import com.ecom.musica.entities.Instrument;
 public interface ManageInstrumentBeanRemote {
 	public boolean addInstrument(Instrument instrument);
 	public List<Instrument> getAllInstruments() ;
+	public Instrument getInstrumentWithId(int instrument_id);
 }
