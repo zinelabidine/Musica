@@ -1,5 +1,6 @@
 package com.ecom.musica.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Musicien")
-public class Musicien {
+public class Musicien implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MusicienId")

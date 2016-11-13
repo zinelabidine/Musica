@@ -1,5 +1,6 @@
 package com.ecom.musica.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Promotion")
-public class Promotion {
+public class Promotion implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PromotionId")

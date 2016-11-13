@@ -1,5 +1,7 @@
 package com.ecom.musica.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import javax.persistence.Table;
 //TODO:: @OneToMany and @ManyToMany
 @Entity
 @Table(name = "Administrateur")
-public class Administrateur {
+public class Administrateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AdministrateurId")

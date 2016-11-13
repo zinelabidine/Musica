@@ -16,7 +16,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Instrument")
-public class Instrument implements Serializable{
+public class Instrument implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
