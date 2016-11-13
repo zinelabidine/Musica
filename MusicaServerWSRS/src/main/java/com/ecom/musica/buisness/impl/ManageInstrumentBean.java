@@ -4,11 +4,13 @@ import com.ecom.musica.buisness.ManageInstrumentBeanRemote;
 import com.ecom.musica.entities.Instrument;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.sql.DataSource;
 
 /**
@@ -30,6 +32,11 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
 	public boolean addInstrument(Instrument instrument) {
 		entityManager.persist(instrument);
 		return false;
+	}
+	@Override
+	public List<Instrument> getAllInstruments() {
+		Query req = entityManager.createQuery("select i from Instrument i");
+		return req.getResultList();
 	}
 
 }
