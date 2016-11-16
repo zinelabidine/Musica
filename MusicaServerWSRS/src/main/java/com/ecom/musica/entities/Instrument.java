@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Instrument")
 public class Instrument implements Serializable {
@@ -32,7 +34,7 @@ public class Instrument implements Serializable {
 	@JoinColumn(name = "CategorieId")
 	private Categorie categorie;
 
-	@Transient
+	@JsonIgnore
 	@ManyToMany(mappedBy = "instruments")
 	private List<Commande> commandes;
 	
@@ -44,7 +46,7 @@ public class Instrument implements Serializable {
 	@ManyToMany(mappedBy = "instruments")
 	private List<Musicien> musiciens;
 	
-	@Transient
+	@JsonIgnore
 	@ManyToMany(mappedBy = "instruments")
 	private List<Promotion> promotions;
 
