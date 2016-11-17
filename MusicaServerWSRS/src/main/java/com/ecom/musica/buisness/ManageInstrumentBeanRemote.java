@@ -13,4 +13,5 @@ public interface ManageInstrumentBeanRemote {
 	public List<Instrument> getAllInstruments() ;
 	public List<Instrument> getInstrumentsBestSales();
 	public List<Instrument> getInstrumentsPromotion();
+	public Instrument getInstrumentWithId(int instrument_id);
 }
