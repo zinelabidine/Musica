@@ -15,4 +15,9 @@ public interface ManageInstrumentBeanRemote {
 	public List<Instrument> getInstrumentsPromotion();
 	public Instrument getInstrumentWithId(int instrument_id);
 	public List<Instrument> getInstrumentsWithKey(String instrument_key);
+    public List<Instrument> findInstruments(
+            String instrument_ref,
+            String marque,
+            String categorie
+    );
 }

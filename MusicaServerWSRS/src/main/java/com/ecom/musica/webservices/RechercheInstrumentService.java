@@ -35,4 +35,15 @@ public class RechercheInstrumentService {
     public List<Instrument> getInstrumentsWithKey(@QueryParam("key") String instrument_key){
         return instrument.getInstrumentsWithKey(instrument_key);
     }
+
+    @GET
+    @Path("/findadvanced")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Instrument> findInstruments(
+            @QueryParam("ref") String instrument_ref,
+            @QueryParam("marque") String marque,
+            @QueryParam("categorie") String categorie
+            ){
+        return instrument.findInstruments(instrument_ref,marque,categorie);
+    }
 }

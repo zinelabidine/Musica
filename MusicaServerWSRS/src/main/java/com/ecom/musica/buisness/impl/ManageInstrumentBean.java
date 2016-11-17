@@ -79,4 +79,20 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
                 Instrument.class
         ).getResultList();
     }
+
+    @Override
+    public List<Instrument> findInstruments(
+            String instrument_key,
+            String marque,
+            String categorie
+    ) {
+        return entityManager.createQuery(
+                "select i"
+                        + " from Instrument i, Marque m, Categorie c"
+                        + " where i.reference like '%"+instrument_key+"%'"
+                        + " and m.libelle like '%"+marque+"%'"
+                        + " and c.libelle like '%"+categorie+"%'",
+                Instrument.class
+        ).getResultList();
+    }
 }
