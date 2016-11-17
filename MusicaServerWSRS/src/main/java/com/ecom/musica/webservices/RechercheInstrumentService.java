@@ -1,5 +1,7 @@
 package com.ecom.musica.webservices;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -27,4 +29,10 @@ public class RechercheInstrumentService {
         return instrument.getInstrumentWithId(instrument_id);
     }
 
+    @GET
+    @Path("/findwithkey")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Instrument> getInstrumentsWithKey(@QueryParam("key") String instrument_key){
+        return instrument.getInstrumentsWithKey(instrument_key);
+    }
 }
