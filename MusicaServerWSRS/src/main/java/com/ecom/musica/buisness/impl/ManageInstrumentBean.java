@@ -64,6 +64,7 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
 			castedList.add((T) o[position]);
 		}
 		return castedList;
+	}
 
 	public Instrument getInstrumentWithId(int instrument_id) {
 		return entityManager.find(Instrument.class, instrument_id);
