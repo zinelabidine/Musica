@@ -14,7 +14,8 @@ import javax.ws.rs.core.MediaType;
 
 import com.ecom.musica.buisness.ManageCategoryBeanRemote;
 import com.ecom.musica.buisness.ManageInstrumentBeanRemote;
-import com.ecom.musica.dto.InitializeHomeDTO;
+import com.ecom.musica.dto.InitializeHeaderDTO;
+import com.ecom.musica.dto.InitializeHomeContentDTO;
 import com.ecom.musica.entities.Instrument;
 
 @Stateless
@@ -22,7 +23,7 @@ import com.ecom.musica.entities.Instrument;
 @Path("/instrument")
 public class InstrumentService {
 
-	
+/*	
 	@EJB
 	private ManageInstrumentBeanRemote instrument;
 	
@@ -53,5 +54,6 @@ public class InstrumentService {
     public Instrument getInstrumentWithID(@QueryParam("id") int instrument_id){
         return instrument.getInstrumentWithId(instrument_id);
     }
+*/
 
 }
