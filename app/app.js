@@ -28,17 +28,11 @@ angular.module(appName, [
         //url: '/app',
         //templateUrl: 'app.html'
       })
+      
       .state('app.home', {
         url: '/home',
 
         views: {
-          //'top@': {
-          //  templateUrl: "partials/blocks/top.html"
-          //},
-          //'header@': {
-          //  templateUrl: "partials/blocks/header.html",
-          //  controller: 'HeaderCtrl as headerCtrl'
-          //},
           'content@': {
             templateUrl: 'home/home.html',
             controller: 'HomeCtrl as home'
@@ -49,17 +43,25 @@ angular.module(appName, [
           }
         }
       })
+
+      .state('app.recherche',{
+        url: '/recherche/:motcles',
+        views: {
+          'content@': {
+            templateUrl: 'recherche/recherche.html',
+            controller: 'RechercheCtrl as recherche'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }      
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 
         views: {
-          //'top@': {
-          //  templateUrl: "partials/blocks/top.html"
-          //},
-          //'header@': {
-          //  templateUrl: "partials/blocks/header.html",
-          //  controller: 'HeaderCtrl as headerCtrl'
-          //},
           'content@': {
             templateUrl: './instrument/details-instrument.html',
             controller: 'DetailsInstCtrl as detailsInstCtrl'
