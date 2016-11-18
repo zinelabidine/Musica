@@ -22,8 +22,8 @@ public class AccueilService {
     @Produces("application/json")
     public InitializeHomeContentDTO initializeHomeContent() {
         InitializeHomeContentDTO init = new InitializeHomeContentDTO();
-        init.InstrumentsBestSales = instrument.getInstrumentsBestSales();
-        init.InstrumentsPromotions = instrument.getInstrumentsPromotion();
+        init.instrumentsBestSales = instrument.getInstrumentsBestSales();
+        init.instrumentsPromotions = instrument.getInstrumentsPromotion();
         return init;
     }
 
