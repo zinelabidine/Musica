@@ -75,7 +75,9 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
                         + " from Instrument i, Marque m, Categorie c"
                         + " where i.reference like '%"+instrument_key+"%'"
                         + " or m.libelle like '%"+instrument_key+"%'"
-                        + " or c.libelle like '%"+instrument_key+"%'",
+                        + " or c.libelle like '%"+instrument_key+"%'"
+                        + " and i.marque = m.marqueId"
+                        + " and i.categorie = c.categorieId",
                 Instrument.class
         ).getResultList();
     }
@@ -91,7 +93,9 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
                         + " from Instrument i, Marque m, Categorie c"
                         + " where i.reference like '%"+instrument_key+"%'"
                         + " and m.libelle like '%"+marque+"%'"
-                        + " and c.libelle like '%"+categorie+"%'",
+                        + " and c.libelle like '%"+categorie+"%'"
+                        + " and i.marque = m.marqueId"
+                        + " and i.categorie = c.categorieId",
                 Instrument.class
         ).getResultList();
     }
