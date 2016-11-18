@@ -25,11 +25,11 @@
       }
 
       $scope.filtre = function() {
-        if ($scope.selection =="Name" ){
+        if ($scope.selection =="Nom" ){
           $scope.orderByReverse = !$scope.orderByReverse;
           $scope.orderByPredicate = 'reference';
         }
-        else if ($scope.selection =="Price"){
+        else if ($scope.selection =="Prix"){
           $scope.orderByReverse = !$scope.orderByReverse;
           $scope.orderByPredicate = 'prix';
         }
