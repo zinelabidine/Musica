@@ -53,6 +53,9 @@ public class Instrument implements Serializable {
 	@Column(name = "Reference")
 	private String reference;
 
+	@Column(name = "Description")
+	private String description;
+
 	@Column(name = "Quantite")
 	private int quantite;
 
@@ -92,9 +95,17 @@ public class Instrument implements Serializable {
 		this.commandes = commandes;
 	}
 
-	public List<Panier> getPaniers() {
-		return paniers;
-	}
+	public String getDescription() {
+	    return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Panier> getPaniers() {
+        return paniers;
+    }
 
 	public void setPaniers(List<Panier> paniers) {
 		this.paniers = paniers;
