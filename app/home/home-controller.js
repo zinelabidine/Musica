@@ -29,8 +29,8 @@
       function init() {
         homeService.initAccueil().then(function (response) {
           $log.log("Init Accueil service");
-          $scope.meilleurVentes = response.meilleurVentes;
-          $scope.promotions = response.promotions;
+          $scope.meilleurVentes = response.instrumentsBestSales;
+          $scope.promotions = response.instrumentsPromotions;
           $log.log($scope.promotions);
         });
       }

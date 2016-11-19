@@ -1,0 +1,22 @@
+{
+  "instrumentId": 1,
+  "marque": {
+    "marqueId": 1,
+    "libelle": "Yamaha"
+  },
+  "categorie": {
+    "categorieId": 1,
+    "libelle": "bateries",
+    "instruments": null
+  },
+  "titre": "Batterie acoustique rock pearl",
+  "paniers": null,
+  "musiciens": {
+    "musicienId": "1",
+    "nomDeScene": "Bob Sinclar"
+  },
+  "reference": "VFHV",
+  "quantite": 1,
+  "prix": 12,
+  "description": "Après plusieurs années d'absence, la batterie la plus vendue de l'histoire fait son grand retour. La mythique Pearl Export offre toujours le même rapport qualité/prix et le son qui l'ont rendue célèbre mais cette nouvelle version apporte une multitude de nouveautés dont une pédale Demonator et un pa"
+}

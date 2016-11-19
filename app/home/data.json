@@ -1,5 +1,5 @@
 {
-  "promotions": [
+  "instrumentsPromotions": [
     {
       "promotionId": 1,
       "src": "./img/baterie1.png",
@@ -46,7 +46,7 @@
       }
     }
   ],
-  "meilleurVentes": [
+  "instrumentsBestSales": [
     {
       "id": 1,
       "src": {

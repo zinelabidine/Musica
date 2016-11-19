@@ -451,7 +451,7 @@ h1 {
 #content .panel.sidebar-menu ul.nav ul li a {
   position: relative;
   font-weight: normal;
-  text-transform: none !important;
+  /*text-transform: none !important;*/
   display: block;
   padding: 10px 15px;
   padding-left: 30px;

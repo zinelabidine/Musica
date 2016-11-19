@@ -5,11 +5,14 @@
     return {
 
       initAccueil: function () {
-        return $http.get("home/data.json").then(function (response) {
-          return response.data;
-        }, function (errResponse) {
-          $log.log("Error in AJAX call " + errResponse);
-        })
+
+        // return $http.get("home/data.json")
+        return $http.get(EnvironmentConfig.GlobalBaseUrl + "/accueil/initializehomecontent")
+          .then(function (response) {
+            return response.data;
+          }, function (errResponse) {
+            $log.log("Error in AJAX call " + errResponse);
+          })
       },
 
       getMeilleurVente: function () {

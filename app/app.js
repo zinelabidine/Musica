@@ -22,13 +22,18 @@ angular.module(appName, [
         views: {
           'header@': {
             templateUrl: "header/header.html",
-            controller: 'HeaderCtrl as headerCtrl'
+            controller: 'HeaderCtrl as headerCtrl',
+            resolve: {
+              headerData:  ['headerService', function (headerService) {
+                return headerService.initHeader();
+              }]
+            }
           }
         }
         //url: '/app',
         //templateUrl: 'app.html'
       })
-      
+
       .state('app.home', {
         url: '/home',
 
@@ -44,7 +49,7 @@ angular.module(appName, [
         }
       })
 
-      .state('app.recherche',{
+      .state('app.recherche', {
         url: '/recherche/:motcles',
         views: {
           'content@': {
@@ -55,7 +60,7 @@ angular.module(appName, [
             templateUrl: 'partials/blocks/footer.html'
             //controller: 'AppCtrl as AppCtrl'
           }
-        }      
+        }
       })
 
       .state('app.instrument', {

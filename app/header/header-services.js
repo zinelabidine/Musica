@@ -5,13 +5,24 @@
   "use strict";
 
   angular.module('app').factory('headerService', ['$http', '$cookies', 'EnvironmentConfig', '$filter', function ($http, $cookies, EnvironmentConfig, $filter) {
+
+    var categories = [];
+
     return {
+      getCategories: function () {
+        return categories;
+      },
+
+      setCategories: function (categoriesList) {
+        categories = categoriesList;
+      },
 
       initHeader: function () {
-        //return $http.get(EnvironmentConfig.GlobalBaseUrl + "/init-accueil")
-        return $http.get("header/data.json")
+        return $http.get(EnvironmentConfig.GlobalBaseUrl + "/global/initializeheader")
+          //return $http.get("header/data.json")
           .then(function (response) {
-            return response.data.categories;
+            categories = response.data.Categories;
+            return response.data;
           }, function (errResponse) {
             console.log('Error in AJAX call :' + errResponse);
           });
