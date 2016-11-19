@@ -9,7 +9,7 @@
 
       getDetailsInstrument: function (instrumentId) {
         return $http.get("instrument/data.json")
-          // return $http.get(EnvironmentConfig.GlobalBaseUrl + "/instrument/findwithid?id=" + instrumentId)
+        // return $http.get(EnvironmentConfig.GlobalBaseUrl + "/instrument/findwithid", {params: {id: instrumentId}})
           .then(function (response) {
             return response.data;
           }, function (errResponse) {
