@@ -1,10 +1,12 @@
 <div class="container">
-    <div class="col-md-12 large-12 columns" >
+    <div class="col-md-12 large-12 columns">
         <div id="main-slider">
             <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{{owlCarouselMainOptions}}">
                 <div owl-carousel-item style="height: 600px;width: 100%"
-                     ng-repeat="promotion in promotions" class="item">
-                    <img ng-src="{{promotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
+                     ng-repeat="instrumentPromotion in instrumentsPromotions" class="item">
+                    <a href="" ng-click="goToInstrument(instrumentPromotion.instrumentId)">
+                        <img ng-src="{{instrumentPromotion.src}}" alt="" style="height: 100%;width: 100%;" class="img-responsive">
+                    </a>
                 </div>
             </wrap-owlcarousel>
         </div>
@@ -39,26 +41,27 @@ _________________________________________________________ -->
                         <div class="flip-container">
                             <div class="flipper">
                                 <div class="front">
-                                    <a href="" ng-click="goToInstrument(meilleurVente.id)">
+                                    <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)">
                                         <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="back">
-                                    <a href="" ng-click="goToInstrument(meilleurVente.id)">
+                                    <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)">
                                         <img src="{{meilleurVente.src.back}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <a href="" ng-click="goToInstrument(meilleurVente.id)" class="invisible">
+                        <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)" class="invisible">
                             <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
                         </a>
 
                         <div class="text">
                             <h3><a href=""
-                                   ng-click="goToInstrument(meilleurVente.id)">{{meilleurVente.caption.title}}</a></h3>
+                                   ng-click="goToInstrument(meilleurVente.instrumentId)">{{meilleurVente.caption.title}}</a>
+                            </h3>
 
-                            <p class="price">{{meilleurVente.caption.price}}</p>
+                            <p class="price">{{meilleurVente.prix}} €</p>
                         </div>
                         <!-- /.text -->
                     </div>
