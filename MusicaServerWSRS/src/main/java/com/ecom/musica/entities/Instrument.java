@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,128 +21,111 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "Instrument")
 public class Instrument implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "InstrumentId")
-	private int instrumentId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "InstrumentId")
+    private int instrumentId;
 
-	
-	@ManyToOne
-	@JoinColumn(name = "MarqueId")
-	private Marque marque;
+    @ManyToOne
+    @JoinColumn(name = "MarqueId")
+    private Marque marque;
 
-	@ManyToOne
-	@JoinColumn(name = "CategorieId")
-	private Categorie categorie;
+    @ManyToOne
+    @JoinColumn(name = "CategorieId")
+    private Categorie categorie;
 
-	@JsonIgnore
-	@ManyToMany(mappedBy = "instruments")
-	private List<Commande> commandes;
-	
-	@Transient
-	@ManyToMany(mappedBy = "instruments")
-	private List<Panier> paniers;
-	
-	@Transient
-	@ManyToMany(mappedBy = "instruments")
-	private List<Musicien> musiciens;
-	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "instruments")
-	private List<Promotion> promotions;
+    @JsonIgnore
+    @OneToMany(mappedBy = "instrument")
+    private List<CommandeInstrument> lignesCommande;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "instrument")
+    private List<PanierInstrument> lignesPanier;
 
-	@Column(name = "Reference")
-	private String reference;
+    @Transient
+    @ManyToMany(mappedBy = "instruments")
+    private List<Musicien> musiciens;
 
-	@Column(name = "Quantite")
-	private int quantite;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "instruments")
+    private List<Promotion> promotions;
 
-	// private IMAGE VARCHAR(1000) NOT NULL ,
-	@Column(name = "Prix")
-	private float prix;
+    @Column(name = "Reference")
+    private String reference;
 
-	public int getInstrumentId() {
-		return instrumentId;
-	}
+    @Column(name = "Quantite")
+    private int quantite;
 
-	public void setInstrumentId(int instrumentId) {
-		this.instrumentId = instrumentId;
-	}
+    @Column(name = "Prix")
+    private float prix;
 
-	public Marque getMarque() {
-		return marque;
-	}
+    @Column(name = "Image")
+    private String image;
 
-	public void setMarque(Marque marque) {
-		this.marque = marque;
-	}
+    public int getInstrumentId() {
+        return instrumentId;
+    }
 
-	public Categorie getCategorie() {
-		return categorie;
-	}
+    public void setInstrumentId(int instrumentId) {
+        this.instrumentId = instrumentId;
+    }
 
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
+    public Marque getMarque() {
+        return marque;
+    }
 
-	public List<Commande> getCommandes() {
-		return commandes;
-	}
+    public void setMarque(Marque marque) {
+        this.marque = marque;
+    }
 
-	public void setCommandes(List<Commande> commandes) {
-		this.commandes = commandes;
-	}
+    public Categorie getCategorie() {
+        return categorie;
+    }
 
-	public List<Panier> getPaniers() {
-		return paniers;
-	}
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 
-	public void setPaniers(List<Panier> paniers) {
-		this.paniers = paniers;
-	}
+    public List<Musicien> getMusiciens() {
+        return musiciens;
+    }
 
-	public List<Musicien> getMusiciens() {
-		return musiciens;
-	}
+    public void setMusiciens(List<Musicien> musiciens) {
+        this.musiciens = musiciens;
+    }
 
-	public void setMusiciens(List<Musicien> musiciens) {
-		this.musiciens = musiciens;
-	}
+    public List<Promotion> getPromotions() {
+        return promotions;
+    }
 
-	public List<Promotion> getPromotions() {
-		return promotions;
-	}
+    public void setPromotions(List<Promotion> promotions) {
+        this.promotions = promotions;
+    }
 
-	public void setPromotions(List<Promotion> promotions) {
-		this.promotions = promotions;
-	}
+    public String getReference() {
+        return reference;
+    }
 
-	public String getReference() {
-		return reference;
-	}
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+    public int getQuantite() {
+        return quantite;
+    }
 
-	public int getQuantite() {
-		return quantite;
-	}
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
 
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
-	}
+    public float getPrix() {
+        return prix;
+    }
 
-	public float getPrix() {
-		return prix;
-	}
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
 
-	public void setPrix(float prix) {
-		this.prix = prix;
-	}
-
-	// getter and setters
-
-	
+    // getter and setters
 
 }

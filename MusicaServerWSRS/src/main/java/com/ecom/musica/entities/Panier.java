@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,14 +26,49 @@ public class Panier implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ClientId")
 	private Client client;
-	
-	@Column(name = "MontantTTC")
+
+    @Column(name = "MontantTTC")
 	private float montantTTC;
 	
 	@Column(name = "MontantHT")
 	private float montantHT;
 	
-	@ManyToMany
-	@JoinTable(name = "PanierInstrument", joinColumns = @JoinColumn(name = "PanierId", referencedColumnName = "PanierId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
-	private List<Instrument> instruments;
+    @OneToMany(mappedBy = "panier")
+    private List<PanierInstrument> lignesPanier;
+    
+	//getter and setters 
+	
+	public int getPanierId() {
+        return panierId;
+    }
+
+    public void setPanierId(int panierId) {
+        this.panierId = panierId;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public float getMontantTTC() {
+        return montantTTC;
+    }
+
+    public void setMontantTTC(float montantTTC) {
+        this.montantTTC = montantTTC;
+    }
+
+    public float getMontantHT() {
+        return montantHT;
+    }
+
+    public void setMontantHT(float montantHT) {
+        this.montantHT = montantHT;
+    }
+
+
 }
