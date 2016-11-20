@@ -47,7 +47,7 @@ public class Instrument implements Serializable {
     @ManyToMany(mappedBy = "instruments")
     private List<Musicien> musiciens;
 
-    @JsonIgnore
+    
     @ManyToMany(mappedBy = "instruments")
     private List<Promotion> promotions;
 

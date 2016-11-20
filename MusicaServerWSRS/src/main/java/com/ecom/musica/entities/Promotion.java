@@ -22,7 +22,63 @@ public class Promotion implements Serializable {
 	@Column(name = "PromotionId")
 	private int promotionId;
 	
-	@Column(name = "Libelle")
+	public int getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(int promotionId) {
+        this.promotionId = promotionId;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public float getTaux() {
+        return taux;
+    }
+
+    public void setTaux(float taux) {
+        this.taux = taux;
+    }
+
+    public List<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(List<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
+    public List<Marque> getMarques() {
+        return marques;
+    }
+
+    public void setMarques(List<Marque> marques) {
+        this.marques = marques;
+    }
+
+    @Column(name = "Libelle")
 	private String libelle;
 	
 	@Column(name = "dateDebut")
