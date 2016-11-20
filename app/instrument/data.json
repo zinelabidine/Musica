@@ -11,10 +11,13 @@
   },
   "titre": "Batterie acoustique rock pearl",
   "paniers": null,
-  "musiciens": {
+  "musiciens": [{
     "musicienId": "1",
     "nomDeScene": "Bob Sinclar"
-  },
+  },{
+    "musicienId": "2",
+    "nomDeScene": "Rwicha"
+  }],
   "reference": "VFHV",
   "quantite": 1,
   "prix": 12,
