@@ -40,13 +40,6 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
         return req.getResultList();
     }
 
-    @Override
-    public List<Instrument> getInstrumentsBestSales() {
-        Query req = entityManager.createQuery(
-                "select i,count(i) as NbrVente from Instrument i inner join i.commandes group by i.instrumentId order by NbrVente desc");
-        List<Instrument> instruments = castResultToList(Instrument.class, 0, req.getResultList());
-        return instruments;
-    }
 
     @Override
     public List<Instrument> getInstrumentsPromotion() {
@@ -62,6 +55,14 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
             castedList.add((T) o[position]);
         }
         return castedList;
+    }
+
+    @Override
+    public List<Instrument> getInstrumentsBestSales() {
+	Query req = entityManager.createQuery(
+		"select i,count(i) as NbrVente from Instrument i inner join i.lignesCommande group by i.lignesCommande order by NbrVente desc");
+	List<Instrument> instruments = castResultToList(Instrument.class, 0, req.getResultList());
+	return instruments;
     }
 
     public Instrument getInstrumentWithId(int instrument_id) {
