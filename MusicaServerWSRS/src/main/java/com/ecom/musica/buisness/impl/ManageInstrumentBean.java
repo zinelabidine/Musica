@@ -45,6 +45,9 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
     public List<Instrument> getInstrumentsPromotion() {
         Query req = entityManager.createQuery("select i  from Instrument i inner join i.promotions");
         List<Instrument> instruments = req.getResultList();
+        for (Instrument instrument : instruments) {
+            instrument.getPromotions().size();
+        }
         return instruments;
     }
 
