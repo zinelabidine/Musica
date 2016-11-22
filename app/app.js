@@ -63,6 +63,20 @@ angular.module(appName, [
         }
       })
 
+      .state('app.cart', {
+        url: '/cart/:motcles',
+        views: {
+          'content@': {
+            templateUrl: 'cart/basket.html',
+            controller: 'CartCtrl as cart'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 
