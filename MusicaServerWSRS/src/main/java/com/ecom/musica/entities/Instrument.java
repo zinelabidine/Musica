@@ -137,4 +137,27 @@ public class Instrument implements Serializable {
     public void setPrix(float prix) {
         this.prix = prix;
     }
+    public List<CommandeInstrument> getLignesCommande() {
+        return lignesCommande;
+    }
+
+    public void setLignesCommande(List<CommandeInstrument> lignesCommande) {
+        this.lignesCommande = lignesCommande;
+    }
+
+    public List<PanierInstrument> getLignesPanier() {
+        return lignesPanier;
+    }
+
+    public void setLignesPanier(List<PanierInstrument> lignesPanier) {
+        this.lignesPanier = lignesPanier;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
