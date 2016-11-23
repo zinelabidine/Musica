@@ -1,5 +1,7 @@
 package com.ecom.musica.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +11,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "CommandeInstrument")
-public class CommandeInstrument {
+public class CommandeInstrument implements Serializable{
+    public CommandeInstrument(Commande commande,Instrument instrument,int quantite)
+    {
+        this.commande = commande;
+        this.instrument = instrument;
+        this.Quantite = quantite;
+        
+    }
+    public CommandeInstrument()
+    {
+        
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CommandeInstrumentId")
     private int commandeInstrumentId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "CommandeId")
     private Commande commande;
