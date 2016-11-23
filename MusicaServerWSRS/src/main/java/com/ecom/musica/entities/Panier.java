@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Panier")
 public class Panier implements Serializable {
@@ -23,6 +25,7 @@ public class Panier implements Serializable {
 	@Column(name = "PanierId")
 	private int panierId;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "ClientId")
 	private Client client;
@@ -38,7 +41,15 @@ public class Panier implements Serializable {
     
 	//getter and setters 
 	
-	public int getPanierId() {
+	public List<PanierInstrument> getLignesPanier() {
+        return lignesPanier;
+    }
+
+    public void setLignesPanier(List<PanierInstrument> lignesPanier) {
+        this.lignesPanier = lignesPanier;
+    }
+
+    public int getPanierId() {
         return panierId;
     }
 

@@ -11,29 +11,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "PanierInstrument")
-public class PanierInstrument implements Serializable{
+public class PanierInstrument implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PanierInstrumentId")
     private int panierInstrumentId;
-    
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "PanierId")
     private Panier panier;
-    
+
     @ManyToOne
     @JoinColumn(name = "InstrumentId")
     private Instrument instrument;
-    
+
     @Column(name = "Quantite")
     private int Quantite;
-    
-    //getters and setters
-    
+
+    // getters and setters
+
     public int getPanierInstrumentId() {
         return panierInstrumentId;
     }
