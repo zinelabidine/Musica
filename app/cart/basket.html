@@ -40,7 +40,7 @@
                                         <tr>
                                             <td>
                                                 <a href="#">
-                                                    <img src="img/detailsquare.jpg" alt="White Blouse Armani">
+                                                    <img alt="White Blouse Armani">
                                                 </a>
                                             </td>
                                             <td><a href="#">White Blouse Armani</a>
@@ -57,7 +57,7 @@
                                         <tr>
                                             <td>
                                                 <a href="#">
-                                                    <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
+                                                    <img alt="Black Blouse Armani">
                                                 </a>
                                             </td>
                                             <td><a href="#">Black Blouse Armani</a>
@@ -75,7 +75,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th colspan="2">$446.00</th>
+                                            <th colspan="2">{{resultats.montantTTC}}</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -107,7 +107,9 @@
                         <div class="box-header">
                             <h3>Order summary</h3>
                         </div>
-                        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                        <p class="text-muted">
+                          Shipping and additional costs are calculated based on the values you have entered.
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table">
@@ -126,7 +128,7 @@
                                     </tr>
                                     <tr class="total">
                                         <td>Total</td>
-                                        <th>$456.00</th>
+                                        <th>{{resultats.montantTTC}}</th>
                                     </tr>
                                 </tbody>
                             </table>
