@@ -32,42 +32,23 @@
                                             <th colspan="2">Product</th>
                                             <th>Quantity</th>
                                             <th>Unit price</th>
-                                            <th>Discount</th>
                                             <th colspan="2">Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody ng-repeat="resultat in resultats.lignesPanier">
                                         <tr>
                                             <td>
                                                 <a href="#">
                                                     <img alt="White Blouse Armani">
                                                 </a>
                                             </td>
-                                            <td><a href="#">White Blouse Armani</a>
+                                            <td><a href="#">{{resultat.instrument.reference}}</a>
                                             </td>
                                             <td>
-                                                <input type="number" value="2" class="form-control">
+                                                <input type="number" value="{{resultat.quantite}}" class="form-control">
                                             </td>
-                                            <td>$123.00</td>
-                                            <td>$0.00</td>
-                                            <td>$246.00</td>
-                                            <td><a href="#"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">
-                                                    <img alt="Black Blouse Armani">
-                                                </a>
-                                            </td>
-                                            <td><a href="#">Black Blouse Armani</a>
-                                            </td>
-                                            <td>
-                                                <input type="number" value="1" class="form-control">
-                                            </td>
-                                            <td>$200.00</td>
-                                            <td>$0.00</td>
-                                            <td>$200.00</td>
+                                            <td>${{resultat.instrument.prix}}</td>
+                                            <td>TODO Qunatity * Prix</td>
                                             <td><a href="#"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -75,7 +56,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th colspan="2">{{resultats.montantTTC}}</th>
+                                            <th colspan="2">${{resultats.montantTTC}}</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -116,19 +97,15 @@
                                 <tbody>
                                     <tr>
                                         <td>Order subtotal</td>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
+                                        <th>${{resultats.montantHT}}</th>
                                     </tr>
                                     <tr>
                                         <td>Tax</td>
-                                        <th>$0.00</th>
+                                        <th>$ TODO MontantTTC - MontantHT</th>
                                     </tr>
                                     <tr class="total">
                                         <td>Total</td>
-                                        <th>{{resultats.montantTTC}}</th>
+                                        <th>${{resultats.montantTTC}}</th>
                                     </tr>
                                 </tbody>
                             </table>
