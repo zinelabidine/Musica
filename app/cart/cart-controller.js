@@ -23,6 +23,18 @@
             $scope.motcles = $stateParams.motcles;
             $scope.orderByReverse = false;
 
+            $scope.deleteInstrumentPanier = function(cartId, instrumentId) {
+              $log.log(
+                '[cartController] Delete instrument '
+                + instrumentId
+                + ' from cart '
+                + cartId
+              );
+              cartService.deleteInstrumentPanier(cartId, instrumentId).then(function() {
+                search();
+              });
+            }
+
             search();
 
             function search() {

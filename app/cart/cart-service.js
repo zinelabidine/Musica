@@ -20,6 +20,18 @@
               }, function (errResponse) {
                 $log.log("Error in AJAX call " + errResponse);
               })
+            },
+            deleteInstrumentPanier : function(cartId, instrumentId) {
+              $log.log(
+                '[cartService] Delete instrument '
+                + instrumentId
+                + ' from cart '
+                + cartId
+              );
+              return $http.delete(
+                EnvironmentConfig.GlobalBaseUrl + "/panier/supprimer/"+instrumentId,
+                {params: {}}
+              );
             }
           }
         }

@@ -21,7 +21,7 @@
 
                     <div class="box">
 
-                        <form method="post" action="checkout1.html">
+                        <form method="post">
 
                             <h1>Shopping cart</h1>
                             <p class="text-muted">You currently have 3 item(s) in your cart.</p>
@@ -49,7 +49,14 @@
                                             </td>
                                             <td>${{resultat.instrument.prix}}</td>
                                             <td>TODO Qunatity * Prix</td>
-                                            <td><a href="#"><i class="fa fa-trash-o"></i></a>
+                                            <td>
+                                              <button
+                                                class="fa fa-trash-o"
+                                                ng-click="deleteInstrumentPanier(
+                                                            resultats.panierId
+                                                            ,resultat.panierInstrumentId
+                                                          )"
+                                              ></button>
                                             </td>
                                         </tr>
                                     </tbody>
