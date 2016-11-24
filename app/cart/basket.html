@@ -45,7 +45,13 @@
                                             <td><a href="#">{{resultat.instrument.reference}}</a>
                                             </td>
                                             <td>
-                                                <input type="number" value="{{resultat.quantite}}" class="form-control">
+                                                <input
+                                                  type="number"
+                                                  value="{{resultat.quantite}}"
+                                                  ng-model="Qinstr"
+                                                  class="form-control"
+                                                  ng-change="updateCartInstrumentQuantity(resultat.panierInstrumentId,Qinstr)"
+                                                >
                                             </td>
                                             <td>${{resultat.instrument.prix}}</td>
                                             <td>TODO Qunatity * Prix</td>

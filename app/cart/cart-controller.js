@@ -30,8 +30,25 @@
                 + ' from cart '
                 + cartId
               );
-              cartService.deleteInstrumentPanier(cartId, instrumentId).then(function() {
+              cartService.deleteInstrumentPanier(cartId, instrumentId)
+              .then(function() {
                 getCart();
+              });
+            }
+
+            $scope.updateCartInstrumentQuantity = function(instrumentId, quantite) {
+              $log.log(
+                '[cartController] Update instrument '
+                + instrumentId
+                + ' quantite to '
+                + quantite
+              );
+              cartService.updateCartInstrumentQuantity(instrumentId, quantite)
+              .success(function() {
+                console.log('[cartController] Success instrument update');
+              }).error(function(error) {
+                console.log('[cartController] Error instrument update. ' + error);
+                // TODO display error message to client
               });
             }
 

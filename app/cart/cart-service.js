@@ -21,6 +21,7 @@
                 $log.log("Error in AJAX call " + errResponse);
               })
             },
+
             deleteInstrumentPanier : function(cartId, instrumentId) {
               $log.log(
                 '[cartService] Delete instrument '
@@ -32,6 +33,19 @@
                 EnvironmentConfig.GlobalBaseUrl + "/panier/supprimer/"+instrumentId,
                 {params: {}}
               );
+            },
+
+            updateCartInstrumentQuantity : function(instrumentId, quantite) {
+              $log.log(
+                '[cartService] Update instrument '
+                + instrumentId
+                + ' quantite to '
+                + quantite
+              );
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/panier/modifierligne/"+instrumentId+'/'+quantite,
+                {params: {}}
+              )
             }
           }
         }
