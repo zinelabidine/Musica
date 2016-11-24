@@ -56,14 +56,11 @@
               $log.log('[cartController] Validate cart ' + panierid);
               cartService.validateCart($scope.motcles, panierid)
               .success(function() {
-                console.success('[cartController] Success cart ' + panierid+ ' validate');
+                console.log('[cartController] Success cart ' + panierid+ ' validate');
+                $location.path("checkout/" + $scope.motcles);
               }).error(function(error) {
                 console.error('[cartController] Error cart ' + panierid+ ' validate' + error);
                 // TODO display error message to client
-              }).then(function() {
-                console.log('[cartController] Go to paiment page');
-                $location.path("/#/payment/" + $scope.motcles);
-                // TODO go to payment web page
               });
             }
 

@@ -77,6 +77,20 @@ angular.module(appName, [
         }
       })
 
+      .state('app.checkout', {
+        url: '/checkout/:motcles',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/checkout1.html',
+            controller: 'CheckoutCtrl as checkout'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 
