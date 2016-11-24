@@ -46,6 +46,18 @@
                 EnvironmentConfig.GlobalBaseUrl + "/panier/modifierligne/"+instrumentId+'/'+quantite,
                 {params: {}}
               )
+            },
+
+            validateCart : function(
+              clientid, panierid
+            ) {
+              $log.log(
+                '[cartService] Validate cart ' + panierid + ' of client ' + clientid
+              );
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+clientid+'/'+panierid,
+                {params: {}}
+              )
             }
           }
         }
