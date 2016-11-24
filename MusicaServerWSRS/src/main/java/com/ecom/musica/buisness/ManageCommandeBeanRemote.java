@@ -10,7 +10,6 @@ public interface ManageCommandeBeanRemote {
 
     public void payerCommande(int commandeId,int clientId) throws Exception;
 
-    public List<Commande> getListCommande(int clientId) throws Exception;
 
     public void abondonnerCommande(int commandeId) throws Exception;
 

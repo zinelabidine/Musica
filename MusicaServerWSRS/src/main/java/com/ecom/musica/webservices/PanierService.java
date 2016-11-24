@@ -40,7 +40,7 @@ public class PanierService {
     @GET
     @Path("/valider/{clientid}/{panierid}")
     @Produces("application/json")
-    public Commande validerPanier(@PathParam("clientid") String clientParam, @PathParam("panierid") String panierParam)
+    public int validerPanier(@PathParam("clientid") String clientParam, @PathParam("panierid") String panierParam)
             throws Exception {
         try {
             int clientId = Integer.parseInt(clientParam);

@@ -54,20 +54,6 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
         entityManager.merge(commande);
     }
 
-    @Override
-    public List<Commande> getListCommande(int clientId) throws Exception {
-        Client client = entityManager.find(Client.class, clientId);
-        if (client == null)
-            throw new Exception("Le client n'existe pas");
-        List<Commande> commandes = findCommandesByClient(client);
-        for (Commande commande : commandes) {
-            commande.getLignesCommande().size();
-            for (CommandeInstrument ligneCommande : commande.getLignesCommande()) {
-                ligneCommande.getInstrument().getPromotions().size();
-            }
-        }
-        return commandes;
-    }
 
     @Override
     public void abondonnerCommande(int commandeId) throws Exception {
