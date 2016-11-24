@@ -31,14 +31,13 @@
                 + cartId
               );
               cartService.deleteInstrumentPanier(cartId, instrumentId).then(function() {
-                search();
+                getCart();
               });
             }
 
-            search();
+            getCart();
 
-            function search() {
-              $log.log("client:" + $scope.motcles);
+            function getCart() {
               cartService.getResultats($scope.motcles).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
