@@ -10,7 +10,7 @@ public interface ManagePanierBeanRemote {
 
     public void addToPanier(int clientId, int instrumentId, int quantite) throws Exception;
 
-    public Commande validerPanier(int clientId, int panierId) throws Exception;
+    public int validerPanier(int clientId, int panierId) throws Exception;
 
     public void supprimerLignePanier(int panierInstrumentId) throws Exception;
 

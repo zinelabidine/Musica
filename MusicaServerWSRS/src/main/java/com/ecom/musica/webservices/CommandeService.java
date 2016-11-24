@@ -46,17 +46,6 @@ public class CommandeService {
         }
     }
 
-    @GET
-    @Path("/getcommandes/{clientid}")
-    @Produces("application/json")
-    public List<Commande> getListCommande(@PathParam("clientid") String clientParam) throws Exception {
-        try {
-            int clientId = Integer.parseInt(clientParam);
-            return commande.getListCommande(clientId);
-        } catch (NumberFormatException e) {
-            throw new Exception("Erreur dans les parametres");
-        }
-    }
 
     @GET
     @Path("/delete/{commandeid}")

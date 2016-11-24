@@ -81,7 +81,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     @Override
-    public Commande validerPanier(int clientId, int panierId) throws Exception {
+    public int validerPanier(int clientId, int panierId) throws Exception {
         // TODO Auto-generated method stub
         Panier panier = entityManager.find(Panier.class, panierId);
         if (panier == null)
@@ -98,7 +98,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
             entityManager.persist(ligneCommande);
         }
         entityManager.remove(panier);
-        return commande;
+        return commande.getCommandeId();
         // ou bien ajouter le panier dans la commande ,ou bien faire la
         // persistance du tout
     }
