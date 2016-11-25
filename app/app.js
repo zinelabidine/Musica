@@ -64,7 +64,7 @@ angular.module(appName, [
       })
 
       .state('app.cart', {
-        url: '/cart/:motcles',
+        url: '/cart/:client',
         views: {
           'content@': {
             templateUrl: 'cart/basket.html',
