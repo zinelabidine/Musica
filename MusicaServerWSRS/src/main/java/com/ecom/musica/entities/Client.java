@@ -28,16 +28,76 @@ public class Client implements Serializable {
 	private String prenom ;
 	
 	@Column(name = "Email")
-	private String email ;
+	private String email;
 	
 	@Column(name = "Telephone")
-	private String telephone ;
+	private String telephone;
 	
 	@Column(name = "Login")
-	private String login ;
+	private String login;
 	
 	@Column(name = "MotDePasse")
-	private String motDePasse ;
+	private String motDePasse;
+
+	@Column(name = "Adresse")
+    private String addresse;
+
+	@Column(name = "Ville")
+    private String ville;
+
+    @OneToMany(mappedBy="clientPayeCommande")
+    private List<Commande> commandesPayes;
+
+    @OneToMany(mappedBy="clientPasseCommande")
+    private List<Commande> commandesPasses;
+
+    @OneToMany(mappedBy="client")
+    private List<Panier> paniers;
+
+    public Client (String login, String mdp, String email) {
+        super();
+        this.login = login;
+        this.motDePasse = mdp;
+        this.email = email;
+    }
+
+	public String getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
+
+    @Column(name = "Pays")
+    private String pays;
+
+	@Column(name = "CP")
+    private String cp;
 	
 	public int getClientId() {
         return clientId;
@@ -126,13 +186,4 @@ public class Client implements Serializable {
     public void setPaniers(List<Panier> paniers) {
         this.paniers = paniers;
     }
-
-    @OneToMany(mappedBy="clientPayeCommande")
-	private List<Commande> commandesPayes;
-	
-	@OneToMany(mappedBy="clientPasseCommande")
-	private List<Commande> commandesPasses;
-	
-	@OneToMany(mappedBy="client")
-	private List<Panier> paniers;
 }
