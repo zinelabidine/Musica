@@ -21,18 +21,32 @@ public class ManageClientBean implements ManageClientBeanRemote {
 
     @Override
     public void addClient(String login, String mdp, String email) throws Exception {
-        System.out.println("Login; " + login);
-        System.out.println("Mdp; " + mdp);
-        System.out.println("Email; " + email);
         em.persist(new Client(login, mdp, email));
         em.flush();
     }
 
     @Override
-    public void setClientPersonalInformation(String firstname, String lastname, String addres, String vity,
-            String country, String zip, String tel) throws Exception {
-        // TODO Auto-generated method stub
-        
+    public void setClientPersonalInformation(
+            int clientid,
+            String firstname,
+            String lastname,
+            String address,
+            String city,
+            String country,
+            String zip,
+            String tel,
+            String email
+    ) throws Exception {
+       Client client = em.find(Client.class, clientid);
+       client.setFirstname(firstname);
+       client.setLastname(lastname);
+       client.setAddress(address);
+       client.setCity(city);
+       client.setCountry(country);
+       client.setZip(zip);
+       client.setTel(tel);
+       client.setTel(email);
+       em.merge(client);
     }
 
     @Override

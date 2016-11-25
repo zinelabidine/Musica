@@ -17,33 +17,39 @@ public class Client implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ClientId")
 	private int clientId ;
-	
+
 	@Column(name = "NumeroCarteBancaire")
 	private String numeroCarteBancaire ;
-	
-	@Column(name = "Nom")
-	private String nom ;
-	
-	@Column(name = "Prenom")
-	private String prenom ;
-	
+
+	@Column(name = "Lastname")
+	private String lastname ;
+
+	@Column(name = "Firstname")
+	private String firstname;
+
 	@Column(name = "Email")
 	private String email;
-	
-	@Column(name = "Telephone")
-	private String telephone;
+
+	@Column(name = "Tel")
+	private String tel;
 	
 	@Column(name = "Login")
 	private String login;
 	
-	@Column(name = "MotDePasse")
-	private String motDePasse;
+	@Column(name = "MDP")
+	private String mdp;
 
-	@Column(name = "Adresse")
-    private String addresse;
+	@Column(name = "Address")
+    private String address;
 
-	@Column(name = "Ville")
-    private String ville;
+	@Column(name = "City")
+    private String city;
+
+    @Column(name = "Country")
+    private String country;
+
+    @Column(name = "ZIP")
+    private String zip;
 
     @OneToMany(mappedBy="clientPayeCommande")
     private List<Commande> commandesPayes;
@@ -54,52 +60,18 @@ public class Client implements Serializable {
     @OneToMany(mappedBy="client")
     private List<Panier> paniers;
 
+    public Client () {
+        super();
+    }
+
     public Client (String login, String mdp, String email) {
         super();
         this.login = login;
-        this.motDePasse = mdp;
+        this.mdp = mdp;
         this.email = email;
     }
 
-	public String getAddresse() {
-        return addresse;
-    }
-
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getPays() {
-        return pays;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    @Column(name = "Pays")
-    private String pays;
-
-	@Column(name = "CP")
-    private String cp;
-	
-	public int getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
@@ -115,20 +87,20 @@ public class Client implements Serializable {
         this.numeroCarteBancaire = numeroCarteBancaire;
     }
 
-    public String getNom() {
-        return nom;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getEmail() {
@@ -139,12 +111,12 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getTel() {
+        return tel;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public String getLogin() {
@@ -155,12 +127,44 @@ public class Client implements Serializable {
         this.login = login;
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    public String getMdp() {
+        return mdp;
     }
 
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public List<Commande> getCommandesPayes() {

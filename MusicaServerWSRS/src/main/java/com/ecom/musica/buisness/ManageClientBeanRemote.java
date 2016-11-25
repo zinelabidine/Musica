@@ -16,13 +16,15 @@ public interface ManageClientBeanRemote {
             ) throws Exception;
 
     public void setClientPersonalInformation(
+            int clientid,
             String firstname,
             String lastname,
             String addres,
             String vity,
             String country,
             String zip,
-            String tel
+            String tel,
+            String email
             ) throws Exception;
 
     public void setClientPaymentInformation(
