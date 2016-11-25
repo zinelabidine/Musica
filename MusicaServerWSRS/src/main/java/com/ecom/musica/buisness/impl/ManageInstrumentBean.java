@@ -65,6 +65,9 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
 	Query req = entityManager.createQuery(
 		"select i,count(i) as NbrVente from Instrument i inner join i.lignesCommande group by i.instrumentId order by NbrVente desc");
 	List<Instrument> instruments = castResultToList(Instrument.class, 0, req.getResultList());
+    for (Instrument instrument : instruments) {
+        instrument.getPromotions().size();
+    }
 	return instruments;
     }
 
