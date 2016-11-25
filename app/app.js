@@ -78,7 +78,7 @@ angular.module(appName, [
       })
 
       .state('app.checkout', {
-        url: '/checkout/:motcles',
+        url: '/checkout/:client',
         views: {
           'content@': {
             templateUrl: 'checkout/checkout1.html',
