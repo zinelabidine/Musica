@@ -31,19 +31,20 @@ public class RechercheInstrumentService {
 
     @GET
     @Path("/findwithkey")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Instrument> getInstrumentsWithKey(@QueryParam("key") String instrument_key){
-        return instrument.getInstrumentsWithKey(instrument_key);
+    @Produces("application/json")
+    public List<Instrument> getInstrumentsWithKey( @QueryParam("key") String instrument_key){
+    	List<Instrument> instruments  = instrument.getInstrumentsWithKey(instrument_key);
+    	return instruments;
     }
-
+    
     @GET
     @Path("/findadvanced")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Instrument> findInstruments(
-            @QueryParam("ref") String instrument_ref,
             @QueryParam("marque") String marque,
-            @QueryParam("categorie") String categorie
+            @QueryParam("categorie") String categorie,
+            @QueryParam("key") String instrument_ref
             ){
-        return instrument.findInstruments(instrument_ref,marque,categorie);
+        return instrument.findInstruments(marque,categorie,instrument_ref);
     }
 }
