@@ -63,7 +63,7 @@
     }
 
     .content {
-        margin-top: 100px;
+        margin-top: auto;
     }
 }
 
@@ -85,4 +85,14 @@
     margin-left: -32px; /* -1 * image width / 2 */
     margin-top: -32px;  /* -1 * image height / 2 */
     display: block;
+}
+
+.form-search{
+    text-align: center;
+    /*margin-right: 12px;*/
+}
+
+.btn-search{
+    margin-bottom: 10px;
+    width:150px;
 }
