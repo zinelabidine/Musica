@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Client")
@@ -51,12 +52,15 @@ public class Client implements Serializable {
     @Column(name = "ZIP")
     private String zip;
 
+    @Transient
     @OneToMany(mappedBy="clientPayeCommande")
     private List<Commande> commandesPayes;
 
+    @Transient
     @OneToMany(mappedBy="clientPasseCommande")
     private List<Commande> commandesPasses;
 
+    @Transient
     @OneToMany(mappedBy="client")
     private List<Panier> paniers;
 

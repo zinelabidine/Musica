@@ -15,8 +15,7 @@ public class ManageClientBean implements ManageClientBeanRemote {
 
     @Override
     public Client getClient(int clientid) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        return em.find(Client.class, clientid);
     }
 
     @Override
@@ -38,6 +37,7 @@ public class ManageClientBean implements ManageClientBeanRemote {
             String email
     ) throws Exception {
        Client client = em.find(Client.class, clientid);
+       if (client == null) throw new Exception("Client null");
        client.setFirstname(firstname);
        client.setLastname(lastname);
        client.setAddress(address);
@@ -45,7 +45,7 @@ public class ManageClientBean implements ManageClientBeanRemote {
        client.setCountry(country);
        client.setZip(zip);
        client.setTel(tel);
-       client.setTel(email);
+       client.setEmail(email);
        em.merge(client);
     }
 

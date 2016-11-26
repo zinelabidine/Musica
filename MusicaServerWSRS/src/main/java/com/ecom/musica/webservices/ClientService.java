@@ -4,14 +4,17 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ecom.musica.buisness.ManageClientBeanRemote;
+import com.ecom.musica.entities.Client;
 
 @XmlRootElement
 class SmallClientBody {
@@ -40,6 +43,13 @@ public class ClientService {
     
     @EJB
     private ManageClientBeanRemote clients;
+
+    @GET
+    @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Client getClient(@QueryParam("id") int id) throws Exception {
+        return clients.getClient(id);
+    }
 
     @POST
     @Path("/create")
