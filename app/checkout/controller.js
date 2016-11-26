@@ -21,7 +21,6 @@
             $scope.resultats =[];
             $scope.resultats =[];
             $scope.client = $stateParams.client;
-            $scope.resultats.clientid = $scope.client;
             $scope.orderByReverse = false;
 
             $scope.updateClientPersonalInformation = function() {
@@ -29,7 +28,18 @@
                 '[CheckoutController] update client information'
               );
               $log.log($scope.resultats);
+              $scope.resultats.clientid = $scope.client;
               checkoutService.updateClientPersonalInformation($scope.resultats);
+              // TODD go to payment form
+            }
+
+            loadClient();
+
+            function loadClient() {
+              checkoutService.getClient($scope.client).then(function (response) {
+                  $scope.resultats = response;
+                  $log.log($scope.resultats);
+                });
             }
     }]);
 }());

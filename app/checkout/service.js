@@ -11,6 +11,17 @@
         '$filter',
         function ($http, $log, $cookies, EnvironmentConfig, $filter) {
           return {
+            getClient: function (client) {
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/client/get?id="+client,
+                {params: {}}
+              ).then(function (response) {
+                return response.data;
+              }, function (errResponse) {
+                $log.log("Error in AJAX call " + errResponse);
+              })
+            },
+
             updateClientPersonalInformation : function(data) {
               $log.log(
                 '[CheckoutService] update client information'
@@ -30,13 +41,6 @@
                 },
                 {params: {'Content-Type': 'application/json'}}
               );
-              /*$http({
-                   method: 'POST',
-                   EnvironmentConfig.GlobalBaseUrl + "/client/set/personalinfo",
-                   data: personalinfo,
-                    headers: {
-                        'Content-Type': 'application/json'
-               }});*/
             }
           }
         }
