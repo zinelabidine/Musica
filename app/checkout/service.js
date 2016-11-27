@@ -41,6 +41,23 @@
                 },
                 {params: {'Content-Type': 'application/json'}}
               );
+            },
+
+            updateClientPaymentInformation : function(data) {
+              $log.log(
+                '[CheckoutService] update payment client information'
+              );
+              return $http.post(
+                EnvironmentConfig.GlobalBaseUrl + "/client/set/paymentinfo",
+                {
+                  clientid : data.clientid,
+                  cardname : data.cardname,
+                  cardnumber : data.cardnumber,
+                  cardmonth : data.cardmonth,
+                  cardyear : data.cardyear
+                },
+                {params: {'Content-Type': 'application/json'}}
+              );
             }
           }
         }

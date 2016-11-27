@@ -91,6 +91,20 @@ angular.module(appName, [
         }
       })
 
+      .state('app.paymentinfo', {
+        url: '/checkout/paymentinfo/:client',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/paymentinfo.html',
+            controller: 'CheckoutCtrl as checkout'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 

@@ -25,11 +25,27 @@
 
             $scope.updateClientPersonalInformation = function() {
               $log.log(
-                '[CheckoutController] update client information'
+                '[CheckoutController] update personal client information'
               );
               $log.log($scope.resultats);
               $scope.resultats.clientid = $scope.client;
-              checkoutService.updateClientPersonalInformation($scope.resultats);
+              checkoutService.updateClientPersonalInformation($scope.resultats)
+              .success(function() {
+                $location.path("checkout/paymentinfo/" + $scope.client);
+              });
+              // TODD go to payment form
+            }
+
+            $scope.updateClientPaymentInformation = function() {
+              $log.log(
+                '[CheckoutController] update payment client information'
+              );
+              $log.log($scope.resultats);
+              $scope.resultats.clientid = $scope.client;
+              checkoutService.updateClientPaymentInformation($scope.resultats)
+              .success(function() {
+                //$location.path("checkout/paymentinfo/" + $scope.client);
+              });
               // TODD go to payment form
             }
 
