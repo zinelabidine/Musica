@@ -36,8 +36,12 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
 
     @Override
     public List<Instrument> getAllInstruments() {
-        Query req = entityManager.createQuery("select i from Instrument i");
-        return req.getResultList();
+    	Query req = entityManager.createQuery("select i from Instrument i");
+        List<Instrument> instruments = req.getResultList();
+        for (Instrument instrument : instruments) {
+            instrument.getPromotions().size();
+        }
+        return instruments;
     }
 
 
@@ -72,38 +76,101 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
     }
 
     public Instrument getInstrumentWithId(int instrument_id) {
-        return entityManager.find(Instrument.class, instrument_id);
+        Instrument i =  entityManager.find(Instrument.class, instrument_id);      
+        i.getPromotions().size();
+        return i;
+        
     }
 
     @Override
     public List<Instrument> getInstrumentsWithKey(String instrument_key) {
-        return entityManager.createQuery(
+    	Query req = entityManager.createQuery(
                 "select i"
                         + " from Instrument i, Marque m, Categorie c"
                         + " where (i.reference like '%"+instrument_key+"%'"
                         + " or m.libelle like '%"+instrument_key+"%'"
                         + " or c.libelle like '%"+instrument_key+"%')"
                         + " and i.marque = m.marqueId"
-                        + " and i.categorie = c.categorieId",
-                Instrument.class
-        ).getResultList();
+                        + " and i.categorie = c.categorieId");
+        List<Instrument> instruments = req.getResultList();
+        for (Instrument instrument : instruments) {
+            instrument.getPromotions().size();
+        }
+        return instruments;
     }
 
     @Override
-    public List<Instrument> findInstruments(
-            String instrument_key,
-            String marque,
-            String categorie
-    ) {
-        return entityManager.createQuery(
-                "select i"
-                        + " from Instrument i, Marque m, Categorie c"
-                        + " where (i.reference like '%"+instrument_key+"%'"
-                        + " and m.libelle like '%"+marque+"%'"
-                        + " and c.libelle like '%"+categorie+"%')"
-                        + " and i.marque = m.marqueId"
-                        + " and i.categorie = c.categorieId",
-                Instrument.class
-        ).getResultList();
+    public List<Instrument> findInstruments(String marque, String categorie, String instrument_ref) {    	
+    	Query req = null;
+    	if(marque.toString().equals("")) {
+    		System.out.println("marque null");
+    		if(instrument_ref.toString().equals("")){
+    			// find with categorie
+    			req = entityManager.createQuery(
+    				"select i "
+    						+ " from Instrument i ,Categorie c"
+    						+ " Where c.libelle like '%"+categorie+"%'"
+    						+ " and i.categorie = c.categorieId");
+    		}
+    		else{
+    			// find with categorie et intrument_ref
+    			req = entityManager.createQuery(
+        				"select i "
+        						+ " from Instrument i ,Categorie c"
+        						+ " Where (i.reference like '%"+instrument_ref+"%'"
+        					    + " and c.libelle like '%"+categorie+"%')"
+        						+ " and i.categorie = c.categorieId");
+    		}
+    	}
+    	else {
+    		if(categorie.toString().equals("")){
+    			if(instrument_ref.toString().equals("")){
+	          		// find with marque
+    				req = entityManager.createQuery(
+    	    				"select i "
+    	    						+ " from Instrument i ,Marque m"
+    	    						+ " Where m.libelle like '%"+marque+"%'"
+    	    						+ " and i.marque = m.marqueId");
+    			}
+    			else{
+    				// find with marque et ref
+    				req = entityManager.createQuery(
+            				"select i "
+            						+ " from Instrument i ,Marque m"
+            						+ " Where (i.reference like '%"+instrument_ref+"%'"
+            					    + " and m.libelle like '%"+marque+"%')"
+            						+ " and i.marque = m.marqueId");
+    			} 		
+    		}
+    		else {
+    			if(instrument_ref.toString().equals("")){
+    				// find with marque et categorie
+    				req = entityManager.createQuery(
+            				"select i "
+            						+ " from Instrument i ,Marque m, Categorie c"
+            						+ " Where (c.libelle like '%"+categorie+"%'"
+            					    + " and m.libelle like '%"+marque+"%')"
+            						+ " and i.marque = m.marqueId"
+            						+ " and i.categorie = c.categorieId");
+    			}
+    			else{
+    				// find with 3 criteres
+    				req = entityManager.createQuery(
+    				        "select i"
+    				                + " from Instrument i, Marque m, Categorie c"
+    				                + " where (i.reference like '%"+instrument_ref+"%'"
+    				                + " and m.libelle like '%"+marque+"%'"
+    				                + " and c.libelle like '%"+categorie+"%')"
+    				                + " and i.marque = m.marqueId"
+    				                + " and i.categorie = c.categorieId");  
+    			}
+    		}
+	  	}
+			  	
+		List<Instrument> instruments = req.getResultList();
+		for (Instrument instrument : instruments) {
+			instrument.getPromotions().size();
+		}
+		return instruments;
     }
 }
