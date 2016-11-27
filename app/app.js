@@ -64,7 +64,7 @@ angular.module(appName, [
       })
 
       .state('app.cart', {
-        url: '/cart/:motcles',
+        url: '/cart/:client',
         views: {
           'content@': {
             templateUrl: 'cart/basket.html',
@@ -78,10 +78,24 @@ angular.module(appName, [
       })
 
       .state('app.checkout', {
-        url: '/checkout/:motcles',
+        url: '/checkout/:client',
         views: {
           'content@': {
             templateUrl: 'checkout/checkout1.html',
+            controller: 'CheckoutCtrl as checkout'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
+      .state('app.paymentinfo', {
+        url: '/checkout/paymentinfo/:client',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/paymentinfo.html',
             controller: 'CheckoutCtrl as checkout'
           },
           'footer@': {

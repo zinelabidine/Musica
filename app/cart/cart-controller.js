@@ -20,7 +20,7 @@
 
             $scope.resultats =[];
             $scope.resultats =[];
-            $scope.motcles = $stateParams.motcles;
+            $scope.client = $stateParams.client;
             $scope.orderByReverse = false;
 
             $scope.deleteInstrumentPanier = function(cartId, instrumentId) {
@@ -54,10 +54,10 @@
 
             $scope.validateCart = function(panierid) {
               $log.log('[cartController] Validate cart ' + panierid);
-              cartService.validateCart($scope.motcles, panierid)
+              cartService.validateCart($scope.client, panierid)
               .success(function() {
                 console.log('[cartController] Success cart ' + panierid+ ' validate');
-                $location.path("checkout/" + $scope.motcles);
+                $location.path("checkout/" + $scope.client);
               }).error(function(error) {
                 console.error('[cartController] Error cart ' + panierid+ ' validate' + error);
                 // TODO display error message to client
@@ -67,7 +67,7 @@
             getCart();
 
             function getCart() {
-              cartService.getResultats($scope.motcles).then(function (response) {
+              cartService.getResultats($scope.client).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
                 });
