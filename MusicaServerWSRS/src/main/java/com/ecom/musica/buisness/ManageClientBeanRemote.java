@@ -28,6 +28,7 @@ public interface ManageClientBeanRemote {
             ) throws Exception;
 
     public void setClientPaymentInformation(
+            int clientid,
             String cardname,
             String cardnumber,
             String date,

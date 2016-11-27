@@ -19,9 +19,6 @@ public class Client implements Serializable {
 	@Column(name = "ClientId")
 	private int clientId ;
 
-	@Column(name = "NumeroCarteBancaire")
-	private String numeroCarteBancaire ;
-
 	@Column(name = "Lastname")
 	private String lastname ;
 
@@ -52,6 +49,18 @@ public class Client implements Serializable {
     @Column(name = "ZIP")
     private String zip;
 
+    @Column(name = "Cardname")
+    private String cardname;
+    
+    @Column(name = "Cardnumber")
+    private String cardnumber;
+
+    @Column(name = "Cardmonth")
+    private String cardmonth;
+    
+    @Column(name = "Cardyear")
+    private String cardyear;
+
     @Transient
     @OneToMany(mappedBy="clientPayeCommande")
     private List<Commande> commandesPayes;
@@ -81,14 +90,6 @@ public class Client implements Serializable {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
-    }
-
-    public String getNumeroCarteBancaire() {
-        return numeroCarteBancaire;
-    }
-
-    public void setNumeroCarteBancaire(String numeroCarteBancaire) {
-        this.numeroCarteBancaire = numeroCarteBancaire;
     }
 
     public String getLastname() {
@@ -169,6 +170,38 @@ public class Client implements Serializable {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getCardname() {
+        return cardname;
+    }
+
+    public void setCardname(String cardname) {
+        this.cardname = cardname;
+    }
+
+    public String getCardnumber() {
+        return cardnumber;
+    }
+
+    public void setCardnumber(String cardnumber) {
+        this.cardnumber = cardnumber;
+    }
+
+    public String getCardmonth() {
+        return cardmonth;
+    }
+
+    public void setCardmonth(String cardmonth) {
+        this.cardmonth = cardmonth;
+    }
+
+    public String getCardyear() {
+        return cardyear;
+    }
+
+    public void setCardyear(String cardyear) {
+        this.cardyear = cardyear;
     }
 
     public List<Commande> getCommandesPayes() {

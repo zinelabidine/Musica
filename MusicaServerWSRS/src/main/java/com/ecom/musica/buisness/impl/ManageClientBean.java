@@ -50,10 +50,20 @@ public class ManageClientBean implements ManageClientBeanRemote {
     }
 
     @Override
-    public void setClientPaymentInformation(String cardname, String cardnumber, String date, String code)
-            throws Exception {
-        // TODO Auto-generated method stub
-        
+    public void setClientPaymentInformation(
+            int clientid,
+            String cardname,
+            String cardnumber,
+            String cardmonth,
+            String cardyear
+    ) throws Exception {
+        Client client = em.find(Client.class, clientid);
+        if (client == null) throw new Exception("Client null");
+        client.setCardname(cardname);
+        client.setCardnumber(cardnumber);
+        client.setCardmonth(cardmonth);
+        client.setCardyear(cardyear);
+        em.merge(client);
     }
 
     @Override

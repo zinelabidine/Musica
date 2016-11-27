@@ -36,6 +36,15 @@ class ClientPersonalInformationBody {
     @XmlElement String email;
 }
 
+@XmlRootElement
+class ClientPaymentInformationBody {
+    @XmlElement int clientid;
+    @XmlElement String cardname;
+    @XmlElement String cardnumber;
+    @XmlElement String cardmonth;
+    @XmlElement String cardyear;
+}
+
 @Stateless
 @LocalBean
 @Path("/client")
@@ -68,8 +77,6 @@ public class ClientService {
     public void setClientPersonalInformation(
             ClientPersonalInformationBody request
     ) throws Exception {
-        System.out.println(request.clientid);
-        System.out.println(request.firstname);
         clients.setClientPersonalInformation(
                 request.clientid,
                 request.firstname,
@@ -80,6 +87,22 @@ public class ClientService {
                 request.zip,
                 request.tel,
                 request.email
+        );
+    }
+
+    @POST
+    @Path("/set/paymentinfo")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void setClientpaymentInformation(
+            ClientPaymentInformationBody request
+    ) throws Exception {
+        clients.setClientPaymentInformation(
+                request.clientid,
+                request.cardname,
+                request.cardnumber,
+                request.cardmonth,
+                request.cardyear
         );
     }
 }
