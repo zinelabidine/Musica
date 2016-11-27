@@ -6,7 +6,7 @@
 
       initAccueil: function () {
 
-        // return $http.get("home/data.json")
+        //return $http.get("home/data.json")
         return $http.get(EnvironmentConfig.GlobalBaseUrl + "/accueil/initializehomecontent")
           .then(function (response) {
             return response.data;
@@ -16,7 +16,7 @@
       },
 
       getMeilleurVente: function () {
-        //return $http.get(EnvironmentConfig.GlobalBaseUrl + "/test/meilleur-vente")
+        // return $http.get(EnvironmentConfig.GlobalBaseUrl + "/test/meilleur-vente")
         return $http.get("home/data.json")
           .then(function (response) {
             return response.data.meilleurVentes;
