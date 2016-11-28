@@ -15,6 +15,16 @@
           }, function (errResponse) {
             $log.log("Error in AJAX call " + errResponse);
           })
+      },
+
+      addInstrumentToCart : function(clientid, instrumentId, quantite) {
+        console.log("[instrumentService] Add instrument to cart");
+        return $http.get(
+          EnvironmentConfig.GlobalBaseUrl
+          + "/panier/add/" + clientid + "/" + instrumentId + "/" + quantite,
+          {params: {}}
+        )
+        // Post request to add instrument
       }
     }
   }]);

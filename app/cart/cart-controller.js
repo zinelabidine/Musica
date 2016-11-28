@@ -36,6 +36,10 @@
               });
             }
 
+            $scope.backPaymentInformation = function() {
+                $location.path("checkout/paymentinfo/" + $scope.client);
+            }
+
             $scope.updateCartInstrumentQuantity = function(instrumentId, quantite) {
               $log.log(
                 '[cartController] Update instrument '
@@ -52,12 +56,19 @@
               });
             }
 
+            $scope.finaliseCommande = function() {
+              $log.log(
+                '[cartController] Finalize commande of client ' + $scope.client
+              );
+              cartService.finaliseCommande($scope.client);
+            }
+
             $scope.validateCart = function(panierid) {
               $log.log('[cartController] Validate cart ' + panierid);
               cartService.validateCart($scope.client, panierid)
               .success(function() {
                 console.log('[cartController] Success cart ' + panierid+ ' validate');
-                $location.path("checkout/" + $scope.client);
+                $location.path("checkout/personalinfo/" + $scope.client);
               }).error(function(error) {
                 console.error('[cartController] Error cart ' + panierid+ ' validate' + error);
                 // TODO display error message to client

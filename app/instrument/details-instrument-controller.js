@@ -9,7 +9,11 @@
       // The content of the controller.
       // Instead of using this use the variable self.
       var self = this;
+      // TODO selecte current user autenticated
+      $scope.clientid = 1;
       $scope.instrumentId = $stateParams.instrumentId;
+      // TODO Add window to select quantite to add
+      $scope.quantite = 1;
       $scope.categories = headerService.getCategories();
 
       instrumentService.getDetailsInstrument($scope.instrumentId).then(function (response) {
@@ -19,6 +23,18 @@
 
       $scope.reloadMainImage = function (newSrc) {
         $scope.mainImageSrc = newSrc;
+      }
+
+      $scope.addInstrumentToCart = function() {
+        $log.log("[DetailsInstCtrl] Add instrument to cart");
+        instrumentService.addInstrumentToCart(
+          $scope.clientid,
+          $scope.instrumentId,
+          $scope.quantite
+        )
+        .success(function() {
+          $log.log("[DetailsInstCtrl] Add instrument to cart end successfully");
+        });
       }
     }]);
 }());

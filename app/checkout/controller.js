@@ -18,8 +18,8 @@
             // Instead of using this use the variable self.
             var self = this;
 
-            $scope.resultats =[];
-            $scope.resultats =[];
+            $scope.resultat_client =[];
+            $scope.resultat_client =[];
             $scope.client = $stateParams.client;
             $scope.orderByReverse = false;
 
@@ -27,24 +27,31 @@
               $log.log(
                 '[CheckoutController] update personal client information'
               );
-              $log.log($scope.resultats);
-              $scope.resultats.clientid = $scope.client;
-              checkoutService.updateClientPersonalInformation($scope.resultats)
+              $log.log($scope.resultat_client);
+              $scope.resultat_client.clientid = $scope.client;
+              checkoutService.updateClientPersonalInformation($scope.resultat_client)
               .success(function() {
                 $location.path("checkout/paymentinfo/" + $scope.client);
               });
               // TODD go to payment form
             }
 
+            $scope.backPersonalInformation = function() {
+              $location.path("checkout/personalinfo/" + $scope.client);
+            }
+
             $scope.updateClientPaymentInformation = function() {
               $log.log(
                 '[CheckoutController] update payment client information'
               );
-              $log.log($scope.resultats);
-              $scope.resultats.clientid = $scope.client;
-              checkoutService.updateClientPaymentInformation($scope.resultats)
+              $log.log($scope.resultat_client);
+              $scope.resultat_client.clientid = $scope.client;
+              checkoutService.updateClientPaymentInformation($scope.resultat_client)
               .success(function() {
-                //$location.path("checkout/paymentinfo/" + $scope.client);
+                $log.log(
+                  '[CheckoutController] Success update payment client information'
+                );
+                $location.path("checkout/orderreview/" + $scope.client);
               });
               // TODD go to payment form
             }
@@ -53,8 +60,8 @@
 
             function loadClient() {
               checkoutService.getClient($scope.client).then(function (response) {
-                  $scope.resultats = response;
-                  $log.log($scope.resultats);
+                  $scope.resultat_client = response;
+                  $log.log($scope.resultat_client);
                 });
             }
     }]);

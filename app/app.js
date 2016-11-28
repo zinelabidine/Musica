@@ -78,10 +78,10 @@ angular.module(appName, [
       })
 
       .state('app.checkout', {
-        url: '/checkout/:client',
+        url: '/checkout/personalinfo/:client',
         views: {
           'content@': {
-            templateUrl: 'checkout/checkout1.html',
+            templateUrl: 'checkout/personalinfo.html',
             controller: 'CheckoutCtrl as checkout'
           },
           'footer@': {
@@ -97,6 +97,20 @@ angular.module(appName, [
           'content@': {
             templateUrl: 'checkout/paymentinfo.html',
             controller: 'CheckoutCtrl as checkout'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
+      .state('app.orderreview', {
+        url: '/checkout/orderreview/:client',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/orderreview.html',
+            controller: 'CartCtrl as checkout'
           },
           'footer@': {
             templateUrl: 'partials/blocks/footer.html'

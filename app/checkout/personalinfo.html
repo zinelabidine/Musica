@@ -35,13 +35,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">Firstname</label>
-                                            <input type="text" class="form-control" id="firstname" ng-model="resultats.firstname">
+                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">Lastname</label>
-                                            <input type="text" class="form-control" id="lastname" ng-model="resultats.lastname">
+                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="address">Address</label>
-                                            <input type="text" class="form-control" id="address" ng-model=resultats.address>
+                                            <input type="text" class="form-control" id="address" ng-model=resultat_client.address>
                                         </div>
                                     </div>
                                 </div>
@@ -61,32 +61,32 @@
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="city">City</label>
-                                            <input type="text" class="form-control" id="city" ng-model="resultats.city">
+                                            <input type="text" class="form-control" id="city" ng-model="resultat_client.city">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="zip">ZIP</label>
-                                            <input type="text" class="form-control" id="zip" ng-model="resultats.zip">
+                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="country">Country</label>
-                                            <select class="form-control" id="country" ng-model="resultats.country"></select>
+                                            <input class="form-control" id="country" ng-model="resultat_client.country">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="phone">Telephone</label>
-                                            <input type="text" class="form-control" id="phone" ng-model="resultats.tel">
+                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" ng-model="resultats.email">
+                                            <input type="text" class="form-control" id="email" ng-model="resultat_client.email">
                                         </div>
                                     </div>
 
@@ -99,7 +99,7 @@
                                     <a href="basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to basket</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultats)'>Continue to Delivery Method<i class="fa fa-chevron-right"></i>
+                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultat_client)'>Continue to Delivery Method<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
