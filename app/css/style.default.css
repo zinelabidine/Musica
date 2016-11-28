@@ -355,6 +355,17 @@ h1 {
     color: #999999;
 }
 
+#main-slider .text p.promotion {
+    font-size: 25px;
+    text-align: left;
+    font-weight: 400;
+    color: #e9063b !important;
+}
+
+#main-slider .text p.promotion del {
+    color: #999999;
+}
+
 /**/
 
 .box.slideshow .owl-dots .owl-buttons,
@@ -760,6 +771,18 @@ h1 {
 #content .product .text p.price del {
     color: #999999;
 }
+
+#content .product .text div.marque {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 300;
+}
+
+#content .product .text div.marque del {
+    color: #999999;
+}
+
+
 
 #content .product .text .buttons {
     clear: both;

@@ -10,10 +10,18 @@
                     <!--</h3>-->
                     <!--</div>-->
                     <a href="" ng-click="goToInstrument(instrumentPromotion.instrumentId)">
-                        <div class="promotion-caption col-xs-offset-2 col-md-offset-3 text col-xs-8 col-md-6">
+                        <div class="promotion-caption col-xs-offset-2 col-md-offset-3 text col-xs-8 col-md-6 row">
                             <h3>{{instrumentPromotion.reference}}</h3>
 
                             <p class="marque">Marque : {{instrumentPromotion.marque.libelle}}</p>
+
+                            <div ng-show="instrumentPromotion.promotions" class="row">
+                                <div class="col-sm-offset-3 col-sm-3">
+                                    <img ng-src="img/logo_promotion.png" alt="">
+                                </div>
+                                <p class="promotion col-sm-6">{{instrumentPromotion.promotions[0].taux}} %</p>
+                            </div>
+
                         </div>
                     </a>
                     <img ng-src="{{instrumentPromotion.image}}" alt="" style="height: 100%;width: 100%;"
@@ -46,33 +54,40 @@ _________________________________________________________ -->
     <div class="container">
         <wrap-owlcarousel class="owl-carousel owl-theme product-slider"
                           data-options="{{owlCarouselMeilleurVentesOptions}}">
-            <div owl-carousel-item="" ng-repeat="meilleurVente in meilleurVentes">
+            <div owl-carousel-item="" ng-repeat="instrumentsBestSale in instrumentsBestSales">
                 <div class="item">
                     <div class="product">
                         <div class="flip-container">
                             <div class="flipper">
                                 <div class="front">
-                                    <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)">
-                                        <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
+                                    <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)">
+                                        <img src="{{instrumentsBestSale.image}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="back">
-                                    <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)">
-                                        <img src="{{meilleurVente.src.back}}" alt="" class="img-responsive">
+                                    <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)">
+                                        <img src="{{instrumentsBestSale.image}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <a href="" ng-click="goToInstrument(meilleurVente.instrumentId)" class="invisible">
-                            <img src="{{meilleurVente.src.front}}" alt="" class="img-responsive">
+                        <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)" class="invisible">
+                            <img src="{{instrumentsBestSale.image}}" alt="" class="img-responsive">
                         </a>
 
                         <div class="text">
                             <h3><a href=""
-                                   ng-click="goToInstrument(meilleurVente.instrumentId)">{{meilleurVente.caption.title}}</a>
+                                   ng-click="goToInstrument(instrumentsBestSale.instrumentId)">{{instrumentsBestSale.reference}}</a>
                             </h3>
 
-                            <p class="price">{{meilleurVente.prix}} €</p>
+                            <div class="marque">
+                                <a href="">{{instrumentsBestSale.marque.libelle}}</a>
+                            </div>
+
+                            <p class="price">{{instrumentsBestSale.prix}} €</p>
+                            <!--<p ng-show="detailsInstrument.musiciens"><span>Musiciens : </span><span ng-repeat="musicien in detailsInstrument.musiciens track by $index">{{musicien.nomDeScene}}<span-->
+                                    <!--ng-hide="$last"> - </span></span>-->
+                            <!--</p>-->
                         </div>
                         <!-- /.text -->
                     </div>

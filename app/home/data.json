@@ -89,76 +89,85 @@
   ],
   "InstrumentsBestSales": [
     {
-      "id": 1,
-      "src": {
-        "front": "./img/baterie1.png",
-        "back": "./img/baterie1.png"
+      "instrumentId": 1,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
       },
-      "alt": "",
-      "caption": {
-        "title": "BATTERIE ACOUSTIQUE ROCK PEARL",
-        "price": "758,00 €"
-      }
-    },
-    {
-      "id": 2,
-      "src": {
-        "front": "./img/guitar1.png",
-        "back": "./img/guitar1.png"
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
       },
-      "alt": "",
-      "caption": {
-        "title": "EPIPHONE DR-100 EBONY CHROME HARDWARE",
-        "price": "129,00 €"
-      }
-    },
-    {
-      "id": 3,
-      "src": {
-        "front": "./img/guitar2.png",
-        "back": "./img/guitar2.png"
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
+    },{
+      "instrumentId": 2,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
       },
-      "alt": "",
-      "caption": {
-        "title": "EPIPHONE HUMMINGBIRD PRO E-A FADED",
-        "price": "289,00 €"
-      }
-    },
-    {
-      "id": 4,
-      "src": {
-        "front": "./img/neumann1.jpg",
-        "back": "./img/neumann1.jpg"
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
       },
-      "alt": "",
-      "caption": {
-        "title": "NEUMANN KH120A",
-        "price": "597,00 €"
-      }
-    },
-    {
-      "id": 5,
-      "src": {
-        "front": "./img/pedale1.png",
-        "back": "./img/pedale1.png"
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/guitar1.png"
+    },{
+      "instrumentId": 3,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
       },
-      "alt": "",
-      "caption": {
-        "title": "PEDALE LOOPER BOSS RC30",
-        "price": "199,00 €"
-      }
-    },
-    {
-      "id": 6,
-      "src": {
-        "front": "./img/guitar2.png",
-        "back": "./img/guitar2.png"
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
       },
-      "alt": "",
-      "caption": {
-        "title": "EPIPHONE HUMMINGBIRD PRO E-A FADED",
-        "price": "289,00 €"
-      }
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
+    },{
+      "instrumentId": 4,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
     }
   ]
 }

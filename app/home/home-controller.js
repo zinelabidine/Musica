@@ -29,7 +29,7 @@
       function init() {
         homeService.initAccueil().then(function (response) {
           $log.log("Init Accueil service");
-          $scope.meilleurVentes = response.InstrumentsBestSales;
+          $scope.instrumentsBestSales = response.InstrumentsBestSales;
           $scope.instrumentsPromotions = response.InstrumentsPromotions;
         });
       }
