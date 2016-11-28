@@ -58,6 +58,15 @@
                 EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+clientid+'/'+panierid,
                 {params: {}}
               )
+            },
+
+            finaliseCommande : function(
+              clientid
+            ) {
+              $log.log(
+                '[cartService] Finalise commande ' + clientid
+              );
+              // Send post request to finalise the commande
             }
           }
         }

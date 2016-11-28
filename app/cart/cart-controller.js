@@ -56,6 +56,13 @@
               });
             }
 
+            $scope.finaliseCommande = function() {
+              $log.log(
+                '[cartController] Finalize commande of client ' + $scope.client
+              );
+              cartService.finaliseCommande($scope.client);
+            }
+
             $scope.validateCart = function(panierid) {
               $log.log('[cartController] Validate cart ' + panierid);
               cartService.validateCart($scope.client, panierid)
