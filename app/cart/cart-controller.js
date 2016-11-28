@@ -36,6 +36,10 @@
               });
             }
 
+            $scope.backPaymentInformation = function() {
+                $location.path("checkout/paymentinfo/" + $scope.client);
+            }
+
             $scope.updateCartInstrumentQuantity = function(instrumentId, quantite) {
               $log.log(
                 '[cartController] Update instrument '
