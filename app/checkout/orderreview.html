@@ -40,32 +40,35 @@
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody ng-repeat="resultat in resultats.lignesPanier">
                                             <tr>
                                                 <td>
                                                     <a href="#">
-                                                        <img src="img/detailsquare.jpg" alt="White Blouse Armani">
+                                                        <img alt="White Blouse Armani">
                                                     </a>
                                                 </td>
-                                                <td><a href="#">White Blouse Armani</a>
+                                                <td><a href="#">{{resultat.instrument.reference}}</a>
                                                 </td>
-                                                <td>2</td>
-                                                <td>$123.00</td>
-                                                <td>$0.00</td>
-                                                <td>$246.00</td>
-                                            </tr>
-                                            <tr>
                                                 <td>
-                                                    <a href="#">
-                                                        <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
-                                                    </a>
+                                                    <input
+                                                      type="number"
+                                                      value="{{resultat.quantite}}"
+                                                      ng-model="Qinstr"
+                                                      class="form-control"
+                                                      ng-change="updateCartInstrumentQuantity(resultat.panierInstrumentId,Qinstr)"
+                                                    >
                                                 </td>
-                                                <td><a href="#">Black Blouse Armani</a>
+                                                <td>${{resultat.instrument.prix}}</td>
+                                                <td>TODO Qunatity * Prix</td>
+                                                <td>
+                                                  <button
+                                                    class="fa fa-trash-o"
+                                                    ng-click="deleteInstrumentPanier(
+                                                                resultats.panierId
+                                                                ,resultat.panierInstrumentId
+                                                              )"
+                                                  ></button>
                                                 </td>
-                                                <td>1</td>
-                                                <td>$200.00</td>
-                                                <td>$0.00</td>
-                                                <td>$200.00</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
