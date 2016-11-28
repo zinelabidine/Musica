@@ -36,6 +36,10 @@
               // TODD go to payment form
             }
 
+            $scope.backPersonalInformation = function() {
+              $location.path("checkout/personalinfo/" + $scope.client);
+            }
+
             $scope.updateClientPaymentInformation = function() {
               $log.log(
                 '[CheckoutController] update payment client information'
