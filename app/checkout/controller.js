@@ -48,7 +48,10 @@
               $scope.resultats.clientid = $scope.client;
               checkoutService.updateClientPaymentInformation($scope.resultats)
               .success(function() {
-                //$location.path("checkout/paymentinfo/" + $scope.client);
+                $log.log(
+                  '[CheckoutController] Success update payment client information'
+                );
+                $location.path("checkout/orderreview/" + $scope.client);
               });
               // TODD go to payment form
             }

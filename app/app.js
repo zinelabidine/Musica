@@ -105,6 +105,20 @@ angular.module(appName, [
         }
       })
 
+      .state('app.orderreview', {
+        url: '/checkout/orderreview/:client',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/orderreview.html',
+            controller: 'CartCtrl as checkout'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 
