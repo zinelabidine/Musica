@@ -57,7 +57,7 @@
               cartService.validateCart($scope.client, panierid)
               .success(function() {
                 console.log('[cartController] Success cart ' + panierid+ ' validate');
-                $location.path("checkout/" + $scope.client);
+                $location.path("checkout/personalinfo/" + $scope.client);
               }).error(function(error) {
                 console.error('[cartController] Error cart ' + panierid+ ' validate' + error);
                 // TODO display error message to client

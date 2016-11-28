@@ -78,10 +78,10 @@ angular.module(appName, [
       })
 
       .state('app.checkout', {
-        url: '/checkout/:client',
+        url: '/checkout/personalinfo/:client',
         views: {
           'content@': {
-            templateUrl: 'checkout/checkout1.html',
+            templateUrl: 'checkout/personalinfo.html',
             controller: 'CheckoutCtrl as checkout'
           },
           'footer@': {
