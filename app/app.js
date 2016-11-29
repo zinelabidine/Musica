@@ -50,7 +50,7 @@ angular.module(appName, [
       })
 
       .state('app.recherche', {
-        url: '/recherche/:marque&:categorie&:motcles',
+        url: '/recherche/:motcles',
         views: {
           'content@': {
             templateUrl: 'recherche/recherche.html',
