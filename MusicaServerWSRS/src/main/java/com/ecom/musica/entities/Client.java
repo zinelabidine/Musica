@@ -39,6 +39,13 @@ public class Client implements Serializable {
 	@Column(name = "MotDePasse")
 	private String motDePasse ;
 	
+    @OneToMany(mappedBy="client")
+    private List<Commande> commandes;
+    
+    
+    @OneToMany(mappedBy="client")
+    private List<Panier> paniers;
+	
 	public int getClientId() {
         return clientId;
     }
@@ -103,20 +110,13 @@ public class Client implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-    public List<Commande> getCommandesPayes() {
-        return commandesPayes;
-    }
-
-    public void setCommandesPayes(List<Commande> commandesPayes) {
-        this.commandesPayes = commandesPayes;
-    }
 
     public List<Commande> getCommandesPasses() {
-        return commandesPasses;
+        return commandes;
     }
 
-    public void setCommandesPasses(List<Commande> commandesPasses) {
-        this.commandesPasses = commandesPasses;
+    public void setCommandesPasses(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     public List<Panier> getPaniers() {
@@ -127,12 +127,5 @@ public class Client implements Serializable {
         this.paniers = paniers;
     }
 
-    @OneToMany(mappedBy="clientPayeCommande")
-	private List<Commande> commandesPayes;
-	
-	@OneToMany(mappedBy="clientPasseCommande")
-	private List<Commande> commandesPasses;
-	
-	@OneToMany(mappedBy="client")
-	private List<Panier> paniers;
+
 }

@@ -39,6 +39,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         if (panier == null) {// le panier n'existe pas et on le crée
             panier = new Panier();
             panier.setClient(client);
+            panier.setValide(false);
             entityManager.persist(panier);// on l'insert
             lignePanier.setPanier(panier);// on contruit la ligne du panier
         } else {
@@ -81,7 +82,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     @Override
-    public int validerPanier(int clientId, int panierId) throws Exception {
+    public void validerPanier(int clientId, int panierId) throws Exception {
         // TODO Auto-generated method stub
         Panier panier = entityManager.find(Panier.class, panierId);
         if (panier == null)
@@ -90,30 +91,10 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
             throw new Exception("Ce panier n'appartient pas a ce client");
         if (panier.getLignesPanier().size() < 1)
             throw new Exception("Ce panier est vide");
-        Commande commande = new Commande();
-        List<CommandeInstrument> lignesCommande = new ArrayList<CommandeInstrument>();
-        transformPanierToCommande(panier, commande, lignesCommande);
-        entityManager.persist(commande);
-        for (CommandeInstrument ligneCommande : lignesCommande) {
-            entityManager.persist(ligneCommande);
-        }
-        entityManager.remove(panier);
-        return commande.getCommandeId();
+        panier.setValide(true);
+        entityManager.merge(panier);
         // ou bien ajouter le panier dans la commande ,ou bien faire la
         // persistance du tout
-    }
-
-    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
-        commande.setClientPasseCommande(panier.getClient());
-        commande.setMontantHT(panier.getMontantHT());
-        commande.setMontantTTC(panier.getMontantTTC());
-        List<PanierInstrument> lignesPanier = panier.getLignesPanier();
-        for (PanierInstrument lignePanier : lignesPanier) {
-            lignesCommande
-                    .add(new CommandeInstrument(commande, lignePanier.getInstrument(), lignePanier.getQuantite()));
-            entityManager.remove(lignePanier);
-        }
-        commande.setLignesCommande(lignesCommande);
     }
 
     @Override
@@ -163,6 +144,52 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
                         + (lignePanier.getInstrument().getPrix() * quantite));
         lignePanier.setQuantite(quantite);
         entityManager.merge(lignePanier);
+        entityManager.merge(panier);
+    }
+    @Override
+    public int payerPanier(int panierId, int clientId) throws Exception {
+        // TODO Auto-generated method stub
+        Panier panier = entityManager.find(Panier.class, panierId);
+        if (panier == null)
+            throw new Exception("panier Innexistant");
+        if (panier.getClient().getClientId() != clientId)
+            throw new Exception("Ce panier n'appartient pas a ce client");
+        if (panier.getLignesPanier().size() < 1)
+            throw new Exception("Ce panier est vide");
+        Commande commande = new Commande();
+        List<CommandeInstrument> lignesCommande = new ArrayList<CommandeInstrument>();
+        transformPanierToCommande(panier, commande, lignesCommande);
+        entityManager.persist(commande);
+        for (CommandeInstrument ligneCommande : lignesCommande) {
+            entityManager.persist(ligneCommande);
+        }
+        entityManager.remove(panier);
+        return commande.getCommandeId();
+    }
+    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
+        commande.setClient(panier.getClient());
+        commande.setMontantHT(panier.getMontantHT());
+        commande.setMontantTTC(panier.getMontantTTC());
+        List<PanierInstrument> lignesPanier = panier.getLignesPanier();
+        for (PanierInstrument lignePanier : lignesPanier) {
+            lignesCommande
+                    .add(new CommandeInstrument(commande, lignePanier.getInstrument(), lignePanier.getQuantite()));
+            entityManager.remove(lignePanier);
+        }
+        commande.setLignesCommande(lignesCommande);
+    }
+
+    @Override
+    public void annulerValidationPanier(int clientId, int panierId) throws Exception {
+        // TODO Auto-generated method stub
+        Panier panier = entityManager.find(Panier.class, panierId);
+        if (panier == null)
+            throw new Exception("panier Innexistant");
+        if (panier.getClient().getClientId() != clientId)
+            throw new Exception("Ce panier n'appartient pas a ce client");
+        if (panier.getLignesPanier().size() < 1)
+            throw new Exception("Ce panier est vide");
+        panier.setValide(false);
         entityManager.merge(panier);
     }
 

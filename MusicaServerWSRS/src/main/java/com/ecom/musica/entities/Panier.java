@@ -39,9 +39,21 @@ public class Panier implements Serializable {
     @OneToMany(mappedBy = "panier")
     private List<PanierInstrument> lignesPanier;
     
+    @Column(name = "Valide")
+    private boolean valide;
+    
+    
 	//getter and setters 
 	
-	public List<PanierInstrument> getLignesPanier() {
+	public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
+
+    public List<PanierInstrument> getLignesPanier() {
         return lignesPanier;
     }
 

@@ -8,9 +8,6 @@ public interface ManageCommandeBeanRemote {
 
     public Commande getCommandeEnCours(int commandeId) throws Exception;
 
-    public void payerCommande(int commandeId,int clientId) throws Exception;
-
-
     public void abondonnerCommande(int commandeId) throws Exception;
 
     public void supprimerLigneCommande(int commandeInstumentId) throws Exception;

@@ -40,12 +40,12 @@ public class PanierService {
     @GET
     @Path("/valider/{clientid}/{panierid}")
     @Produces("application/json")
-    public int validerPanier(@PathParam("clientid") String clientParam, @PathParam("panierid") String panierParam)
+    public void validerPanier(@PathParam("clientid") String clientParam, @PathParam("panierid") String panierParam)
             throws Exception {
         try {
             int clientId = Integer.parseInt(clientParam);
             int panierId = Integer.parseInt(panierParam);
-            return panier.validerPanier(clientId, panierId);
+            panier.validerPanier(clientId, panierId);
         } catch (NumberFormatException e) {
             throw new Exception("Erreur dans les parametres");
         }
@@ -84,6 +84,33 @@ public class PanierService {
             int panierInstrumentId = Integer.parseInt(panierInstrumentIdParam);
             int quantite = Integer.parseInt(quantiteParam);
             panier.modifierLignePanier(panierInstrumentId, quantite);
+        } catch (NumberFormatException e) {
+            throw new Exception("Erreur dans les parametres");
+        }
+    }
+    
+    @GET
+    @Path("/payer/{panierid}/{clientid}")
+    @Produces("application/json")
+    public void payerPanier(@PathParam("panierid") String panierParam, @PathParam("clientid") String clientParam)
+            throws Exception {
+        try {
+            int panierId = Integer.parseInt(panierParam);
+            int clientId = Integer.parseInt(clientParam);
+            panier.payerPanier(panierId, clientId);
+        } catch (NumberFormatException e) {
+            throw new Exception("Erreur dans les parametres");
+        }
+    }
+    @GET
+    @Path("/annuler/{panierid}/{clientid}")
+    @Produces("application/json")
+    public void annulerValidationPanier(@PathParam("panierid") String panierParam, @PathParam("clientid") String clientParam)
+            throws Exception {
+        try {
+            int panierId = Integer.parseInt(panierParam);
+            int clientId = Integer.parseInt(clientParam);
+            panier.annulerValidationPanier(panierId, clientId);
         } catch (NumberFormatException e) {
             throw new Exception("Erreur dans les parametres");
         }

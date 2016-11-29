@@ -33,21 +33,6 @@ public class CommandeService {
     }
 
     @GET
-    @Path("/payer/{commandeid}/{clientid}")
-    @Produces("application/json")
-    public void payerCommande(@PathParam("commandeid") String commandeParam, @PathParam("clientid") String clientParam)
-            throws Exception {
-        try {
-            int commandeId = Integer.parseInt(commandeParam);
-            int clientId = Integer.parseInt(clientParam);
-            commande.payerCommande(commandeId, clientId);
-        } catch (NumberFormatException e) {
-            throw new Exception("Erreur dans les parametres");
-        }
-    }
-
-
-    @GET
     @Path("/delete/{commandeid}")
     @Produces("application/json")
     public void abondonnerCommande(@PathParam("commandeid") String commandeParam) throws Exception {

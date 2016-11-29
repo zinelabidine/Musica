@@ -1,5 +1,6 @@
 package com.ecom.musica.buisness.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -30,30 +31,6 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
         }
         return commande;
     }
-
-    @Override
-    public void payerCommande(int commandeId, int clientId) throws Exception {
-        // TODO Auto-generated method stub
-        Client client = entityManager.find(Client.class, clientId);
-        if (client == null)
-            throw new Exception("Le client n'existe pas");
-        Commande commande = entityManager.find(Commande.class, commandeId);
-        if (commande == null)
-            throw new Exception("La commande n'existe pas");
-        if (!commande.getClientPasseCommande().equals(client))
-            throw new Exception("Cette commande n'appartient pas a ce client");
-        commande.setClientPayeCommande(client);
-        commande.getLignesCommande().size();
-        for (CommandeInstrument ligneCommande : commande.getLignesCommande()) {// verifier
-                                                                               // le
-                                                                               // stock
-            if (ligneCommande.getInstrument().getQuantite() < ligneCommande.getQuantite())
-                throw new Exception("Le stock n'est plus suffisant pour l'instrument "
-                        + ligneCommande.getInstrument().getReference());
-        }
-        entityManager.merge(commande);
-    }
-
 
     @Override
     public void abondonnerCommande(int commandeId) throws Exception {
