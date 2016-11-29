@@ -33,7 +33,7 @@ public class Client implements Serializable {
 	
 	@Column(name = "Login")
 	private String login;
-	
+
 	@Column(name = "MDP")
 	private String mdp;
 
@@ -61,13 +61,8 @@ public class Client implements Serializable {
     @Column(name = "Cardyear")
     private String cardyear;
 
-    @Transient
-    @OneToMany(mappedBy="clientPayeCommande")
-    private List<Commande> commandesPayes;
-
-    @Transient
-    @OneToMany(mappedBy="clientPasseCommande")
-    private List<Commande> commandesPasses;
+    @OneToMany(mappedBy="client")
+    private List<Commande> commandes;
 
     @Transient
     @OneToMany(mappedBy="client")
@@ -204,20 +199,12 @@ public class Client implements Serializable {
         this.cardyear = cardyear;
     }
 
-    public List<Commande> getCommandesPayes() {
-        return commandesPayes;
+    public List<Commande> getCommandes() {
+        return commandes;
     }
 
-    public void setCommandesPayes(List<Commande> commandesPayes) {
-        this.commandesPayes = commandesPayes;
-    }
-
-    public List<Commande> getCommandesPasses() {
-        return commandesPasses;
-    }
-
-    public void setCommandesPasses(List<Commande> commandesPasses) {
-        this.commandesPasses = commandesPasses;
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     public List<Panier> getPaniers() {

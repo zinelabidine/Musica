@@ -24,10 +24,22 @@ public class Commande implements Serializable {
     @Column(name = "CommandeId")
     private int commandeId;
 
+    
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "ClientPasseId")
-    private Client clientPasseCommande;
+    @JoinColumn(name = "ClientId")
+    private Client client;
+
+    @Column(name = "MontantTTC")
+    private float montantTTC;
+
+    @Column(name = "MontantHT")
+    private float montantHT;
+
+    @OneToMany(mappedBy = "commande")
+    private List<CommandeInstrument> lignesCommande;
+    
+    //getters setters
 
     public int getCommandeId() {
         return commandeId;
@@ -37,20 +49,13 @@ public class Commande implements Serializable {
         this.commandeId = commandeId;
     }
 
-    public Client getClientPasseCommande() {
-        return clientPasseCommande;
+
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientPasseCommande(Client clientPasseCommande) {
-        this.clientPasseCommande = clientPasseCommande;
-    }
-
-    public Client getClientPayeCommande() {
-        return clientPayeCommande;
-    }
-
-    public void setClientPayeCommande(Client clientPayeCommande) {
-        this.clientPayeCommande = clientPayeCommande;
+    public void setClient(Client clientPayeCommande) {
+        this.client = clientPayeCommande;
     }
 
     public float getMontantTTC() {
@@ -77,18 +82,5 @@ public class Commande implements Serializable {
         this.lignesCommande = lignesCommande;
     }
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "ClientPayeId")
-    private Client clientPayeCommande;
-
-    @Column(name = "MontantTTC")
-    private float montantTTC;
-
-    @Column(name = "MontantHT")
-    private float montantHT;
-
-    @OneToMany(mappedBy = "commande")
-    private List<CommandeInstrument> lignesCommande;
 
 }
