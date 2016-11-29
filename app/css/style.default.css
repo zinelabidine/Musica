@@ -149,6 +149,7 @@ h1 {
 }
 
 .navbar #search {
+    padding-top:10px;
     clear: both;
     border-top: solid 1px #9adacd;
     text-align: right;

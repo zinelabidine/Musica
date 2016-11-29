@@ -2,17 +2,13 @@
     <div class="col-md-12">        
         <!-- show result et filtre -->
         <div class="box info-bar">
-            <div class="row">
-<!--                 <div class="col-sm-12 col-md-4 products-showing">
-                    Showing <strong></strong> of <strong>25</strong> products
-                </div>
- -->
-                <div class="col-sm-12 col-md-8  products-number-sort">
+            <div class="row form-inline">
+                <div class="col-sm-12 col-md-4">
                     <div class="row">
                         <form class="form-inline">
                             <div class="col-md-6 col-sm-6">
                                 <div class="row">
-                                    <strong>Sort by </strong>
+                                    <strong>Sort by: </strong>
                                     <select ng-model="selection" ng-change="filtre()" class="form-control" ng-options="option for option in options">
                                         <option value="">--Option--</option>
                                     </select>
@@ -48,7 +44,9 @@
                     </a> -->
                     <div class="text">
                         <h3><a href="detail.html">{{resultat.reference}}</a></h3>
+                        <center><h5><p>{{resultat.marque.libelle}}</p></h5></center>
                         <p class="price">{{resultat.prix}}€</p>
+                        
                         <p class="buttons">
                             <a href="detail.html" class="btn btn-default">View detail</a>
                             <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
