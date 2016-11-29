@@ -5,7 +5,19 @@
   "use strict";
 
   angular.module('app')
-    .controller('DetailsInstCtrl', ['$scope', '$http', '$log', '$location', '$stateParams', 'instrumentService', 'headerService', function ($scope, $http, $log, $location, $stateParams, instrumentService, headerService) {
+    .controller('DetailsInstCtrl',
+      [
+        '$scope',
+        '$http',
+        '$log',
+        '$location',
+        '$stateParams',
+        'instrumentService',
+        'headerService',
+        '$rootScope',
+        function (
+          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope
+        ) {
       // The content of the controller.
       // Instead of using this use the variable self.
       var self = this;
@@ -34,6 +46,8 @@
         )
         .success(function() {
           $log.log("[DetailsInstCtrl] Add instrument to cart end successfully");
+          $rootScope.$broadcast('cartInstrumentChanged');
+          // TODO notify client instrument add successfully
         });
       }
     }]);

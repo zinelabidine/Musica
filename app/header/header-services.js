@@ -26,6 +26,14 @@
           }, function (errResponse) {
             console.log('Error in AJAX call :' + errResponse);
           });
+      },
+
+      initCartSize: function (client) {
+        console.log("initCartSize");
+        return $http.get(
+          EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/"+client,
+          {params: {}}
+        );
       }
     }
   }]);

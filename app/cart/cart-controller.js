@@ -11,8 +11,9 @@
         '$location',
         'ApplicationConfig',
         'cartService',
+        '$rootScope',
         function (
-          $scope,$stateParams, $http, $log, $location, ApplicationConfig, cartService
+          $scope,$stateParams, $http, $log, $location, ApplicationConfig, cartService, $rootScope
         ) {
             // The content of the controller.
             // Instead of using this use the variable self.
@@ -33,6 +34,7 @@
               cartService.deleteInstrumentPanier(cartId, instrumentId)
               .then(function() {
                 getCart();
+                $rootScope.$broadcast('cartInstrumentChanged');
               });
             }
 
@@ -78,7 +80,7 @@
             getCart();
 
             function getCart() {
-              cartService.getResultats($scope.client).then(function (response) {
+              cartService.getCart($scope.client).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
                 });

@@ -11,7 +11,7 @@
         '$filter',
         function ($http, $log, $cookies, EnvironmentConfig, $filter) {
           return {
-            getResultats: function (client) {
+            getCart: function (client) {
               return $http.get(
                 EnvironmentConfig.GlobalBaseUrl + "/panier/getpanier/"+client,
                 {params: {}}
@@ -21,6 +21,18 @@
                 $log.log("Error in AJAX call " + errResponse);
               })
             },
+
+            getCartSize: function (client) {
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/"+client,
+                {params: {}}
+              ).then(function (response) {
+                return response.data;
+              }, function (errResponse) {
+                $log.log("Error in AJAX call " + errResponse);
+              })
+            },
+
 
             deleteInstrumentPanier : function(cartId, instrumentId) {
               $log.log(
