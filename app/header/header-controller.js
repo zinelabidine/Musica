@@ -22,24 +22,8 @@
 
       $scope.cartsize = 0;
 
-      $scope.searchAction = function () {
-        if ($scope.marque === undefined){
-          $scope.marque = "";
-        }
-
-        if ($scope.categorie === undefined){
-          $scope.categorie = "";
-        }
-
-        if ($scope.motcles === undefined){
-          $scope.motcles = "";
-        }
-
-        $location.path("/recherche/" + $scope.marque+"&"+$scope.categorie+"&"+$scope.motcles);
-
-        $scope.marque = "";
-        $scope.categorie = "";
-        $scope.motcles = "";
+      $scope.searchAction = function () {       
+        $location.path("/recherche/"+$scope.motcles);
       };
 
       $scope.cartAction = function () {
