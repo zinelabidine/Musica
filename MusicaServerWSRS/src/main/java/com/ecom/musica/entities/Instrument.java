@@ -5,14 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -64,9 +65,8 @@ public class Instrument implements Serializable {
     @Column(name = "Description")
     private String description;
 
-    @Lob
-    @Column(name = "Image")
-    private String image;
+    @OneToOne(mappedBy = "instrument", fetch = FetchType.LAZY)
+	private ImageInstrument imageInstrument;
 
     public int getInstrumentId() {
         return instrumentId;
@@ -155,11 +155,11 @@ public class Instrument implements Serializable {
         this.lignesPanier = lignesPanier;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public ImageInstrument getImageInstrument() {
+		return imageInstrument;
+	}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+	public void setImageInstrument(ImageInstrument imageInstrument) {
+		this.imageInstrument = imageInstrument;
+	}
 }
