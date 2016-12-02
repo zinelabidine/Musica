@@ -3,6 +3,7 @@ package com.ecom.musica.webservices;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -51,7 +52,7 @@ public class PanierService {
         }
     }
 
-    @GET
+    @DELETE
     @Path("/supprimer/{panierInstumentId}")
     @Produces("application/json")
     public void supprimerLignePanier(@PathParam("panierInstumentId") String panierInstumentIdParam) throws Exception {
