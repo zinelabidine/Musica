@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,6 +20,7 @@ import com.ecom.musica.entities.Panier;
 import com.ecom.musica.entities.PanierInstrument;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class ManageCommandeBean implements ManageCommandeBeanRemote {
     @PersistenceContext(unitName = "EntityManagerPU")
     private EntityManager entityManager;
@@ -33,6 +38,7 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void abondonnerCommande(int commandeId) throws Exception {
         // TODO Auto-generated method stub
         Commande commande = entityManager.find(Commande.class, commandeId);
@@ -48,6 +54,7 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void supprimerLigneCommande(int commandeInstumentId) throws Exception {
         // TODO Auto-generated method stub
         CommandeInstrument ligneCommande = entityManager.find(CommandeInstrument.class, commandeInstumentId);
@@ -63,6 +70,7 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void modifierLigneCommande(int commandeInstumentId, int quantite) throws Exception {
         // TODO Auto-generated method stub
         CommandeInstrument ligneCommande = entityManager.find(CommandeInstrument.class, commandeInstumentId);
