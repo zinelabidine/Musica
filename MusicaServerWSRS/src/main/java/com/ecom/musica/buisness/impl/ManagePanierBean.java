@@ -13,12 +13,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.ecom.musica.buisness.ManagePanierBeanRemote;
-import com.ecom.musica.entities.Client;
 import com.ecom.musica.entities.Commande;
 import com.ecom.musica.entities.CommandeInstrument;
 import com.ecom.musica.entities.Instrument;
 import com.ecom.musica.entities.Panier;
 import com.ecom.musica.entities.PanierInstrument;
+import com.ecom.musica.entities.Utilisateur;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
@@ -29,22 +29,22 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
-    public void addToPanier(int clientId, int instrumentId, int quantite) throws Exception {
+    public void addToPanier(int utilisateurId, int instrumentId, int quantite) throws Exception {
         List<PanierInstrument> lignesPanier = new ArrayList<PanierInstrument>();
-        Client client = entityManager.find(Client.class, clientId);
+        Utilisateur utilisateur = entityManager.find(Utilisateur.class, utilisateurId);
         Instrument instrument = entityManager.find(Instrument.class, instrumentId);
-        if (client == null || instrument == null)
+        if (utilisateur == null || instrument == null)
             return;
         PanierInstrument lignePanier = new PanierInstrument();
         lignePanier.setInstrument(instrument);
         lignePanier.setQuantite(quantite);
-        Panier panier = findPanierByClient(client);
+        Panier panier = findPanierByUtilisateur(utilisateur);
         if (panier != null) {
             lignePanier.setPanier(panier);
         }
         if (panier == null) {// le panier n'existe pas et on le crée
             panier = new Panier();
-            panier.setClient(client);
+            panier.setUtilisateur(utilisateur);
             panier.setValide(false);
             entityManager.persist(panier);// on l'insert
             lignePanier.setPanier(panier);// on contruit la ligne du panier
@@ -77,9 +77,9 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
 
     }
 
-    private Panier findPanierByClient(Client client) {
-        Query req = entityManager.createQuery("select p from Panier p  where p.client=:client");
-        req.setParameter("client", client);
+    private Panier findPanierByUtilisateur(Utilisateur utilisateur) {
+        Query req = entityManager.createQuery("select p from Panier p  where p.utilisateur=:utilisateur");
+        req.setParameter("utilisateur", utilisateur);
         List<Panier> listPanier = req.getResultList();
         if (listPanier.size() > 0)
             return listPanier.get(0);
@@ -88,12 +88,12 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     @Override
-    public void validerPanier(int clientId, int panierId) throws Exception {
+    public void validerPanier(int utilisateurId, int panierId) throws Exception {
         // TODO Auto-generated method stub
         Panier panier = entityManager.find(Panier.class, panierId);
         if (panier == null)
             throw new Exception("panier Innexistant");
-        if (panier.getClient().getClientId() != clientId)
+        if (panier.getUtilisateur().getUtilisateurId() != utilisateurId)
             throw new Exception("Ce panier n'appartient pas a ce client");
         if (panier.getLignesPanier().size() < 1)
             throw new Exception("Ce panier est vide");
@@ -121,10 +121,10 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     @Override
-    public Panier getPanier(int clientId) throws Exception {
+    public Panier getPanier(int utilisateurId) throws Exception {
         // TODO Auto-generated method stub
-        Client client = entityManager.find(Client.class, clientId);
-        Panier panier = findPanierByClient(client);
+        Utilisateur utilisateur = entityManager.find(Utilisateur.class, utilisateurId);
+        Panier panier = findPanierByUtilisateur(utilisateur);
         if (panier == null)
             throw new Exception("Ce client n'a pas de panier");
         panier.getLignesPanier().size();
@@ -156,12 +156,12 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
-    public int payerPanier(int panierId, int clientId) throws Exception {
+    public int payerPanier(int panierId, int utilisateurId) throws Exception {
         // TODO Auto-generated method stub
         Panier panier = entityManager.find(Panier.class, panierId);
         if (panier == null)
             throw new Exception("panier Innexistant");
-        if (panier.getClient().getClientId() != clientId)
+        if (panier.getUtilisateur().getUtilisateurId() != utilisateurId)
             throw new Exception("Ce panier n'appartient pas a ce client");
         if (panier.getLignesPanier().size() < 1)
             throw new Exception("Ce panier est vide");
@@ -176,7 +176,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         return commande.getCommandeId();
     }
     private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
-        commande.setClient(panier.getClient());
+        commande.setUtilisateur(panier.getUtilisateur());
         commande.setMontantHT(panier.getMontantHT());
         commande.setMontantTTC(panier.getMontantTTC());
         List<PanierInstrument> lignesPanier = panier.getLignesPanier();
@@ -189,12 +189,12 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     @Override
-    public void annulerValidationPanier(int clientId, int panierId) throws Exception {
+    public void annulerValidationPanier(int utilisateurId, int panierId) throws Exception {
         // TODO Auto-generated method stub
         Panier panier = entityManager.find(Panier.class, panierId);
         if (panier == null)
             throw new Exception("panier Innexistant");
-        if (panier.getClient().getClientId() != clientId)
+        if (panier.getUtilisateur().getUtilisateurId() != utilisateurId)
             throw new Exception("Ce panier n'appartient pas a ce client");
         if (panier.getLignesPanier().size() < 1)
             throw new Exception("Ce panier est vide");

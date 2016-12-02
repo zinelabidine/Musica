@@ -14,18 +14,18 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.ecom.musica.buisness.ManageClientBeanRemote;
-import com.ecom.musica.entities.Client;
+import com.ecom.musica.entities.Utilisateur;
 
 @XmlRootElement
-class SmallClientBody {
+class SmallUtilisateurBody {
     @XmlElement String login;
     @XmlElement String mdp;
     @XmlElement String email;
 }
 
 @XmlRootElement
-class ClientPersonalInformationBody {
-    @XmlElement int clientid;
+class UtilisateurPersonalInformationBody {
+    @XmlElement int utilisateurid;
     @XmlElement String firstname;
     @XmlElement String lastname;
     @XmlElement String address;
@@ -37,8 +37,8 @@ class ClientPersonalInformationBody {
 }
 
 @XmlRootElement
-class ClientPaymentInformationBody {
-    @XmlElement int clientid;
+class UtilisateurPaymentInformationBody {
+    @XmlElement int utilisateurid;
     @XmlElement String cardname;
     @XmlElement String cardnumber;
     @XmlElement String cardmonth;
@@ -51,23 +51,23 @@ class ClientPaymentInformationBody {
 public class ClientService {
     
     @EJB
-    private ManageClientBeanRemote clients;
+    private ManageClientBeanRemote utilisateurs;
 
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Client getClient(@QueryParam("id") int id) throws Exception {
-        return clients.getClient(id);
+    public Utilisateur getUtilisateur(@QueryParam("id") int id) throws Exception {
+        return utilisateurs.getUtilisateur(id);
     }
 
     @POST
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createClient(
-            SmallClientBody request
+    public void createUtilisateur(
+            SmallUtilisateurBody request
     ) throws Exception {
-        clients.addClient(request.login, request.mdp, request.email);
+        utilisateurs.addUtilisateur(request.login, request.mdp, request.email);
     }
 
     @POST
@@ -75,10 +75,10 @@ public class ClientService {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void setClientPersonalInformation(
-            ClientPersonalInformationBody request
+            UtilisateurPersonalInformationBody request
     ) throws Exception {
-        clients.setClientPersonalInformation(
-                request.clientid,
+        utilisateurs.setUtilisateurPersonalInformation(
+                request.utilisateurid,
                 request.firstname,
                 request.lastname,
                 request.address,
@@ -95,10 +95,10 @@ public class ClientService {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void setClientpaymentInformation(
-            ClientPaymentInformationBody request
+            UtilisateurPaymentInformationBody request
     ) throws Exception {
-        clients.setClientPaymentInformation(
-                request.clientid,
+        utilisateurs.setUtilisateurPaymentInformation(
+                request.utilisateurid,
                 request.cardname,
                 request.cardnumber,
                 request.cardmonth,

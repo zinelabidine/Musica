@@ -13,11 +13,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.ecom.musica.buisness.ManageCommandeBeanRemote;
-import com.ecom.musica.entities.Client;
 import com.ecom.musica.entities.Commande;
 import com.ecom.musica.entities.CommandeInstrument;
 import com.ecom.musica.entities.Panier;
 import com.ecom.musica.entities.PanierInstrument;
+import com.ecom.musica.entities.Utilisateur;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
@@ -90,10 +90,10 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
         entityManager.merge(ligneCommande);
     }
 
-    private List<Commande> findCommandesByClient(Client client) {
+    private List<Commande> findCommandesByUtilisateur(Utilisateur utilisateur) {
         Query req = entityManager.createQuery(
-                "select c from Commande c  where c.clientPasseCommande=:client and c.clientPayeCommande is null");
-        req.setParameter("client", client);
+                "select c from Commande c  where c.utilisateur=:utilisateur ");
+        req.setParameter("utilisateur", utilisateur);
         return req.getResultList();
     }
 

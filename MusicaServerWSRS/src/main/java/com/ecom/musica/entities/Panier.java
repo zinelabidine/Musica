@@ -27,8 +27,8 @@ public class Panier implements Serializable {
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "ClientId")
-	private Client client;
+	@JoinColumn(name = "UtilisateurId")
+	private Utilisateur utilisateur;
 
     @Column(name = "MontantTTC")
 	private float montantTTC;
@@ -69,12 +69,12 @@ public class Panier implements Serializable {
         this.panierId = panierId;
     }
 
-    public Client getClient() {
-        return client;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public float getMontantTTC() {

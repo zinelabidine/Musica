@@ -27,8 +27,8 @@ public class Commande implements Serializable {
     
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "ClientId")
-    private Client client;
+    @JoinColumn(name = "UtilisateurId")
+    private Utilisateur utilisateur;
 
     @Column(name = "MontantTTC")
     private float montantTTC;
@@ -50,12 +50,12 @@ public class Commande implements Serializable {
     }
 
 
-    public Client getClient() {
-        return client;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setClient(Client clientPayeCommande) {
-        this.client = clientPayeCommande;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public float getMontantTTC() {
