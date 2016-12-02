@@ -22,5 +22,31 @@ public class Profil implements Serializable {
 	private String libelle;
 	
 	@OneToMany(mappedBy="profil")
-	private List<Administrateur> administrateurs;
+	private List<Utilisateur> utilisateur;
+	
+	//Getters n setters
+
+    public int getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(int profileId) {
+        this.profileId = profileId;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public List<Utilisateur> getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(List<Utilisateur> utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }

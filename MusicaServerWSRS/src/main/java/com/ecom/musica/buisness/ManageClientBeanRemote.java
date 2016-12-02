@@ -2,21 +2,21 @@ package com.ecom.musica.buisness;
 
 import javax.ejb.Remote;
 
-import com.ecom.musica.entities.Client;
+import com.ecom.musica.entities.Utilisateur;
 
 @Remote
 public interface ManageClientBeanRemote {
 
-    public Client getClient(int clientid) throws Exception;
+    public Utilisateur getUtilisateur(int utilisateurid) throws Exception;
 
-    public void addClient(
+    public void addUtilisateur(
             String login,
             String mdp,
             String email
             ) throws Exception;
 
-    public void setClientPersonalInformation(
-            int clientid,
+    public void setUtilisateurPersonalInformation(
+            int utilisateurid,
             String firstname,
             String lastname,
             String addres,
@@ -27,13 +27,13 @@ public interface ManageClientBeanRemote {
             String email
             ) throws Exception;
 
-    public void setClientPaymentInformation(
-            int clientid,
+    public void setUtilisateurPaymentInformation(
+            int utilisateurid,
             String cardname,
             String cardnumber,
             String date,
             String code
             ) throws Exception;
 
-    public void deleteClient(int clientid) throws Exception;
+    public void deleteUtilisateur(int utilisateurid) throws Exception;
 }
