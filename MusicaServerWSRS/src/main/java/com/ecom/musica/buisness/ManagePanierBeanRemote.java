@@ -22,4 +22,6 @@ public interface ManagePanierBeanRemote {
 
     public void annulerValidationPanier(int clientId, int panierId) throws Exception;
 
+    public int countInstrumentInPanier(int clientId) throws Exception;
+
 }

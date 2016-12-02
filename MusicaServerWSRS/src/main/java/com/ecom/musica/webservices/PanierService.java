@@ -76,6 +76,18 @@ public class PanierService {
     }
 
     @GET
+    @Path("/paniersize/{clientId}")
+    @Produces("application/json")
+    public int getPanierSize(@PathParam("clientId") String clientIdParam) throws Exception {
+        try {
+            int clientId = Integer.parseInt(clientIdParam);
+            return panier.countInstrumentInPanier(clientId);
+        } catch (NumberFormatException e) {
+            throw new Exception("Erreur dans les parametres");
+        }
+    }
+
+    @GET
     @Path("/modifierligne/{panierInstrumentId}/{quantite}")
     @Produces("application/json")
     public void modifierLignePanier(@PathParam("panierInstrumentId") String panierInstrumentIdParam,
