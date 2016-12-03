@@ -137,8 +137,8 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     @Override
     public int countInstrumentInPanier(int clientId) throws Exception {
         // TODO Auto-generated method stub
-        Client client = entityManager.find(Client.class, clientId);
-        Panier panier = findPanierByClient(client);
+        Utilisateur client = entityManager.find(Utilisateur.class, clientId);
+        Panier panier = findPanierByUtilisateur(client);
         if (panier == null)
             throw new Exception("Ce client n'a pas de panier");
         return panier.getLignesPanier().size();      
