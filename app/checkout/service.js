@@ -66,6 +66,20 @@
                 EnvironmentConfig.GlobalBaseUrl + "/commande/getcommande/" + id,
                 {params: {}}
               );
+            },
+
+            sendPdf : function(data) {
+              $log.log(
+                '[CheckoutService] Send pdf'
+              );
+              return $http.post(
+                EnvironmentConfig.GlobalBaseUrl + "/commande/facture",
+                {
+                  commandeid : data.commandeid,
+                  facturebase64 : data.facturebase64
+                },
+                {params: {'Content-Type': 'application/json'}}
+              );
             }
           }
         }

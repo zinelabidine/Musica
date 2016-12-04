@@ -30,10 +30,14 @@
                 '[DisplayCommandeController] Open pdf commande '
               );
               checkoutService.getCommande($scope.commande).success(function(response) {
-                pdfService.getCommandeAsPdf(response).open();
-                /*getBase64(function(data) {
-                  //console.log('data:application/pdf;base64,' + data);
-                });*/
+                var pdf = pdfService.getCommandeAsPdf(response);
+                pdf.open();
+                pdf.getBase64(function(data) {
+                  var facture = {};
+                  facture.commandeid = $scope.commande;
+                  facture.facturebase64 = data;
+                  checkoutService.sendPdf(facture);
+                });
               });
 
             }
