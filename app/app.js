@@ -99,8 +99,8 @@ angular.module(appName, [
 
       views: {
         'content@': {
-          templateUrl: 'authentification/register.html'
-          //controller: 'HomeCtrl as home'
+          templateUrl: 'authentification/register.html',
+          controller: 'RegisterCtrl as register'
         }
       }
     });
