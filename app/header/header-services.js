@@ -35,7 +35,8 @@
         ).then(function (response) {
               return response.data;
         }, function (errResponse) {
-          console.log('Error in AJAX call :' + errResponse);
+              console.log('Error in AJAX call :' + errResponse);
+	      return 0;
         });
       }
     }
