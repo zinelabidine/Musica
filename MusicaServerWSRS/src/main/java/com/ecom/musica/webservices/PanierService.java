@@ -101,6 +101,20 @@ public class PanierService {
             throw new Exception("Erreur dans les parametres");
         }
     }
+
+    @GET
+    @Path("/payer/{clientid}")
+    @Produces("application/json")
+    public int payerPanier(@PathParam("clientid") int clientParam)
+            throws Exception {
+        try {
+            int panierId = panier.getPanier(clientParam).getPanierId();
+            int clientId = clientParam;
+            return panier.payerPanier(panierId, clientId);
+        } catch (NumberFormatException e) {
+            throw new Exception("Erreur dans les parametres");
+        }
+    }
     
     @GET
     @Path("/payer/{panierid}/{clientid}")
