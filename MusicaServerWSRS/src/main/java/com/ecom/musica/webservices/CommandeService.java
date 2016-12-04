@@ -6,11 +6,13 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.ecom.musica.buisness.ManageCommandeBeanRemote;
+import com.ecom.musica.dto.FactureCommandeDTO;
 import com.ecom.musica.entities.Commande;
 
 @Stateless
@@ -69,5 +71,13 @@ public class CommandeService {
         } catch (NumberFormatException e) {
             throw new Exception("Erreur dans les parametres");
         }
+    }
+
+    @POST
+    @Path("/facture")
+    @Produces("application/json")
+    public void factureCommande(FactureCommandeDTO facturedto) throws Exception {
+        System.out.println(facturedto.getCommandeid());
+        System.out.println(facturedto.getFacturebase64());
     }
 }
