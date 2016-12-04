@@ -23,7 +23,7 @@ public class GlobalService {
     @Produces("application/json")
     public InitializeHeaderDTO initializeHeader() {
         InitializeHeaderDTO init = new InitializeHeaderDTO();
-        init.Categories = categorie.getAllCategories();
+        init.setCategories(categorie.getAllCategories());
         return init;
     }
 
