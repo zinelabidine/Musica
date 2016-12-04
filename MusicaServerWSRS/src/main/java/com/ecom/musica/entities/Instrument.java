@@ -23,6 +23,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "Instrument")
 public class Instrument implements Serializable {
 
+    public Instrument () {
+        super();
+    }
+
     public Instrument(Marque marque2, Categorie categorie2, String reference2, int quantite2, float prix2,
             String description2, String image2) {
         this.marque = marque2;
