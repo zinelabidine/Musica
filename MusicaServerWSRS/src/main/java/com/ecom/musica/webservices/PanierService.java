@@ -83,7 +83,7 @@ public class PanierService {
         try {
             int clientId = Integer.parseInt(clientIdParam);
             return panier.countInstrumentInPanier(clientId);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             //throw new Exception("Erreur dans les parametres");
             return 0;
         }
