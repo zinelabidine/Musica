@@ -12,10 +12,7 @@
         function ($http, $log, $cookies, EnvironmentConfig, $filter) {
           return {
             getCart: function (client) {
-              return $http.get(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/getpanier/"+client,
-                {params: {}}
-              ).then(function (response) {
+              return $http.get(EnvironmentConfig.GlobalBaseUrl + "/panier/getpanier/"+client).then(function (response) {
                 return response.data;
               }, function (errResponse) {
                 $log.log("Error in AJAX call " + errResponse);
@@ -23,10 +20,7 @@
             },
 
             getCartSize: function (client) {
-              return $http.get(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/"+client,
-                {params: {}}
-              ).then(function (response) {
+              return $http.get(EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/"+client).then(function (response) {
                 return response.data;
               }, function (errResponse) {
                 $log.log("Error in AJAX call " + errResponse);
@@ -41,10 +35,7 @@
                 + ' from cart '
                 + cartId
               );
-              return $http.delete(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/supprimer/"+instrumentId,
-                {params: {}}
-              );
+              return $http.delete(EnvironmentConfig.GlobalBaseUrl + "/panier/supprimer/"+instrumentId);
             },
 
             updateCartInstrumentQuantity : function(instrumentId, quantite) {
@@ -54,10 +45,7 @@
                 + ' quantite to '
                 + quantite
               );
-              return $http.get(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/modifierligne/"+instrumentId+'/'+quantite,
-                {params: {}}
-              )
+              return $http.get(EnvironmentConfig.GlobalBaseUrl + "/panier/modifierligne/"+instrumentId+'/'+quantite)
             },
 
             validateCart : function(
@@ -66,10 +54,7 @@
               $log.log(
                 '[cartService] Validate cart ' + panierid + ' of client ' + clientid
               );
-              return $http.get(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+clientid+'/'+panierid,
-                {params: {}}
-              )
+              return $http.get(EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+clientid+'/'+panierid)
             },
 
             finaliseCommande : function(

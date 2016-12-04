@@ -21,7 +21,7 @@
         return $http.get(EnvironmentConfig.GlobalBaseUrl + "/global/initializeheader")
           //return $http.get("header/data.json")
           .then(function (response) {
-            categories = response.data.Categories;
+            categories = response.data.categories;
             return response.data;
           }, function (errResponse) {
             console.log('Error in AJAX call :' + errResponse);
@@ -31,9 +31,11 @@
       initCartSize: function (client) {
         console.log("initCartSize");
         return $http.get(
-          EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/"+client,
-          {params: {}}
-        );
+          EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/" + client).then(function (response) {
+          return response.data;
+        }, function (errResponse) {
+          console.log('Error in AJAX call :' + errResponse);
+        });
       }
     }
   }]);
