@@ -14,7 +14,7 @@ public class ProfilDaoImpl extends AbstractMysqlJpaDao<Profil, Integer> implemen
 
 	@Override
 	public Profil findByLibelle(String libelle) {
-		String jpqlQuery = "SELECT p FROM " + getEntityName() + " p WHERE p.libelle = 'ADMIN'";
+		String jpqlQuery = "SELECT p FROM " + getEntityName() + " p WHERE p.libelle = '" + libelle + "'";
 		Query query = getEntityManager().createQuery(jpqlQuery);
 
 		List<Profil> profils = query.getResultList();

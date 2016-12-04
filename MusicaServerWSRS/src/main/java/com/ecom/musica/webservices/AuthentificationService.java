@@ -37,7 +37,10 @@ public class AuthentificationService {
 		if(profil != null){
 			utilisateur.setProfil(profil);
 		} else {
-			utilisateur.setProfil(new Profil());
+			profil = new Profil();
+			profil.setLibelle(Role.CLIENT);
+			profilDao.persist(profil);
+			utilisateur.setProfil(profil);
 		}
 
 		manageUtilisateurBeanRemote.registerUtilisateur(utilisateur);
