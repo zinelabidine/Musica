@@ -23,6 +23,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "Instrument")
 public class Instrument implements Serializable {
 
+    public Instrument(Marque marque2, Categorie categorie2, String reference2, int quantite2, float prix2,
+            String description2, String image2) {
+        this.marque = marque2;
+        this.categorie = categorie2;
+        this.reference = reference2;
+        this.quantite = quantite2;
+        this.prix = prix2;
+        this.description = description2;
+        this.image = image2;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +50,7 @@ public class Instrument implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "instrument")
     private List<CommandeInstrument> lignesCommande;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "instrument")
     private List<PanierInstrument> lignesPanier;
@@ -49,7 +59,6 @@ public class Instrument implements Serializable {
     @ManyToMany(mappedBy = "instruments")
     private List<Musicien> musiciens;
 
-    
     @ManyToMany(mappedBy = "instruments")
     private List<Promotion> promotions;
 
@@ -139,6 +148,7 @@ public class Instrument implements Serializable {
     public void setPrix(float prix) {
         this.prix = prix;
     }
+
     public List<CommandeInstrument> getLignesCommande() {
         return lignesCommande;
     }
