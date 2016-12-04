@@ -17,11 +17,11 @@
           })
       },
 
-      addInstrumentToCart : function(clientid, instrumentId, quantite) {
+      addInstrumentToCart : function(utilisateurid, instrumentId, quantite) {
         console.log("[instrumentService] Add instrument to cart");
         return $http.get(
           EnvironmentConfig.GlobalBaseUrl
-          + "/panier/add/" + clientid + "/" + instrumentId + "/" + quantite,
+          + "/panier/add/" + utilisateurid + "/" + instrumentId + "/" + quantite,
           {params: {}}
         )
         // Post request to add instrument

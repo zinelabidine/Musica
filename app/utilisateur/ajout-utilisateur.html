@@ -1,0 +1,96 @@
+<div class="container">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a>
+            </li>
+            <li>Add User</li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="box">
+            <h1>User's information:</h1>  
+            <div class="content">                                       
+                <div class="row">      
+                    <div class="col-md-6" >                       
+                        <div class="form-group">
+                            <label for="id">First Name</label>
+                            <input type="text" size="35" class="form-control" id="id" ng-model="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Marque">Last Name</label>
+                            <input type="text" class="form-control" id="Marque" ng-model="">
+                        </div>    
+                        
+                        <div class="form-group">
+                            <label for="Categorie">Birthday</label>
+                            <input type="text" class="form-control" id="Categorie" ng-model="">
+                        </div>    
+
+                        <div class="form-group">
+                            <label for="Reference">Email</label>
+                            <input type="text" class="form-control" id="Reference" ng-model="">
+                        </div>    
+
+                        <div class="form-group">
+                            <label for="Reference">Adress</label>
+                            <input type="text" class="form-control" id="Reference" ng-model="">
+                        </div>        
+
+                    </div>
+
+                    <div class="col-sm-6" style="text-align: center;">
+                        <div class="" >                                                            
+                            <img src="" ng-src="{{image}}" alt="" height="320" width="320">
+                            <div file-input="file" on-change="readFile()"></div>
+                        </div>
+                    </div>    
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="Quantite">Login</label>
+                            <input type="text" class="form-control" id="Quantite" ng-model="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="Prix">Password</label>
+                            <input type="text" class="form-control" id="Prix" ng-model="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" >                       
+                        <div class="form-group">
+                            <label for="id">Telephone</label>
+                            <input type="text" size="35" class="form-control" id="id" ng-model="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" >                       
+                        <div class="form-group">
+                            <label for="id">Profile:</label>
+                            <input type="text" size="35" class="form-control" id="id" ng-model="">
+                        </div>
+                    </div>
+                </div>
+                        <!-- /.row -->
+                  
+                <div class="" style="text-align: center">
+                    <button class="btn btn-primary" ng-click="">Save</button>
+                    <button type="submit" class="btn" ng-click="">Cancel</button>
+                </div>   
+            </div>
+
+        </div>  
+    </div>  
+</div>
+      

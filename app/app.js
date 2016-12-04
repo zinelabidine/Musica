@@ -54,7 +54,7 @@ angular.module(appName, [
         }
       }
     }).state('app.cart', {
-      url: '/cart/:client',
+      url: '/cart',
       views: {
         'content@': {
           templateUrl: 'cart/basket.html',
@@ -62,7 +62,7 @@ angular.module(appName, [
         }
       }
     }).state('app.checkout', {
-      url: '/checkout/personalinfo/:client',
+      url: '/checkout/personalinfo',
       views: {
         'content@': {
           templateUrl: 'checkout/personalinfo.html',
@@ -70,7 +70,7 @@ angular.module(appName, [
         }
       }
     }).state('app.paymentinfo', {
-      url: '/checkout/paymentinfo/:client',
+      url: '/checkout/paymentinfo',
       views: {
         'content@': {
           templateUrl: 'checkout/paymentinfo.html',
@@ -78,16 +78,26 @@ angular.module(appName, [
         }
       }
     }).state('app.orderreview', {
-      url: '/checkout/orderreview/:client',
+      url: '/checkout/orderreview',
       views: {
         'content@': {
           templateUrl: 'checkout/orderreview.html',
           controller: 'CartCtrl as checkout'
         }
       }
-    }).state('app.instrument', {
-      url: '/instrument/:instrumentId',
+    })
+      .state('app.displaycommand', {
+        url: '/checkout/displaycommand/:commande',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/displaycommand.html',
+            controller: 'DisplayCommandeCtrl as displaycommand'
+          }
+        }
+      })
 
+      .state('app.instrument', {
+        url: '/instrument/:instrumentId',
       views: {
         'content@': {
           templateUrl: './instrument/details-instrument.html',
@@ -96,13 +106,29 @@ angular.module(appName, [
       }
     }).state('app.register', {
       url: '/register',
-
       views: {
         'content@': {
           templateUrl: 'authentification/register.html',
           controller: 'RegisterCtrl as register'
         }
       }
+      }).state('app.addInstrument', {
+        url: '/addInstrument',
+        views: {
+          'content@': {
+            templateUrl: './instrument/ajout-instrument.html',
+            controller: 'AddInstCtrl as addInstCtrl'
+          }
+        }
+      })
+      .state('app.addUtilisateur', {
+        url: '/addUtilisateur',
+        views: {
+          'content@': {
+            templateUrl: './utilisateur/ajout-utilisateur.html',
+            controller: 'UtilsateurCtrl as utilisateurCtrl'
+          }
+        }
     });
   }])
   .service('globalService', ['$cookies', '$cookieStore',
