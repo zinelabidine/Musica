@@ -117,7 +117,7 @@ angular.module(appName, [
         views: {
           'content@': {
             templateUrl: './instrument/ajout-instrument.html',
-            // controller: 'AddInstCtrl as addInstCtrl'
+            controller: 'AddInstCtrl as addInstCtrl'
           }
         }
       })
