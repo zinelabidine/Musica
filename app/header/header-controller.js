@@ -33,6 +33,7 @@
       setCartSize();
 
       function setCartSize() {
+        // TODO Set client id
         headerService.initCartSize(1)
         .then(function (response) {
           $scope.cartsize = response.data;
