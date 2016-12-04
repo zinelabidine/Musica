@@ -105,6 +105,35 @@ angular.module(appName, [
           }
         }
       })
+
+      .state('app.addInstrument', {
+        url: '/addInstrument',
+        views: {
+          'content@': {
+            templateUrl: './instrument/ajout-instrument.html',
+            // controller: 'AddInstCtrl as addInstCtrl'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
+      .state('app.addUtilisateur', {
+        url: '/addUtilisateur',
+        views: {
+          'content@': {
+            templateUrl: './utilisateur/ajout-utilisateur.html',
+            controller: 'UtilsateurCtrl as utilisateurCtrl'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.view1', {
         url: '/view1',
 
