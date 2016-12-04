@@ -149,7 +149,7 @@ h1 {
 }
 
 .navbar #search {
-    padding-top:10px;
+    padding-top: 10px;
     clear: both;
     border-top: solid 1px #9adacd;
     text-align: right;
@@ -782,8 +782,6 @@ h1 {
 #content .product .text div.marque del {
     color: #999999;
 }
-
-
 
 #content .product .text .buttons {
     clear: both;
