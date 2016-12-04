@@ -6,16 +6,21 @@
 
       var self = this;
       $scope.clientInfos = {};
+      $scope.clientLoginData = {};
 
       $scope.registerClient = function () {
         registerService.register($scope.clientInfos).then(function (response) {
-
           // Save informations to user story or to cookies
-
-
           $location.path('home');
         }, function () {
+        })
+      };
 
+      $scope.signin = function () {
+        registerService.signin($scope.clientLoginData).then(function (response) {
+          $location.path('home');
+        }, function () {
+          $log.error("Je ne peux pas s'authentifier");
         })
       };
 
