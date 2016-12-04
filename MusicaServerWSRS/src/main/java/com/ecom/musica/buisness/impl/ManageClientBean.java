@@ -4,6 +4,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.ecom.musica.buisness.ManageClientBeanRemote;
 import com.ecom.musica.entities.Utilisateur;
 
@@ -20,7 +22,8 @@ public class ManageClientBean implements ManageClientBeanRemote {
 
     @Override
     public void addUtilisateur(String login, String mdp, String email) throws Exception {
-        em.persist(new Utilisateur(login, mdp, email));
+    	String cryptedPW = BCrypt.hashpw(mdp, BCrypt.gensalt());
+        em.persist(new Utilisateur(login, cryptedPW, email));
         em.flush();
     }
 
