@@ -39,7 +39,7 @@
             }
 
             $scope.backPaymentInformation = function() {
-                $location.path("checkout/paymentinfo/" + $scope.client);
+                $location.path("checkout/paymentinfo");
             }
 
             $scope.updateCartInstrumentQuantity = function(instrumentId, quantite) {
@@ -60,9 +60,9 @@
 
             $scope.finaliseCommande = function() {
               $log.log(
-                '[cartController] Finalize commande of client ' + $scope.client
+                '[cartController] Finalize commande of client ' + $rootScope.currentclientid
               );
-              cartService.finaliseCommande($scope.client).
+              cartService.finaliseCommande($rootScope.currentclientid).
               then(function(response) {
                 $location.path("checkout/displaycommand/" + response.data);
               });
@@ -70,10 +70,10 @@
 
             $scope.validateCart = function(panierid) {
               $log.log('[cartController] Validate cart ' + panierid);
-              cartService.validateCart($scope.client, panierid)
+              cartService.validateCart($rootScope.currentclientid, panierid)
               .success(function() {
                 console.log('[cartController] Success cart ' + panierid+ ' validate');
-                $location.path("checkout/personalinfo/" + $scope.client);
+                $location.path("checkout/personalinfo");
               }).error(function(error) {
                 console.error('[cartController] Error cart ' + panierid+ ' validate' + error);
                 // TODO display error message to client
@@ -83,7 +83,7 @@
             getCart();
 
             function getCart() {
-              cartService.getCart($scope.client).then(function (response) {
+              cartService.getCart($rootScope.currentclientid).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
                 });

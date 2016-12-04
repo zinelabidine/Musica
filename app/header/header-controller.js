@@ -21,6 +21,8 @@
 
           $scope.cartsize = 0;
 
+          $rootScope.currentclientid = 1;
+
           $scope.searchAction = function () {
             $location.path("/recherche/" + $scope.motcles);
           };
@@ -28,10 +30,13 @@
           $scope.cartAction = function () {
             $location.path("/cart");
           };
+
           setCartSize();
 
           function setCartSize() {
-            headerService.initCartSize(1).then(function (response) {
+	           $scope.cartsize = 0;
+             headerService.initCartSize($rootScope.currentclientid)
+             .then(function (response) {
                 $scope.cartsize = response;
               });
           }
