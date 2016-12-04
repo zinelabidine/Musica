@@ -35,7 +35,8 @@ public class Instrument implements Serializable {
         this.quantite = quantite2;
         this.prix = prix2;
         this.description = description2;
-        this.image = image2;
+        // Fix merge
+        //this.image = image2;
     }
 
     @Id
