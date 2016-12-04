@@ -58,6 +58,14 @@
                 },
                 {params: {'Content-Type': 'application/json'}}
               );
+            },
+
+            getCommande: function(id) {
+              console.log(id);
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/commande/getcommande/" + id,
+                {params: {}}
+              );
             }
           }
         }

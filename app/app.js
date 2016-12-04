@@ -119,6 +119,20 @@ angular.module(appName, [
         }
       })
 
+      .state('app.displaycommand', {
+        url: '/checkout/displaycommand/:commande',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/displaycommand.html',
+            controller: 'DisplayCommandeCtrl as displaycommand'
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
 
