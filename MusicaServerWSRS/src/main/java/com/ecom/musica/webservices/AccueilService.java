@@ -14,17 +14,17 @@ import com.ecom.musica.dto.InitializeHomeContentDTO;
 @LocalBean
 @Path("/accueil")
 public class AccueilService {
-    @EJB
-    private ManageInstrumentBeanRemote instrument;
+	@EJB
+	private ManageInstrumentBeanRemote instrument;
 
-    @GET
-    @Path("/initializehomecontent")
-    @Produces("application/json")
-    public InitializeHomeContentDTO initializeHomeContent() {
-        InitializeHomeContentDTO init = new InitializeHomeContentDTO();
-        init.InstrumentsBestSales = instrument.getInstrumentsBestSales();
-        init.InstrumentsPromotions = instrument.getInstrumentsPromotion();
-        return init;
-    }
+	@GET
+	@Path("/initializehomecontent")
+	@Produces("application/json")
+	public InitializeHomeContentDTO initializeHomeContent() {
+		InitializeHomeContentDTO init = new InitializeHomeContentDTO();
+		init.setInstrumentsBestSales(instrument.getInstrumentsBestSales());
+		init.setInstrumentsPromotions(instrument.getInstrumentsPromotion());
+		return init;
+	}
 
 }
