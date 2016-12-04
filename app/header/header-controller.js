@@ -28,7 +28,6 @@
           $scope.cartAction = function () {
             $location.path("/cart");
           };
-
           setCartSize();
 
           function setCartSize() {

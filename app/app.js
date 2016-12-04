@@ -85,9 +85,19 @@ angular.module(appName, [
           controller: 'CartCtrl as checkout'
         }
       }
-    }).state('app.instrument', {
-      url: '/instrument/:instrumentId',
+    })
+      .state('app.displaycommand', {
+        url: '/checkout/displaycommand/:commande',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/displaycommand.html',
+            controller: 'DisplayCommandeCtrl as displaycommand'
+          }
+        }
+      })
 
+      .state('app.instrument', {
+        url: '/instrument/:instrumentId',
       views: {
         'content@': {
           templateUrl: './instrument/details-instrument.html',

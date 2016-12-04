@@ -31,8 +31,9 @@
       initCartSize: function (client) {
         console.log("initCartSize");
         return $http.get(
-          EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/" + client).then(function (response) {
-          return response.data;
+          EnvironmentConfig.GlobalBaseUrl + "/panier/paniersize/" + client
+        ).then(function (response) {
+              return response.data;
         }, function (errResponse) {
           console.log('Error in AJAX call :' + errResponse);
         });

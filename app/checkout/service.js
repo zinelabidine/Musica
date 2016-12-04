@@ -29,7 +29,7 @@
               return $http.post(
                 EnvironmentConfig.GlobalBaseUrl + "/client/set/personalinfo",
                 {
-                  clientid : data.clientid,
+                  utilisateurid : data.utilisateurid,
                   firstname : data.firstname,
                   lastname : data.lastname,
                   address : data.address,
@@ -50,13 +50,21 @@
               return $http.post(
                 EnvironmentConfig.GlobalBaseUrl + "/client/set/paymentinfo",
                 {
-                  clientid : data.clientid,
+                  utilisateurid : data.utilisateurid,
                   cardname : data.cardname,
                   cardnumber : data.cardnumber,
                   cardmonth : data.cardmonth,
                   cardyear : data.cardyear
                 },
                 {params: {'Content-Type': 'application/json'}}
+              );
+            },
+
+            getCommande: function(id) {
+              console.log(id);
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl + "/commande/getcommande/" + id,
+                {params: {}}
               );
             }
           }
