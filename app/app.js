@@ -24,130 +24,84 @@ angular.module(appName, [
             templateUrl: "header/header.html",
             controller: 'HeaderCtrl as headerCtrl',
             resolve: {
-              headerData:  ['headerService', function (headerService) {
+              headerData: ['headerService', function (headerService) {
                 return headerService.initHeader();
               }]
             }
+          },
+          'footer@': {
+            templateUrl: 'partials/blocks/footer.html'
+            //controller: 'AppCtrl as AppCtrl'
           }
         }
         //url: '/app',
         //templateUrl: 'app.html'
-      })
+      }).state('app.home', {
+      url: '/home',
 
-      .state('app.home', {
-        url: '/home',
-
-        views: {
-          'content@': {
-            templateUrl: 'home/home.html',
-            controller: 'HomeCtrl as home'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      views: {
+        'content@': {
+          templateUrl: 'home/home.html',
+          controller: 'HomeCtrl as home'
         }
-      })
-
-      .state('app.recherche', {
-        url: '/recherche/:motcles',
-        views: {
-          'content@': {
-            templateUrl: 'recherche/recherche.html',
-            controller: 'RechercheCtrl as recherche'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      }
+    }).state('app.recherche', {
+      url: '/recherche/:motcles',
+      views: {
+        'content@': {
+          templateUrl: 'recherche/recherche.html',
+          controller: 'RechercheCtrl as recherche'
         }
-      })
-
-      .state('app.cart', {
-        url: '/cart/:client',
-        views: {
-          'content@': {
-            templateUrl: 'cart/basket.html',
-            controller: 'CartCtrl as cart'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      }
+    }).state('app.cart', {
+      url: '/cart/:client',
+      views: {
+        'content@': {
+          templateUrl: 'cart/basket.html',
+          controller: 'CartCtrl as cart'
         }
-      })
-
-      .state('app.checkout', {
-        url: '/checkout/personalinfo/:client',
-        views: {
-          'content@': {
-            templateUrl: 'checkout/personalinfo.html',
-            controller: 'CheckoutCtrl as checkout'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      }
+    }).state('app.checkout', {
+      url: '/checkout/personalinfo/:client',
+      views: {
+        'content@': {
+          templateUrl: 'checkout/personalinfo.html',
+          controller: 'CheckoutCtrl as checkout'
         }
-      })
-
-      .state('app.paymentinfo', {
-        url: '/checkout/paymentinfo/:client',
-        views: {
-          'content@': {
-            templateUrl: 'checkout/paymentinfo.html',
-            controller: 'CheckoutCtrl as checkout'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      }
+    }).state('app.paymentinfo', {
+      url: '/checkout/paymentinfo/:client',
+      views: {
+        'content@': {
+          templateUrl: 'checkout/paymentinfo.html',
+          controller: 'CheckoutCtrl as checkout'
         }
-      })
-
-      .state('app.orderreview', {
-        url: '/checkout/orderreview/:client',
-        views: {
-          'content@': {
-            templateUrl: 'checkout/orderreview.html',
-            controller: 'CartCtrl as checkout'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      }
+    }).state('app.orderreview', {
+      url: '/checkout/orderreview/:client',
+      views: {
+        'content@': {
+          templateUrl: 'checkout/orderreview.html',
+          controller: 'CartCtrl as checkout'
         }
-      })
+      }
+    }).state('app.instrument', {
+      url: '/instrument/:instrumentId',
 
-      .state('app.instrument', {
-        url: '/instrument/:instrumentId',
-
-        views: {
-          'content@': {
-            templateUrl: './instrument/details-instrument.html',
-            controller: 'DetailsInstCtrl as detailsInstCtrl'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
-          }
+      views: {
+        'content@': {
+          templateUrl: './instrument/details-instrument.html',
+          controller: 'DetailsInstCtrl as detailsInstCtrl'
         }
-      })
-      .state('app.view1', {
-        url: '/view1',
+      }
+    }).state('app.register', {
+      url: '/register',
 
-        views: {
-          'header@': {
-            templateUrl: "partials/blocks/header.html",
-            controller: 'HeaderCtrl as headerCtrl'
-          },
-          'content@': {
-            templateUrl: 'view1/view1.html',
-            controller: 'View1Ctrl as view1Ctrl'
-          },
-          'footer@': {
-            templateUrl: 'partials/blocks/footer2.html'
-          }
+      views: {
+        'content@': {
+          templateUrl: 'authentification/register.html',
+          controller: 'RegisterCtrl as register'
         }
-      });
+      }
+    });
   }]);
