@@ -54,7 +54,7 @@ angular.module(appName, [
         }
       }
     }).state('app.cart', {
-      url: '/cart/:client',
+      url: '/cart',
       views: {
         'content@': {
           templateUrl: 'cart/basket.html',
@@ -62,7 +62,7 @@ angular.module(appName, [
         }
       }
     }).state('app.checkout', {
-      url: '/checkout/personalinfo/:client',
+      url: '/checkout/personalinfo',
       views: {
         'content@': {
           templateUrl: 'checkout/personalinfo.html',
@@ -70,7 +70,7 @@ angular.module(appName, [
         }
       }
     }).state('app.paymentinfo', {
-      url: '/checkout/paymentinfo/:client',
+      url: '/checkout/paymentinfo',
       views: {
         'content@': {
           templateUrl: 'checkout/paymentinfo.html',
@@ -78,16 +78,26 @@ angular.module(appName, [
         }
       }
     }).state('app.orderreview', {
-      url: '/checkout/orderreview/:client',
+      url: '/checkout/orderreview',
       views: {
         'content@': {
           templateUrl: 'checkout/orderreview.html',
           controller: 'CartCtrl as checkout'
         }
       }
-    }).state('app.instrument', {
-      url: '/instrument/:instrumentId',
+    })
+      .state('app.displaycommand', {
+        url: '/checkout/displaycommand/:commande',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/displaycommand.html',
+            controller: 'DisplayCommandeCtrl as displaycommand'
+          }
+        }
+      })
 
+      .state('app.instrument', {
+        url: '/instrument/:instrumentId',
       views: {
         'content@': {
           templateUrl: './instrument/details-instrument.html',
@@ -96,12 +106,100 @@ angular.module(appName, [
       }
     }).state('app.register', {
       url: '/register',
-
       views: {
         'content@': {
           templateUrl: 'authentification/register.html',
           controller: 'RegisterCtrl as register'
         }
       }
+      }).state('app.addInstrument', {
+        url: '/addInstrument',
+        views: {
+          'content@': {
+            templateUrl: './instrument/ajout-instrument.html',
+            controller: 'AddInstCtrl as addInstCtrl'
+          }
+        }
+      })
+      .state('app.addUtilisateur', {
+        url: '/addUtilisateur',
+        views: {
+          'content@': {
+            templateUrl: './utilisateur/ajout-utilisateur.html',
+            controller: 'UtilsateurCtrl as utilisateurCtrl'
+          }
+        }
     });
-  }]);
+  }])
+  .service('globalService', ['$cookies', '$cookieStore',
+    function ($cookies, $cookieStore) {
+      function overrideAndReturn(name, value) {
+
+        if (value) {
+          $cookies[name] = value;
+        }
+        return $cookies[name];
+      }
+
+      function getPreferences(preferences) {
+        var data = overrideAndReturnFromLocalStorage('clePortalPreferences', JSON.stringify(preferences));
+        return angular.fromJson(data);
+      }
+
+      function overrideAndReturnFromLocalStorage(name, value) {
+        if (typeof(Storage) !== "undefined") {
+          if (value) {
+            localStorage.setItem(name, value);
+          }
+          return localStorage.getItem(name);
+        } else {
+          alert("Your browser is not compatible with this website, please use a modern browser : Firefox, Chrome, Internet Explorer 10, Edge...")
+        }
+      }
+
+      return {
+        overrideAndReturnFromLocalStorage: function (name, value) {
+          return overrideAndReturnFromLocalStorage(name, value);
+        },
+        login: function (login) {
+          return overrideAndReturnFromLocalStorage('login', login);
+        },
+        personalDatas: function (personalDatas) {
+          return JSON.parse(overrideAndReturnFromLocalStorage('personalDatas', personalDatas));
+        },
+        token: function (token) {
+          return overrideAndReturnFromLocalStorage('token', token);
+        },
+        expirationDate: function (expirationDate) {
+          return overrideAndReturnFromLocalStorage('expirationDate', expirationDate);
+        },
+        renewPassword: function (renewPassword) {
+          return overrideAndReturnFromLocalStorage('renewPassword', renewPassword);
+        },
+        cleanSessionStorage: function () {
+          if (typeof(Storage) !== "undefined") {
+            localStorage.removeItem('login');
+            localStorage.removeItem('permissions');
+            localStorage.removeItem('token');
+            localStorage.removeItem('expirationDate');
+            localStorage.removeItem('personalDatas');
+            localStorage.removeItem('userId')
+            localStorage.removeItem('renewPassword');
+          }
+        },
+        findElementInList: function (list, key, element) {
+          var item;
+          var result = false;
+          for (var i = 0; i < list.length; i++) {
+            item = list[i];
+            if (item.hasOwnProperty(key) && item[key] === element) {
+              result = true;
+            }
+          }
+          return result;
+        }
+      };
+    }
+  ])
+
+;

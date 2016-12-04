@@ -1,0 +1,88 @@
+<div class="container">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a>
+            </li>
+            <li>Add Instrument</li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="box">
+            <h1>Add Instrument</h1>  
+            <div class="content">                                       
+                <div class="row">      
+                    <div class="col-md-6" >                       
+                        <div class="form-group">
+                            <label for="Marque">MarqueId</label>
+                            <input type="text" class="form-control" id="Marque" ng-model="marqueInstrument">
+                        </div>    
+                        
+                        <div class="form-group">
+                            <label for="Categorie">CategorieId</label>
+                            <input type="text" class="form-control" id="Categorie" ng-model="categorieInstrument">
+                        </div>    
+<!-- 
+                        <div class="form-group">
+                            <label for="Reference">Musicien</label>
+                            <input type="text" class="form-control" id="Reference" ng-model="musicienInstrument">
+                        </div>   -->  
+
+                        <div class="form-group">
+                            <label for="Reference">Reference</label>
+                            <input type="text" class="form-control" id="Reference" ng-model="referenceInstrument">
+                        </div>        
+
+                    </div>
+
+                    <div class="col-sm-6" style="text-align: center;">
+                        <div class="">   
+                            <div style="height: 240px;">          
+                                <img height="240" width="240" ng-repeat="image in dummy.images" ng-src="{{image}}" width="300" />
+                            </div>     
+                            <br/>   
+                            <input style="display: initial;" type="file" ng-model="dummy.images" accept="image/*" multiple file-input /><br /> 
+                        </div>
+                    </div>    
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="Quantite">Quantite</label>
+                            <input type="text" class="form-control" id="Quantite" ng-model="quantiteInstrument">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="Prix">Prix</label>
+                            <input type="text" class="form-control" id="Prix" ng-model="prixInstrument">
+                        </div>
+                    </div>
+                </div>
+                        <!-- /.row -->
+                    
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <textarea type="text-area" rows="10" class="form-control" id="Description" ng-model="descriptionInstrument">                                    
+                            </textarea> 
+                        </div>
+                    </div>
+                </div>   
+
+                <div class="" style="text-align: center">
+                    <button class="btn btn-primary" ng-click="addInstrument()">Save</button>
+                    <button type="submit" class="btn" ng-click="">Cancel</button>
+                </div>               
+            </div>
+
+
+
+        </div>  
+    </div>
+</div>
+      

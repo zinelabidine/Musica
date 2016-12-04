@@ -22,7 +22,7 @@
       // Instead of using this use the variable self.
       var self = this;
       // TODO selecte current user autenticated
-      $scope.clientid = 1;
+      $scope.utilisateurid = 1;
       $scope.instrumentId = $stateParams.instrumentId;
       // TODO Add window to select quantite to add
       $scope.quantite = 1;
@@ -40,7 +40,7 @@
       $scope.addInstrumentToCart = function() {
         $log.log("[DetailsInstCtrl] Add instrument to cart");
         instrumentService.addInstrumentToCart(
-          $scope.clientid,
+          $scope.utilisateurid,
           $scope.instrumentId,
           $scope.quantite
         )
