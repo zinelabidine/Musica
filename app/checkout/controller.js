@@ -18,8 +18,6 @@
             // Instead of using this use the variable self.
             var self = this;
 
-            $scope.resultat_client =[];
-            $scope.resultat_client =[];
             $scope.client = $stateParams.client;
             $scope.orderByReverse = false;
 

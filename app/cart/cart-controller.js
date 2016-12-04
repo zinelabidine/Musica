@@ -62,7 +62,10 @@
               $log.log(
                 '[cartController] Finalize commande of client ' + $scope.client
               );
-              cartService.finaliseCommande($scope.client);
+              cartService.finaliseCommande($scope.client).
+              then(function(response) {
+                $location.path("checkout/displaycommand/" + response.data);
+              });
             }
 
             $scope.validateCart = function(panierid) {
