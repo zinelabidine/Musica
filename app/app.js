@@ -96,12 +96,28 @@ angular.module(appName, [
       }
     }).state('app.register', {
       url: '/register',
-
       views: {
         'content@': {
           templateUrl: 'authentification/register.html',
           controller: 'RegisterCtrl as register'
         }
       }
+      }).state('app.addInstrument', {
+        url: '/addInstrument',
+        views: {
+          'content@': {
+            templateUrl: './instrument/ajout-instrument.html',
+            // controller: 'AddInstCtrl as addInstCtrl'
+          }
+        }
+      })
+      .state('app.addUtilisateur', {
+        url: '/addUtilisateur',
+        views: {
+          'content@': {
+            templateUrl: './utilisateur/ajout-utilisateur.html',
+            controller: 'UtilsateurCtrl as utilisateurCtrl'
+          }
+        }
     });
   }]);
