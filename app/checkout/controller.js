@@ -28,7 +28,7 @@
                 '[CheckoutController] update personal client information'
               );
               $log.log($scope.resultat_client);
-              $scope.resultat_client.clientid = $scope.client;
+              $scope.resultat_client.utilisateurid = $scope.client;
               checkoutService.updateClientPersonalInformation($scope.resultat_client)
               .success(function() {
                 $location.path("checkout/paymentinfo/" + $scope.client);
@@ -45,7 +45,7 @@
                 '[CheckoutController] update payment client information'
               );
               $log.log($scope.resultat_client);
-              $scope.resultat_client.clientid = $scope.client;
+              $scope.resultat_client.utilisateurid = $scope.client;
               checkoutService.updateClientPaymentInformation($scope.resultat_client)
               .success(function() {
                 $log.log(

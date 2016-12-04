@@ -60,25 +60,22 @@
               )
             },
 
-            validateCart : function(
-              clientid, panierid
-            ) {
+            validateCart : function(utilisateurid, panierid) {
               $log.log(
-                '[cartService] Validate cart ' + panierid + ' of client ' + clientid
+                '[cartService] Validate cart ' + panierid + ' of client ' + utilisateurid
               );
               return $http.get(
-                EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+clientid+'/'+panierid,
+                EnvironmentConfig.GlobalBaseUrl + "/panier/valider/"+utilisateurid+'/'+panierid,
                 {params: {}}
               )
             },
 
-            finaliseCommande : function(
-              clientid
-            ) {
-              $log.log(
-                '[cartService] Finalise commande ' + clientid
+            finaliseCommande : function(utilisateurid) {
+              $log.log('[cartService] Finalise commande ' + utilisateurid);
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl +
+                  "/panier/payer/"+utilisateurid
               );
-              // Send post request to finalise the commande
             }
           }
         }
