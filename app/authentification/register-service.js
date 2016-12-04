@@ -9,7 +9,7 @@
         var deferred = $q.defer();
         globalService.cleanSessionStorage();
         globalService.login(clientLoginData.login);
-        var basicToken = clientLoginData.login + ':' + clientLoginData.password;
+        var basicToken = clientLoginData.login + ':' + clientLoginData.mdp;
         // we support IE10+
         var tokenBase64 = window.btoa(unescape(encodeURIComponent(basicToken)));
 
@@ -69,24 +69,17 @@
           }, function (errResponse) {
             $log.log("Error in AJAX call " + errResponse);
           })
+      },
+      isConnected: function () {
+        var accessToken = globalService.token();
+        if (globalService.expirationDate() == null || globalService.expirationDate() == undefined) {
+          return false;
+        }
+        var expDate = new Date(parseInt(globalService.expirationDate()));
+        var now = new Date();
+        var isTokenStillValid = (expDate.getTime() - now.getTime()) > 0;
+        return (accessToken != null && accessToken != undefined && isTokenStillValid);
       }
-      //isConnected: function () {
-      //  var accessToken = clePortal.token();
-      //
-      //  console.log("[authenticationService.isConnected] clePortal.expirationDate() " + clePortal.expirationDate());
-      //  if (clePortal.expirationDate() == null || clePortal.expirationDate() == undefined) {
-      //    return false;
-      //  }
-      //  var expDate = new Date(parseInt(clePortal.expirationDate()));
-      //  var now = new Date();
-      //
-      //  var isTokenStillValid = (expDate.getTime() - now.getTime()) > 0;
-      //
-      //  console.log("[authenticationService.isConnected] expDate = " + expDate + " ; isTokenStillValid ? " + isTokenStillValid);
-      //  console.log("[authenticationService.isConnected] isConnected ? " + (accessToken != null && accessToken != undefined && isTokenStillValid));
-      //
-      //  return (accessToken != null && accessToken != undefined && isTokenStillValid);
-      //}
 
     }
   }
