@@ -6,14 +6,14 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class BcryptDatabaseServerLoginModule extends DatabaseServerLoginModule {
 
-    private Logger log = Logger.getLogger(getClass());
+	private Logger log = Logger.getLogger(getClass());
 
 	@Override
 	protected boolean validatePassword(String enteredPassword, String encrypted) {
-		
-		log.infof("enteredPassword === %s", enteredPassword);
-		log.infof("encrypted === %s", encrypted);
-		
+
+		// log.infof("enteredPassword === %s", enteredPassword);
+		// log.infof("encrypted === %s", encrypted);
+
 		if (enteredPassword == null || encrypted == null) {
 			return false;
 		}
