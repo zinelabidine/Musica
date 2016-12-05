@@ -14,17 +14,22 @@ public class ManageUtilisateurBean implements ManageUtilisateurBeanRemote {
 
 	@EJB
 	private UtilisateurDao utilisateurDao;
-	
+
 	@Override
 	public Utilisateur getUtilisateurInformationds(int IdUtilisateur) {
 		return utilisateurDao.findById(IdUtilisateur);
 	}
-	
+
 	@Override
 	public Utilisateur registerUtilisateur(Utilisateur utilisateur) {
 		String cryptedPW = BCrypt.hashpw(utilisateur.getMdp(), BCrypt.gensalt());
 		utilisateur.setMdp(cryptedPW);
 		return utilisateurDao.persist(utilisateur);
 	}
-	
+
+	@Override
+	public Utilisateur getUtilisateurByLogin(String login) {
+		return utilisateurDao.getUtilisateurByLogin(login);
+	}
+
 }

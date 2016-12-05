@@ -1,5 +1,7 @@
 package com.ecom.musica.webservices;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ws.rs.POST;
@@ -26,7 +28,7 @@ public class AuthentificationService {
 	@POST
 	@Path("/register")
 	@Produces("application/json")
-	public void registerClient(SmallUtilisateurDTO smallUtilisateurDTO) {
+	public Utilisateur registerClient(SmallUtilisateurDTO smallUtilisateurDTO) {
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setLogin(smallUtilisateurDTO.getLogin());
 		utilisateur.setMdp(smallUtilisateurDTO.getMdp());
@@ -34,7 +36,7 @@ public class AuthentificationService {
 
 		// utilisateur.setProfil(profil);
 		Profil profil = profilDao.findByLibelle(Role.CLIENT);
-		if(profil != null){
+		if (profil != null) {
 			utilisateur.setProfil(profil);
 		} else {
 			profil = new Profil();
@@ -43,8 +45,16 @@ public class AuthentificationService {
 			utilisateur.setProfil(profil);
 		}
 
-		manageUtilisateurBeanRemote.registerUtilisateur(utilisateur);
+		return manageUtilisateurBeanRemote.registerUtilisateur(utilisateur);
 
+	}
+
+	@RolesAllowed({Role.CLIENT, Role.ADMIN, Role.SUPER_ADMIN})
+	@POST
+	@Path("/login")
+	@Produces("application/json")
+	public Utilisateur getClient(SmallUtilisateurDTO smallUtilisateurDTO) {
+		return manageUtilisateurBeanRemote.getUtilisateurByLogin(smallUtilisateurDTO.getLogin());
 	}
 
 }
