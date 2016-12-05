@@ -30,9 +30,13 @@
             <ul class="dropdown-menu">
                 <li><a href="#">Mon profile</a></li>
                 <li><a href="#">A propos</a></li>
-                <li>
-                    <button type="button" class="dropdown-toggle btn btn-primary navbar-btn">
+                <li ng-switch="isConnected">
+                    <button ng-switch-when="true" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="logout()">
                         <span class="fa fa-sign-out"></span> Se déconnecter
+                    </button>
+
+                    <button ng-switch-when="false" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="getToRegister()">
+                        <span class="fa fa-sign-out"></span> Se connecter
                     </button>
                 </li>
             </ul>

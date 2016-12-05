@@ -2,6 +2,41 @@
   "use strict";
 
   angular.module('app').factory('registerService', ['$http', '$log', "$q", '$cookies', 'EnvironmentConfig', 'globalService', '$filter', function ($http, $log, $q, $cookies, EnvironmentConfig, globalService, $filter) {
+
+    function dateAdd(date, interval, units) {
+      var ret = new Date(date);
+      switch (interval.toLowerCase()) {
+        case 'year'   :
+          ret.setFullYear(ret.getFullYear() + units);
+          break;
+        case 'quarter':
+          ret.setMonth(ret.getMonth() + 3 * units);
+          break;
+        case 'month'  :
+          ret.setMonth(ret.getMonth() + units);
+          break;
+        case 'week'   :
+          ret.setDate(ret.getDate() + 7 * units);
+          break;
+        case 'day'    :
+          ret.setDate(ret.getDate() + units);
+          break;
+        case 'hour'   :
+          ret.setTime(ret.getTime() + units * 3600000);
+          break;
+        case 'minute' :
+          ret.setTime(ret.getTime() + units * 60000);
+          break;
+        case 'second' :
+          ret.setTime(ret.getTime() + units * 1000);
+          break;
+        default       :
+          ret = undefined;
+          break;
+      }
+      return ret;
+    }
+
     return {
 
       signin: function (clientLoginData) {
@@ -24,7 +59,7 @@
 
             globalService.token(tokenBase64);
             // use new Date().getTime()
-            // globalService.expirationDate(data.expirationDate);
+            globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
             data.userId = clientLoginData.login;
@@ -51,12 +86,7 @@
         //  })
       },
       logout: function () {
-        return $http.get(EnvironmentConfig.GlobalBaseUrl + "/accueil/initializehomecontent")
-          .then(function (response) {
-            return response.data;
-          }, function (errResponse) {
-            $log.log("Error in AJAX call " + errResponse);
-          })
+        globalService.cleanSessionStorage();
       }
 
       ,
@@ -79,7 +109,7 @@
 
             globalService.token(tokenBase64);
             // use new Date().getTime()
-            // globalService.expirationDate(data.expirationDate);
+            globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
             data.userId = clientRegisterData.login;

@@ -78,14 +78,14 @@ angular.module(appName, [
         }
       }
     }).state('app.orderreview', {
-      url: '/checkout/orderreview',
-      views: {
-        'content@': {
-          templateUrl: 'checkout/orderreview.html',
-          controller: 'CartCtrl as checkout'
+        url: '/checkout/orderreview',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/orderreview.html',
+            controller: 'CartCtrl as checkout'
+          }
         }
-      }
-    })
+      })
       .state('app.displaycommand', {
         url: '/checkout/displaycommand/:commande',
         views: {
@@ -98,13 +98,13 @@ angular.module(appName, [
 
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
-      views: {
-        'content@': {
-          templateUrl: './instrument/details-instrument.html',
-          controller: 'DetailsInstCtrl as detailsInstCtrl'
+        views: {
+          'content@': {
+            templateUrl: './instrument/details-instrument.html',
+            controller: 'DetailsInstCtrl as detailsInstCtrl'
+          }
         }
-      }
-    }).state('app.register', {
+      }).state('app.register', {
       url: '/register',
       views: {
         'content@': {
@@ -112,7 +112,7 @@ angular.module(appName, [
           controller: 'RegisterCtrl as register'
         }
       }
-      }).state('app.addInstrument', {
+    }).state('app.addInstrument', {
         url: '/addInstrument',
         views: {
           'content@': {
@@ -129,7 +129,7 @@ angular.module(appName, [
             controller: 'UtilsateurCtrl as utilisateurCtrl'
           }
         }
-    });
+      });
   }])
   .service('globalService', ['$cookies', '$cookieStore',
     function ($cookies, $cookieStore) {
