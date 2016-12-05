@@ -9,4 +9,6 @@ public interface ManageUtilisateurBeanRemote {
 	public Utilisateur registerUtilisateur(Utilisateur utilisateur);
 
 	public Utilisateur getUtilisateurInformationds(int IdUtilisateur);
+	
+	public Utilisateur getUtilisateurByLogin(String login);
 }
