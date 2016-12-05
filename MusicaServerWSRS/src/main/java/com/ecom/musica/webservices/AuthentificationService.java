@@ -1,6 +1,5 @@
 package com.ecom.musica.webservices;
 
-import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -11,9 +10,11 @@ import javax.ws.rs.Produces;
 import com.ecom.musica.buisness.ManageUtilisateurBeanRemote;
 import com.ecom.musica.dao.ProfilDao;
 import com.ecom.musica.dto.SmallUtilisateurDTO;
+import com.ecom.musica.dto.UtilisateurPersonalInformationDTO;
 import com.ecom.musica.entities.Profil;
 import com.ecom.musica.entities.Utilisateur;
 import com.ecom.musica.utils.Role;
+import com.ecom.musica.utils.ServiceDTOMapper;
 
 @LocalBean
 @Path("/auth")
@@ -28,12 +29,8 @@ public class AuthentificationService {
 	@POST
 	@Path("/register")
 	@Produces("application/json")
-	public Utilisateur registerClient(SmallUtilisateurDTO smallUtilisateurDTO) {
-		Utilisateur utilisateur = new Utilisateur();
-		utilisateur.setLogin(smallUtilisateurDTO.getLogin());
-		utilisateur.setMdp(smallUtilisateurDTO.getMdp());
-		utilisateur.setEmail(smallUtilisateurDTO.getEmail());
-
+	public UtilisateurPersonalInformationDTO registerClient(SmallUtilisateurDTO smallUtilisateurDTO) {
+		Utilisateur utilisateur = ServiceDTOMapper.mapSmallUtilisateurDtoToUtilisateur(smallUtilisateurDTO);
 		// utilisateur.setProfil(profil);
 		Profil profil = profilDao.findByLibelle(Role.CLIENT);
 		if (profil != null) {
@@ -45,16 +42,18 @@ public class AuthentificationService {
 			utilisateur.setProfil(profil);
 		}
 
-		return manageUtilisateurBeanRemote.registerUtilisateur(utilisateur);
+		Utilisateur utilisateurSaved = manageUtilisateurBeanRemote.registerUtilisateur(utilisateur);
+		return ServiceDTOMapper.mapUtilisateurToUtilisateurPersonalInformationDTO(utilisateurSaved);
 
 	}
 
-	@RolesAllowed({Role.CLIENT, Role.ADMIN, Role.SUPER_ADMIN})
+	@RolesAllowed({ Role.CLIENT, Role.ADMIN, Role.SUPER_ADMIN })
 	@POST
 	@Path("/login")
 	@Produces("application/json")
-	public Utilisateur getClient(SmallUtilisateurDTO smallUtilisateurDTO) {
-		return manageUtilisateurBeanRemote.getUtilisateurByLogin(smallUtilisateurDTO.getLogin());
+	public UtilisateurPersonalInformationDTO getClient(SmallUtilisateurDTO smallUtilisateurDTO) {
+		Utilisateur utilisateur = manageUtilisateurBeanRemote.getUtilisateurByLogin(smallUtilisateurDTO.getLogin());
+		return ServiceDTOMapper.mapUtilisateurToUtilisateurPersonalInformationDTO(utilisateur);
 	}
 
 }
