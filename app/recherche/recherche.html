@@ -35,23 +35,6 @@
         <div class="row">
             <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
                 <div class="product" >
-<!--                 <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front">
-                                <a href="" ng-click="goToInstrument(resultat.id)">
-                                    <img src="{{resultat.src.front}}" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                            <div class="back">
-                                <a href="" ng-click="goToInstrument(resultat.id)">
-                                    <img src="{{resultat.src.back}}" alt="" class="img-responsive">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="detail.html" class="invisible">
-                        <img src="{{resultat.src.front}}" alt="" class="img-responsive">
-                    </a> -->
                     <div class="text">
                         <h3><a href="detail.html">{{resultat.reference}}</a></h3>
                         <center><h5><p>{{resultat.marque.libelle}}</p></h5></center>
@@ -59,7 +42,8 @@
                         
                         <p class="buttons">
                             <a href="detail.html" class="btn btn-default">View detail</a>
-                            <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            <a href="basket.html" class="btn btn-primary">
+                              <i class="fa fa-shopping-cart"></i>Add to cart</a>
                         </p>
                     </div>
                     <!-- /.text -->
