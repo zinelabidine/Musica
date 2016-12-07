@@ -2,6 +2,13 @@
   "use strict";
 
   angular.module('app')
+  .filter('startFrom', function() {
+      return function(input, start) {
+          console.log('> startForm: ' + input);
+          start = +start; //parse to int
+          return input.slice(start);
+      }
+  })
     .controller('RechercheCtrl', ['$scope', '$stateParams','$http', '$log', '$location','ApplicationConfig','rechercheService', function ($scope,$stateParams, $http, $log, $location, ApplicationConfig, rechercheService) {
       // The content of the controller.
       // Instead of using this use the variable self.
@@ -20,6 +27,14 @@
       $scope.options = ["Nom", "Prix croissant", "Prix décroissant" , "Marque"];
       $scope.orderByPredicate = "reference";
       $scope.orderByReverse = true;
+
+      $scope.currentPage = 0;
+      $scope.pageSize = 8;
+      $scope.numberOfPages=function(){
+          return Math.ceil($scope.resultats.length/$scope.pageSize);
+      }
+
+
 
       search();
 

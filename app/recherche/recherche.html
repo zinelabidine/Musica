@@ -33,7 +33,7 @@
 
         <!-- PRODUCT-->
         <div class="row">
-            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | orderBy: orderByPredicate : orderByReverse">
+            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
                 <div class="product" >
 <!--                 <div class="flip-container">
                         <div class="flipper">
@@ -67,14 +67,22 @@
                 <!-- /.product -->
             </div>
         </div>
-
-
-    <div class="row">
-        <div class="col-md-9 col-md-offset-3">
-            <pagination total-items="totalPages" ng-model="currentPage" ng-change="pageChanged()" items-per-page="20" max-size="5" boundary-links="true"></pagination>
+        <!-- PAGES -->
+        <div class="row">
+          <div class="col-md-9 col-md-offset-3">
+            <button
+              class="btn btn-default"
+              ng-disabled="currentPage == 0"
+              ng-click="currentPage=currentPage-1"
+            >Précédent</button>
+              {{currentPage+1}}/{{numberOfPages()}}
+            <button
+              class="btn btn-default"
+              ng-disabled="currentPage >= resultats.length/pageSize -1"
+              ng-click="currentPage=currentPage+1"
+            >Suivant</button>
+            </div>
         </div>
     </div>
-
-        </div>
 </div>
 <!-- /.container -->
