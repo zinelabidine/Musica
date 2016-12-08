@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<script>
-function openPdf() {
-  console.log('Open pdf');
-  var docDefinition = {
-     content: 'This is an sample PDF printed with pdfMake'
-  };
-  pdfMake.createPdf(docDefinition).open();
-}
-</script>
-</head>
 
-<h2>Paiment de la commande confirmer <button ng-click="openPdf()">Open facture</button></h2>
+<div id="content">
+    <div class="container">
+
+      <div class="col-md-12">
+          <ul class="breadcrumb">
+              <li><a href="#">Home</a>
+              </li>
+              <li>Payment</li>
+              <li>Confirmation</li>
+          </ul>
+      </div>
+
+      <h2>
+        Paiment de la commande confirmer
+        <button ng-click="openPdf()">Open facture</button>
+      </h2>
+
+  </div></div>
 
 
 
