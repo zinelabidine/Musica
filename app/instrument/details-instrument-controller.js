@@ -15,14 +15,15 @@
         'instrumentService',
         'headerService',
         '$rootScope',
+        'globalService',
         function (
-          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope
+          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService
         ) {
       // The content of the controller.
       // Instead of using this use the variable self.
       var self = this;
       // TODO selecte current user autenticated
-      $scope.utilisateurid = 1;
+      $scope.utilisateurid = globalService.personalDatas().utilisateurid;
       $scope.instrumentId = $stateParams.instrumentId;
       // TODO Add window to select quantite to add
       $scope.quantite = 1;
