@@ -12,8 +12,9 @@
         'ApplicationConfig',
         'cartService',
         '$rootScope',
+        'globalService',
         function (
-          $scope,$stateParams, $http, $log, $location, ApplicationConfig, cartService, $rootScope
+          $scope,$stateParams, $http, $log, $location, ApplicationConfig, cartService, $rootScope, globalService
         ) {
             // The content of the controller.
             // Instead of using this use the variable self.
@@ -60,9 +61,9 @@
 
             $scope.finaliseCommande = function() {
               $log.log(
-                '[cartController] Finalize commande of client ' + $rootScope.currentclientid
+                '[cartController] Finalize commande of client ' + globalService.personalDatas().utilisateurid
               );
-              cartService.finaliseCommande($rootScope.currentclientid).
+              cartService.finaliseCommande(globalService.personalDatas().utilisateurid).
               then(function(response) {
                 $location.path("checkout/displaycommand/" + response.data);
               });
@@ -70,7 +71,7 @@
 
             $scope.validateCart = function(panierid) {
               $log.log('[cartController] Validate cart ' + panierid);
-              cartService.validateCart($rootScope.currentclientid, panierid)
+              cartService.validateCart(globalService.personalDatas().utilisateurid, panierid)
               .success(function() {
                 console.log('[cartController] Success cart ' + panierid+ ' validate');
                 $location.path("checkout/personalinfo");
@@ -83,7 +84,7 @@
             getCart();
 
             function getCart() {
-              cartService.getCart($rootScope.currentclientid).then(function (response) {
+              cartService.getCart(globalService.personalDatas().utilisateurid).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
                 });

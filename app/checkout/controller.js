@@ -12,14 +12,15 @@
         'ApplicationConfig',
         'checkoutService',
         '$rootScope',
+        'globalService',
         function (
-          $scope,$stateParams, $http, $log, $location, ApplicationConfig, checkoutService, $rootScope
+          $scope,$stateParams, $http, $log, $location, ApplicationConfig, checkoutService, $rootScope, globalService
         ) {
             // The content of the controller.
             // Instead of using this use the variable self.
             var self = this;
 
-            $scope.client = $rootScope.currentclientid;
+            $scope.client = globalService.personalDatas().utilisateurid;
             $scope.orderByReverse = false;
 
             $scope.updateClientPersonalInformation = function() {

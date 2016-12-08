@@ -21,7 +21,6 @@
           $scope.motcles = $scope.motcles;
           $scope.categories = headerData.categories;
           $scope.cartsize = 0;
-          $rootScope.currentclientid = 1;
           $scope.isConnected = registerService.isConnected();
           $scope.searchAction = function () {
             $location.path("/recherche/" + $scope.motcles);
@@ -35,7 +34,8 @@
 
           function setCartSize() {
             $scope.cartsize = 0;
-            headerService.initCartSize($rootScope.currentclientid)
+            if (globalService.personalDatas() != null)
+            headerService.initCartSize(globalService.personalDatas().utilisateurid)
               .then(function (response) {
                 $scope.cartsize = response;
               });
