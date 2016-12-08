@@ -9,7 +9,30 @@
           return input.slice(start);
       }
   })
-    .controller('RechercheCtrl', ['$scope', '$stateParams','$http', '$log', '$location','ApplicationConfig','rechercheService', function ($scope,$stateParams, $http, $log, $location, ApplicationConfig, rechercheService) {
+    .controller('RechercheCtrl',
+      [
+          '$scope',
+          '$stateParams',
+          '$http',
+          '$log',
+          '$location',
+          'ApplicationConfig',
+          'rechercheService',
+          'globalService',
+          '$rootScope',
+          'cartService',
+          function (
+              $scope,
+              $stateParams,
+              $http,
+              $log,
+              $location,
+              ApplicationConfig,
+              rechercheService,
+              globalService,
+              $rootScope,
+              cartService
+            ) {
       // The content of the controller.
       // Instead of using this use the variable self.
       var self = this;
@@ -108,6 +131,20 @@
         $log.log("goToInstrument");
         $location.path(instrumentDestination + '/' + id);
       };
-      
+
+      $scope.addInstrumentToCart = function(instrumentid) {
+        $log.log("[rechercheInstCtrl] Add instrument "+instrumentid+" to cart");
+        cartService.addInstrumentToCart(
+          $scope.utilisateurid,
+          instrumentid,
+          1
+        )
+        .success(function() {
+          $log.log("[rechercheInstCtrl] Add instrument to cart end successfully");
+          $rootScope.$broadcast('cartInstrumentChanged');
+          // TODO notify client instrument add successfully
+        });
+      }
+
     }]);
 }());

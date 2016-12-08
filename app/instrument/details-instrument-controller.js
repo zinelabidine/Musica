@@ -16,8 +16,9 @@
         'headerService',
         '$rootScope',
         'globalService',
+        'cartService',
         function (
-          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService
+          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService, cartService
         ) {
       // The content of the controller.
       // Instead of using this use the variable self.
@@ -40,7 +41,7 @@
 
       $scope.addInstrumentToCart = function() {
         $log.log("[DetailsInstCtrl] Add instrument to cart");
-        instrumentService.addInstrumentToCart(
+        cartService.addInstrumentToCart(
           $scope.utilisateurid,
           $scope.instrumentId,
           $scope.quantite

@@ -66,6 +66,16 @@
                 EnvironmentConfig.GlobalBaseUrl +
                   "/panier/payer/"+utilisateurid
               );
+            },
+
+            addInstrumentToCart : function(utilisateurid, instrumentId, quantite) {
+              $log.log("[cartService] Add instrument to cart");
+              return $http.get(
+                EnvironmentConfig.GlobalBaseUrl
+                + "/panier/add/" + utilisateurid + "/" + instrumentId + "/" + quantite,
+                {params: {}}
+              )
+              // Post request to add instrument
             }
           }
         }
