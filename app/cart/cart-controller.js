@@ -52,9 +52,10 @@
               );
               cartService.updateCartInstrumentQuantity(instrumentId, quantite)
               .success(function() {
-                console.log('[cartController] Success instrument update');
+                $log.log('[cartController] Success instrument update');
+                getCart();
               }).error(function(error) {
-                console.log('[cartController] Error instrument update. ' + error);
+                $log.log('[cartController] Error instrument update. ' + error);
                 // TODO display error message to client
               });
             }

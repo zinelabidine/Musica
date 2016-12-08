@@ -54,7 +54,7 @@
                                                 >
                                             </td>
                                             <td>${{resultat.instrument.prix}}</td>
-                                            <td>TODO Qunatity * Prix</td>
+                                            <td>${{resultat.instrument.prix*resultat.quantite}}</td>
                                             <td>
                                               <button
                                                 class="fa fa-trash-o"
@@ -120,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td>Tax</td>
-                                        <th>$ TODO MontantTTC - MontantHT</th>
+                                        <th>${{MontantTTC - MontantHT}}</th>
                                     </tr>
                                     <tr class="total">
                                         <td>Total</td>
