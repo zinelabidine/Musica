@@ -62,20 +62,11 @@
       search();
 
       function search() {
-        // if (($scope.marque !== "")||($scope.categorie !== "")){
-        //   $log.log("Search avance");
-        //   rechercheService.searchAvance($scope.marque,$scope.categorie,$scope.motcles).then(function (response) {          
-        //     $scope.resultats = response;
-        //     $log.log($scope.resultats); 
-        //   });
-        // }
-        // else{
-          rechercheService.searchWithKey($scope.motcles).then(function (response) { 
-            $log.log("Search with key:" +$scope.motcles);          
-            $scope.resultats = response;
-            $log.log($scope.resultats); 
-          });
-        // }
+        rechercheService.searchWithKey($scope.motcles).then(function (response) {
+          $log.log("Search with key:" +$scope.motcles);
+          $scope.resultats = response;
+          $log.log($scope.resultats);
+        });
       }
 
       $scope.searchAvance  = function (){
@@ -93,7 +84,8 @@
         
         if (($scope.marque !== "")||($scope.categorie !== "")){
           $log.log("Search avance");
-          rechercheService.searchAvance($scope.marque,$scope.categorie,$scope.ref).then(function (response) {          
+          rechercheService.searchAvance($scope.marque,$scope.categorie,$scope.ref)
+          .then(function (response) {
             $scope.resultats = response;
             $log.log($scope.resultats); 
           });
