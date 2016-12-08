@@ -17,12 +17,34 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "Promotion")
+@Table(name = "promotion")
 public class Promotion implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PromotionId")
 	private int promotionId;
+	
+	@Column(name = "Libelle")
+	private String libelle;
+	
+	@Column(name = "dateDebut")
+	private Date dateDebut;
+	
+	@Column(name = "DateFin")
+	private Date dateFin;
+	
+	@Column(name = "Taux")
+	private float taux;
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "instrument_promotion", joinColumns = @JoinColumn(name = "PromotionId", referencedColumnName = "PromotionId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
+	private List<Instrument> instruments;
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "marque_promotion", joinColumns = @JoinColumn(name = "PromotionId", referencedColumnName = "PromotionId"), inverseJoinColumns = @JoinColumn(name = "MarqueId", referencedColumnName = "MarqueId"))
+	private List<Marque> marques;
 	
 	public int getPromotionId() {
         return promotionId;
@@ -80,25 +102,4 @@ public class Promotion implements Serializable {
         this.marques = marques;
     }
 
-    @Column(name = "Libelle")
-	private String libelle;
-	
-	@Column(name = "dateDebut")
-	private Date dateDebut;
-	
-	@Column(name = "DateFin")
-	private Date dateFin;
-	
-	@Column(name = "Taux")
-	private float taux;
-	
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "InstrumentPromotion", joinColumns = @JoinColumn(name = "PromotionId", referencedColumnName = "PromotionId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
-	private List<Instrument> instruments;
-	
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "MarquePromotion", joinColumns = @JoinColumn(name = "PromotionId", referencedColumnName = "PromotionId"), inverseJoinColumns = @JoinColumn(name = "MarqueId", referencedColumnName = "MarqueId"))
-	private List<Marque> marques;
 }

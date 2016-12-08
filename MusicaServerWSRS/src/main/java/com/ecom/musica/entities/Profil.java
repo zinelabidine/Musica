@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Profil")
+@Table(name = "profil")
 public class Profil implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

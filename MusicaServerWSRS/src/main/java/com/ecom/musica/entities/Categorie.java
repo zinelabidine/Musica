@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "Categorie")
+@Table(name = "categorie")
 public class Categorie  implements Serializable  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

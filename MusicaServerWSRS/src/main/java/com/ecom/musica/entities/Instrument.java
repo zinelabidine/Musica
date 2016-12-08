@@ -20,7 +20,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "Instrument")
+@Table(name = "instrument")
 public class Instrument implements Serializable {
 
     public Instrument () {

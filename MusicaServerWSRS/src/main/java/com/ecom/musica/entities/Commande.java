@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "Commande")
+@Table(name = "commande")
 public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
