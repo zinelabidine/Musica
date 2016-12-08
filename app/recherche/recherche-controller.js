@@ -146,5 +146,9 @@
         });
       }
 
+      $scope.openInstrumentDetails = function(instrumentid) {
+        $location.path("instrument/"+instrumentid);
+      }
+
     }]);
 }());
