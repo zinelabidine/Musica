@@ -51,6 +51,8 @@
       $scope.orderByPredicate = "reference";
       $scope.orderByReverse = true;
 
+      $scope.utilisateurid = globalService.personalDatas().utilisateurid;
+
       $scope.currentPage = 0;
       $scope.pageSize = 8;
       $scope.numberOfPages=function(){
