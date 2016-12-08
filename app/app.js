@@ -96,6 +96,16 @@ angular.module(appName, [
         }
       })
 
+      .state('app.profilcommande', {
+        url: '/profil/commande',
+        views: {
+          'content@': {
+            templateUrl: 'profil/clientcommande.html',
+            controller: 'ProfilCommandeCtrl as profilcommande'
+          }
+        }
+      })
+
       .state('app.instrument', {
         url: '/instrument/:instrumentId',
         views: {
