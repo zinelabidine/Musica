@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "PanierInstrument")
+@Table(name = "panier_instrument")
 public class PanierInstrument implements Serializable {
 
     @Id

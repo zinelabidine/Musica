@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "ImageInstrument")
+@Table(name = "image_instrument")
 public class ImageInstrument implements Serializable {
 
 	private static final long serialVersionUID = 7166099505823083057L;

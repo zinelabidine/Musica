@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "Panier")
+@Table(name = "panier")
 public class Panier implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

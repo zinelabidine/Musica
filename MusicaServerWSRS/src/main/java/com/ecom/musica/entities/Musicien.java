@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Musicien")
+@Table(name = "musicien")
 public class Musicien implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,6 @@ public class Musicien implements Serializable {
 	private String nomDeScene ; 
 	
 	@ManyToMany
-	@JoinTable(name = "InstrumentMusicien", joinColumns = @JoinColumn(name = "MusicienId", referencedColumnName = "MusicienId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
+	@JoinTable(name = "instrument_musicien", joinColumns = @JoinColumn(name = "MusicienId", referencedColumnName = "MusicienId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
 	private List<Instrument> instruments;
 }
