@@ -37,7 +37,7 @@
 
       $scope.reloadMainImage = function (newSrc) {
         $scope.mainImageSrc = newSrc;
-      }
+      };
 
       $scope.addInstrumentToCart = function() {
         $log.log("[DetailsInstCtrl] Add instrument to cart");

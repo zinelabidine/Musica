@@ -6,7 +6,7 @@
             </li>
             <li><a href="" class="text-capitalize">{{detailsInstrument.categorie.libelle}}</a>
             </li>
-            <li>{{detailsInstrument.titre}}</li>
+            <li>{{detailsInstrument.reference}}</li>
         </ul>
 
     </div>
@@ -39,8 +39,8 @@ _________________________________________________________ -->
 
         <div class="row" id="productMain">
             <div class="col-sm-6">
-                <div id="mainImage" ng-init="mainImageSrc = detailsInstrument.images[0]">
-                    <img ng-src="{{mainImageSrc}}" alt="" class="img-responsive">
+                <div id="mainImage">
+                    <img ng-src="{{detailsInstrument.imageInstrument.image}}" alt="" class="img-responsive">
                 </div>
 
                 <!--<div class="ribbon sale">-->
@@ -58,7 +58,7 @@ _________________________________________________________ -->
             </div>
             <div class="col-sm-6">
                 <div class="box">
-                    <h1 class="text-center">{{detailsInstrument.titre}}</h1>
+                    <h1 class="text-center">{{detailsInstrument.reference}}</h1>
 
                     <p class="price">{{detailsInstrument.prix}} €</p>
 
@@ -72,9 +72,14 @@ _________________________________________________________ -->
                 </div>
 
                 <div class="row" id="thumbs">
-                    <div class="col-xs-4" ng-repeat="image in detailsInstrument.images">
-                        <a href="" ng-click="reloadMainImage(image)" class="thumb">
-                            <img ng-src="{{image}}" alt="" class="img-responsive">
+                    <!--<div class="col-xs-4" ng-repeat="image in detailsInstrument.imageInstrument">-->
+                        <!--<a href="" ng-click="reloadMainImage(image)" class="thumb">-->
+                            <!--<img ng-src="{{image}}" alt="" class="img-responsive">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <div class="col-xs-4">
+                        <a href="" class="thumb">
+                            <img ng-src="{{detailsInstrument.imageInstrument.image}}" alt="" class="img-responsive">
                         </a>
                     </div>
                 </div>
