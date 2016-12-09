@@ -20,7 +20,9 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ecom.musica.buisness.ManageCategoryBeanRemote;
 import com.ecom.musica.buisness.ManageInstrumentBeanRemote;
+import com.ecom.musica.buisness.ManageMarqueBeanRemote;
 import com.ecom.musica.entities.Categorie;
 import com.ecom.musica.entities.CommandeInstrument;
 import com.ecom.musica.entities.Instrument;
@@ -33,9 +35,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @XmlRootElement
 class InstrumentInformationBody {
     @XmlElement
-    int marqueId;
+    String marqueLibelle;
     @XmlElement
-    int categorieId;
+    String categorieLibelle;
     @XmlElement
     String reference;
     @XmlElement
@@ -45,7 +47,7 @@ class InstrumentInformationBody {
     @XmlElement
     String description;
     @XmlElement
-    String image;
+    List<String> image;
 }
 
 @Stateless
@@ -54,13 +56,22 @@ class InstrumentInformationBody {
 public class AdministrationService {
     @EJB
     private ManageInstrumentBeanRemote instrument;
+    
+    @EJB
+    private ManageMarqueBeanRemote marque;
+    
+    @EJB
+    private ManageCategoryBeanRemote categorie;
 
     @POST
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void createUtilisateur(InstrumentInformationBody request) throws Exception {
-        instrument.addInstrument(request.marqueId, request.categorieId, request.reference, request.quantite,
-                request.prix, request.description, request.image);
+    	int marqueId = marque.getMarqueId(request.marqueLibelle);
+    	int categorieId = categorie.getCategorieId(request.categorieLibelle);
+        instrument.addInstrument(marqueId, categorieId, request.reference, request.quantite,
+                request.prix, request.description, request.image.toString());
+        
     }
 }

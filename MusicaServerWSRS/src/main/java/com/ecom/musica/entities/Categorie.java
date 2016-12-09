@@ -14,6 +14,15 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "categorie")
 public class Categorie  implements Serializable  {
+	
+	public Categorie () {
+        super();
+	}
+
+	public Categorie (String libelle) {
+	    this.libelle = libelle;    
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CategorieId")

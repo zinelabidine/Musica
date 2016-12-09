@@ -28,7 +28,7 @@ public class Instrument implements Serializable {
     }
 
     public Instrument(Marque marque2, Categorie categorie2, String reference2, int quantite2, float prix2,
-            String description2, String image2) {
+            String description2) {
         this.marque = marque2;
         this.categorie = categorie2;
         this.reference = reference2;

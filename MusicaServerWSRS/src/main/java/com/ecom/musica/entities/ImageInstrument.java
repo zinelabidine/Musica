@@ -24,6 +24,15 @@ public class ImageInstrument implements Serializable {
 	private String image;
 	private Instrument instrument;
 
+	public ImageInstrument () {
+	        super();
+	}
+	
+	public ImageInstrument (String image, Instrument instrument) {
+        this.image = image;
+        this.instrument = instrument;        
+    }
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ImageInstrumentId")

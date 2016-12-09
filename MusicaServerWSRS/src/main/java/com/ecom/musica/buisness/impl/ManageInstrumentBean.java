@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import com.ecom.musica.buisness.ManageInstrumentBeanRemote;
 import com.ecom.musica.entities.Categorie;
 import com.ecom.musica.entities.Commande;
+import com.ecom.musica.entities.ImageInstrument;
 import com.ecom.musica.entities.Instrument;
 import com.ecom.musica.entities.Marque;
 
@@ -39,9 +40,11 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
         Categorie categorie = entityManager.find(Categorie.class, categorieId);
         if (categorie == null)
             throw new Exception("La categorie n'existe pas");
-        Instrument instrument = new Instrument(marque, categorie, reference, quantite, prix, description, image);
+        Instrument instrument = new Instrument(marque, categorie, reference, quantite, prix, description);
+        ImageInstrument imageInstrument = new ImageInstrument(image,instrument);
         try {
             entityManager.persist(instrument);
+            entityManager.persist(imageInstrument);
         } catch (Exception e) {
             throw new Exception("l'instrument n'a pas pu etre inseré");
         }

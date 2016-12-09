@@ -6,6 +6,6 @@ import com.ecom.musica.entities.Categorie;
 
 @Remote
 public interface ManageCategoryBeanRemote {
-	public List<Categorie> getAllCategories() ;
-
+	public List<Categorie> getAllCategories();
+	public int getCategorieId(String categorieLibelle) throws Exception;
 }
