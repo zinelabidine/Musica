@@ -2,13 +2,29 @@
   "use strict";
 
   angular.module('app').factory('addinstrumentService', ['$http', '$cookies', 'EnvironmentConfig', '$filter', function ($http, $cookies, EnvironmentConfig, $filter) {
+    
+    var categories = [];
+    var marques = [];
+
     return {
-     	addInstrument : function(marqueId,categorieId,reference,quantite,prix,description,image) {
+      getCategorieEtMarque:function(){
+         return $http.get(EnvironmentConfig.GlobalBaseUrl + "/global/initializeheader")
+          //return $http.get("header/data.json")
+          .then(function (response) {
+            categories = response.data.categories;
+            marques = response.data.marques;
+            return response.data;
+          }, function (errResponse) {
+            console.log('Error in AJAX call :' + errResponse);
+          });
+      },
+
+     	addInstrument : function(marqueLibelle,categorieLibelle,reference,quantite,prix,description,image) {
               return $http.post(
                 EnvironmentConfig.GlobalBaseUrl + "/administration/create",
                 {
-                  marqueId : marqueId,
-                  categorieId : categorieId,
+                  marqueLibelle : marqueLibelle,
+                  categorieLibelle : categorieLibelle,
                   reference : reference,
                   quantite : quantite,
                   prix : prix,

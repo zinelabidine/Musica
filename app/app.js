@@ -10,7 +10,7 @@ angular.module(appName, [
     'angular.filter',
     'ngRoute',
     'app.config',
-    'app.env'
+    'app.env',
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -127,7 +127,12 @@ angular.module(appName, [
         views: {
           'content@': {
             templateUrl: './instrument/ajout-instrument.html',
-            controller: 'AddInstCtrl as addInstCtrl'
+            controller: 'AddInstCtrl as addInstCtrl',
+            resolve: {
+              catmarData: ['addinstrumentService', function (addinstrumentService) {
+                return addinstrumentService.getCategorieEtMarque();
+              }]
+            }
           }
         }
       })

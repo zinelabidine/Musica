@@ -22,6 +22,7 @@
           $scope.categories = headerData.categories;
           $scope.cartsize = 0;
           $scope.isConnected = registerService.isConnected();
+          
           $scope.searchAction = function () {
             $location.path("/recherche/" + $scope.motcles);
           };

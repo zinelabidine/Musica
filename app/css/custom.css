@@ -97,3 +97,12 @@
     margin-bottom: 10px;
     width:150px;
 }
+
+.dropdown-scroll {
+    overflow: auto;
+    height: 90px;
+}
+.mypanel {
+    max-width: 400px;
+    margin-top:15px;
+}

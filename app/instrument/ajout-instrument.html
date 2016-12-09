@@ -10,20 +10,27 @@
 
     <div class="col-md-12">
         <div class="box">
-            <h1>Add Instrument</h1>  
+            <h1>Add Instrument</h1>   
+
             <div class="content">                                       
                 <div class="row">      
-                    <div class="col-md-6" >                       
+                    <div class="col-md-6" >   
                         <div class="form-group">
-                            <label for="Marque">MarqueId</label>
-                            <input type="text" class="form-control" id="Marque" ng-model="marqueInstrument">
+                            <label for="Marque">Marque</label>
+                            <select ng-model="marqueSelected" ng-init="marqueSelected = marqueSelected || marques[0]" ng-change="selectMarque()" class="form-control" ng-options="marque.libelle for marque in marques">
+                                <option value="">Autre...</option>
+                            </select>  
+                             <input type="text" class="form-control" ng-model="autreMarque" ng-show="marqueSelected == null" placeholder="Autre Marque"/>
                         </div>    
                         
                         <div class="form-group">
-                            <label for="Categorie">CategorieId</label>
-                            <input type="text" class="form-control" id="Categorie" ng-model="categorieInstrument">
+                            <label for="Categorie">Categorie</label>    
+                            <select ng-model="categorieSelected" ng-init="categorieSelected = categorieSelected || categories[0]" ng-change="" class="form-control" ng-options="categorie.libelle for categorie in categories" >
+                                <option value="">Autre...</option> 
+                            </select> 
+                            <input type="text" class="form-control" ng-model="autreCategorie" ng-show="categorieSelected == null" placeholder="Autre Categorie"/>
                         </div>    
-<!-- 
+<!--                    
                         <div class="form-group">
                             <label for="Reference">Musicien</label>
                             <input type="text" class="form-control" id="Reference" ng-model="musicienInstrument">
@@ -42,7 +49,7 @@
                                 <img height="240" width="240" ng-repeat="image in dummy.images" ng-src="{{image}}" width="300" />
                             </div>     
                             <br/>   
-                            <input style="display: initial;" type="file" ng-model="dummy.images" accept="image/*" multiple file-input /><br /> 
+                            <input style="display: initial;" type="file" ng-model="dummy.images" ng-change="addImage()" accept="image/*" multiple file-input /><br /> 
                         </div>
                     </div>    
 
@@ -75,6 +82,7 @@
                 </div>   
 
                 <div class="" style="text-align: center">
+                    <p ng-model="alert">{{alert}}</p>
                     <button class="btn btn-primary" ng-click="addInstrument()">Save</button>
                     <button type="submit" class="btn" ng-click="">Cancel</button>
                 </div>               
