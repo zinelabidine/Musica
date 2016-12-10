@@ -47,7 +47,7 @@ class InstrumentInformationBody {
     @XmlElement
     String description;
     @XmlElement
-    List<String> image;
+    String image;
 }
 
 @Stateless
