@@ -14,4 +14,6 @@ public interface ManageCommandeBeanRemote {
 
     public void modifierLigneCommande(int commandeInstumentId, int quantite) throws Exception;
 
+    public List<Commande> getCommandesByUtilisateur(int utilisateurId) throws Exception;
+
 }
