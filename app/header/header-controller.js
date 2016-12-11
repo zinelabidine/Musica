@@ -17,8 +17,8 @@
           var self = this;
 
           self.headerData = headerData;
-          $scope.marque = $scope.marque;
-          $scope.motcles = $scope.motcles;
+          //$scope.marque = $scope.marque;
+          //$scope.motcles = $scope.motcles;
           $scope.categories = headerData.categories;
           $scope.cartsize = 0;
           $scope.isConnected = registerService.isConnected();

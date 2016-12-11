@@ -10,7 +10,9 @@
 
                 <div class="col-sm-12 col-md-3">
                     <label for="Categorie"> <strong> Categorie</strong> </label>
-                    <input type="text" class="form-control" ng-model="categorie" value="" id="Categorie" placeholder="Zino...">                    
+                    <select ng-model="categorie" id="Categorie" class="form-control" ng-options="storedCategorie.libelle as storedCategorie.libelle for storedCategorie in storedCategories track by storedCategorie.categorieId">
+                        <option value="">--Sélectionner une catégorie--</option>
+                    </select>
                 </div>  
 
                 <div class="col-sm-12 col-md-3">

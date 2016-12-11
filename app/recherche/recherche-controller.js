@@ -21,6 +21,7 @@
           'globalService',
           '$rootScope',
           'cartService',
+          'headerService',
           function (
               $scope,
               $stateParams,
@@ -31,7 +32,8 @@
               rechercheService,
               globalService,
               $rootScope,
-              cartService
+              cartService,
+              headerService
             ) {
       // The content of the controller.
       // Instead of using this use the variable self.
@@ -43,9 +45,10 @@
       // $scope.categorie = $stateParams.categorie; 
       $scope.motcles = $stateParams.motcles;
 
-      $scope.marque = $scope.marque;
-      $scope.categorie = $scope.categorie;  
-      $scope.ref = $scope.ref;
+      //$scope.marque = $scope.marque;
+      $scope.categorie = "";
+      //$scope.ref = $scope.ref;
+      $scope.storedCategories = headerService.getCategories();
 
       $scope.options = ["Nom", "Prix croissant", "Prix décroissant" , "Marque"];
       $scope.orderByPredicate = "reference";
@@ -57,7 +60,7 @@
       $scope.pageSize = 8;
       $scope.numberOfPages=function(){
           return Math.ceil($scope.resultats.length/$scope.pageSize);
-      }
+      };
 
 
 
@@ -100,26 +103,26 @@
           });
         }
         $scope.marque = "";
-        $scope.categorie = "";
-        $scope.ref = "";
-      }
+        // $scope.categorie = "";
+        // $scope.ref = "";
+      };
 
       $scope.filtre = function() {
         if ($scope.selection =="Nom" ){
           $scope.orderByPredicate = '-reference';
         }
         else if ($scope.selection =="Prix croissant"){
-          $scope.orderByReverse = !$scope.orderByReverse;
+          $scope.orderByReverse = false;
           $scope.orderByPredicate = 'prix';
         }
         else if ($scope.selection =="Prix décroissant"){
-          $scope.orderByReverse = !$scope.orderByReverse;
+          $scope.orderByReverse = true;
           $scope.orderByPredicate = 'prix';
         }
         else if ($scope.selection =="Marque"){
           $scope.orderByPredicate = 'marque';
         }
-      }
+      };
 
       $scope.goToInstrument = function (id) {
         $log.log("goToInstrument");
@@ -138,11 +141,11 @@
           $rootScope.$broadcast('cartInstrumentChanged');
           // TODO notify client instrument add successfully
         });
-      }
+      };
 
       $scope.openInstrumentDetails = function(instrumentid) {
         $location.path("instrument/"+instrumentid);
-      }
+      };
 
     }]);
 }());
