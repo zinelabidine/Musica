@@ -11,7 +11,7 @@
                 <div class="col-sm-12 col-md-3">
                     <label for="Categorie"> <strong> Categorie</strong> </label>
                     <select ng-model="categorie" id="Categorie" class="form-control" ng-options="storedCategorie.libelle as storedCategorie.libelle for storedCategorie in storedCategories track by storedCategorie.categorieId">
-                        <option value="">--Sélectionner une catégorie--</option>
+                        <option value="">Sélectionner une catégorie</option>
                     </select>
                 </div>  
 
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="col-sm-12 col-md-3">
-                    <label for="keys"> <strong> Sort by</strong> </label>                       
+                    <label for="keys"> <strong> Trier par</strong> </label>
                     <select ng-model="selection" ng-change="filtre()" class="form-control" ng-options="option for option in options">
                         <option value="">--Option--</option>
                     </select>                              
@@ -38,7 +38,7 @@
             <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
                 <div class="product" >
                     <div class="text">
-                        <h3><a href="detail.html">{{resultat.reference}}</a></h3>
+                        <h3><a href="" ng-click="openInstrumentDetails(resultat.instrumentId)">{{resultat.reference}}</a></h3>
                         <center><h5><p>{{resultat.marque.libelle}}</p></h5></center>
                         <p class="price">{{resultat.prix}}€</p>
 
