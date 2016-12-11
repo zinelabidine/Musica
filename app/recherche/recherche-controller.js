@@ -75,15 +75,15 @@
       }
 
       $scope.searchAvance  = function (){
-        if ($scope.marque === undefined){
+        if (angular.isUndefinedOrNull($scope.marque)){
           $scope.marque = "";
         }
 
-        if ($scope.categorie === undefined){
+        if (angular.isUndefinedOrNull($scope.categorie)){
           $scope.categorie = "";
         }
 
-        if ($scope.ref === undefined){
+        if (angular.isUndefinedOrNull($scope.ref)){
           $scope.ref = "";
         }
         
@@ -102,7 +102,7 @@
             $log.log($scope.resultats); 
           });
         }
-        $scope.marque = "";
+        // $scope.marque = "";
         // $scope.categorie = "";
         // $scope.ref = "";
       };
