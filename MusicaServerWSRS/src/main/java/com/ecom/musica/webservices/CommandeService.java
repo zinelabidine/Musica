@@ -12,6 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.ecom.musica.buisness.ManageCommandeBeanRemote;
+import com.ecom.musica.buisness.ManageMailBeanRemote;
+import com.ecom.musica.buisness.impl.ManageMailBean;
 import com.ecom.musica.dto.FactureCommandeDTO;
 import com.ecom.musica.entities.Commande;
 
@@ -21,6 +23,8 @@ import com.ecom.musica.entities.Commande;
 public class CommandeService {
     @EJB
     private ManageCommandeBeanRemote commande;
+    @EJB
+    private ManageMailBeanRemote mail;
 
     @GET
     @Path("/getcommande/{commandeid}")
@@ -67,7 +71,7 @@ public class CommandeService {
         try {
             int commandeInstrumentId = Integer.parseInt(commandeInstrumentParam);
             int quantite = Integer.parseInt(quantiteParam);
-            commande.modifierLigneCommande(commandeInstrumentId,quantite);
+            commande.modifierLigneCommande(commandeInstrumentId, quantite);
         } catch (NumberFormatException e) {
             throw new Exception("Erreur dans les parametres");
         }
@@ -77,7 +81,20 @@ public class CommandeService {
     @Path("/facture")
     @Produces("application/json")
     public void factureCommande(FactureCommandeDTO facturedto) throws Exception {
-        System.out.println(facturedto.getCommandeid());
-        System.out.println(facturedto.getFacturebase64());
+        // System.out.println(facturedto.getCommandeid());
+        // System.out.println(facturedto.getFacturebase64());
+        mail.sendMail(facturedto.getFacturebase64());
+    }
+    @GET
+    @Path("/getcommandesbyutilisateur/{utilisateurid}")
+    @Produces("application/json")
+    public void annulerValidationPanier(@PathParam("utilisateurid") String utilisateurParam)
+            throws Exception {
+        try {
+            int utilisateurId = Integer.parseInt(utilisateurParam);
+            commande.getCommandesByUtilisateur(utilisateurId);
+        } catch (NumberFormatException e) {
+            throw new Exception("Erreur dans les parametres");
+        }
     }
 }

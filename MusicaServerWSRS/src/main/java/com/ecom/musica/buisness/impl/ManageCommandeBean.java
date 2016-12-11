@@ -91,10 +91,18 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     private List<Commande> findCommandesByUtilisateur(Utilisateur utilisateur) {
-        Query req = entityManager.createQuery(
-                "select c from Commande c  where c.utilisateur=:utilisateur ");
+        Query req = entityManager.createQuery("select c from Commande c  where c.utilisateur=:utilisateur ");
         req.setParameter("utilisateur", utilisateur);
         return req.getResultList();
+    }
+
+    @Override
+    public List<Commande> getCommandesByUtilisateur(int clientId) throws Exception {
+        // TODO Auto-generated method stub
+        Utilisateur utilisateur = entityManager.find(Utilisateur.class, clientId);
+        if (utilisateur == null)
+            throw new Exception("Le client n'existe pas!");
+        return findCommandesByUtilisateur(utilisateur);
     }
 
 }
