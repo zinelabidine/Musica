@@ -90,9 +90,18 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
         return instruments;
     }
 
-    public Instrument getInstrumentWithId(int instrument_id) {
-        Instrument i = entityManager.find(Instrument.class, instrument_id);
-        i.getPromotions().size();
+    public Instrument getInstrumentWithId(int instrumentId) {
+    	
+    	/*
+    	 * We can not do two join fetch because Hibernate 4 is too stupid to do that.
+    	 * SELECT i FROM Instrument i Left JOIN FETCH i.promotions p Left JOIN FETCH i.musiciens m WHERE i.instrumentId = :instrumentId
+    	 */
+    	Query q = this.entityManager.createQuery(
+    			"SELECT i FROM Instrument i Left JOIN FETCH i.promotions p WHERE i.instrumentId = :instrumentId");
+    	q.setParameter("instrumentId", instrumentId);
+    	Instrument i = (Instrument) q.getSingleResult();
+    	
+    	i.getMusiciens().size();
         return i;
 
     }

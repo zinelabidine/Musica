@@ -60,7 +60,6 @@ public class Instrument implements Serializable {
     @OneToMany(mappedBy = "instrument")
     private List<PanierInstrument> lignesPanier;
 
-    @Transient
     @ManyToMany(mappedBy = "instruments")
     private List<Musicien> musiciens;
 
