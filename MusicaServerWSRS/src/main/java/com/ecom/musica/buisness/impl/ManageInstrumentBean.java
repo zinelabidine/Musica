@@ -121,52 +121,70 @@ public class ManageInstrumentBean implements ManageInstrumentBeanRemote {
         return instruments;
     }
 
-    @Override
-    public List<Instrument> findInstruments(String marque, String categorie, String instrument_ref) {
-        Query req = null;
-        if (marque.toString().equals("")) {
-            if (instrument_ref.toString().equals("")) {
-                // find with categorie
-                req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Categorie c"
-                        + " Where c.libelle like '%" + categorie + "%'" + " and i.categorie = c.categorieId");
-            } else {
-                // find with categorie et intrument_ref
-                req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Categorie c"
-                        + " Where (i.reference like '%" + instrument_ref + "%'" + " and c.libelle like '%" + categorie
-                        + "%')" + " and i.categorie = c.categorieId");
-            }
-        } else {
-            if (categorie.toString().equals("")) {
-                if (instrument_ref.toString().equals("")) {
-                    // find with marque
-                    req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m"
-                            + " Where m.libelle like '%" + marque + "%'" + " and i.marque = m.marqueId");
-                } else {
-                    // find with marque et ref
-                    req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m"
-                            + " Where (i.reference like '%" + instrument_ref + "%'" + " and m.libelle like '%" + marque
-                            + "%')" + " and i.marque = m.marqueId");
-                }
-            } else {
-                if (instrument_ref.toString().equals("")) {
-                    // find with marque et categorie
-                    req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m, Categorie c"
-                            + " Where (c.libelle like '%" + categorie + "%'" + " and m.libelle like '%" + marque + "%')"
-                            + " and i.marque = m.marqueId" + " and i.categorie = c.categorieId");
-                } else {
-                    // find with 3 criteres
-                    req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu, Marque m, Categorie c"
-                            + " where (i.reference like '%" + instrument_ref + "%'" + " and m.libelle like '%" + marque
-                            + "%'" + " and c.libelle like '%" + categorie + "%')" + " and i.marque = m.marqueId"
-                            + " and i.categorie = c.categorieId");
-                }
-            }
-        }
-
-        List<Instrument> instruments = req.getResultList();
-        for (Instrument instrument : instruments) {
-            instrument.getPromotions().size();
-        }
-        return instruments;
-    }
+	@Override
+	public List<Instrument> findInstruments(String marque, String categorie, String instrumentRef) {
+		/*TypedQuery<Instrument> req = null;
+		if (marque.toString().equals("")) {
+			if (instrument_ref.toString().equals("")) {
+				// find with categorie
+				req = entityManager.createQuery(
+						"select i from Instrument i Left JOIN FETCH i.musiciens mu,Categorie c"
+								+ " Where c.libelle like '%" + categorie + "%'" + " and i.categorie = c.categorieId",
+						Instrument.class);
+			} else {
+				// find with categorie et intrument_ref
+				req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Categorie c"
+						+ " Where (i.reference like '%" + instrument_ref + "%'" + " and c.libelle like '%" + categorie
+						+ "%')" + " and i.categorie = c.categorieId", Instrument.class);
+			}
+		} else {
+			if (categorie.toString().equals("")) {
+				if (instrument_ref.toString().equals("")) {
+					// find with marque
+					req = entityManager.createQuery(
+							"select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m"
+									+ " Where m.libelle like '%" + marque + "%'" + " and i.marque = m.marqueId",
+							Instrument.class);
+				} else {
+					// find with marque et ref
+					req = entityManager.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m"
+							+ " Where (i.reference like '%" + instrument_ref + "%'" + " and m.libelle like '%" + marque
+							+ "%')" + " and i.marque = m.marqueId", Instrument.class);
+				}
+			} else {
+				if (instrument_ref.toString().equals("")) {
+					// find with marque et categorie
+					req = entityManager.createQuery(
+							"select i from Instrument i Left JOIN FETCH i.musiciens mu,Marque m, Categorie c"
+									+ " Where (c.libelle like '%" + categorie + "%'" + " and m.libelle like '%" + marque
+									+ "%')" + " and i.marque = m.marqueId" + " and i.categorie = c.categorieId",
+							Instrument.class);
+				} else {
+					// find with 3 criteres
+					req = entityManager.createQuery(
+							"select i from Instrument i Left JOIN FETCH i.musiciens mu, Marque m, Categorie c"
+									+ " where (i.reference like '%" + instrument_ref + "%'" + " and m.libelle like '%"
+									+ marque + "%'" + " and c.libelle like '%" + categorie + "%')"
+									+ " and i.marque = m.marqueId" + " and i.categorie = c.categorieId",
+							Instrument.class);
+				}
+			}
+		}
+		*/
+		
+		TypedQuery<Instrument> req = entityManager
+				.createQuery("select i from Instrument i Left JOIN FETCH i.musiciens mu, Marque m,"
+						+ " Categorie c where (LOWER(i.reference) like LOWER(:instrumentRef) "
+						+ "and LOWER(m.libelle) like LOWER(:marque) and LOWER(c.libelle) like LOWER(:categorie)) "
+						+ "and i.marque = m.marqueId and i.categorie = c.categorieId", Instrument.class);
+		// Uses of parameters to decline SQL injection
+		req.setParameter("instrumentRef", "%" + instrumentRef + "%");
+		req.setParameter("marque", "%" + marque + "%");
+		req.setParameter("categorie", "%" + categorie + "%");
+		List<Instrument> instruments = req.getResultList();
+		for (Instrument instrument : instruments) {
+			instrument.getPromotions().size();
+		}
+		return instruments;
+	}
 }
