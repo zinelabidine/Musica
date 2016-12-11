@@ -21,16 +21,8 @@
       var marque;
       var categorie;
 
-      $scope.readFile = function () {            
-      $log.log("read file");
-      fileReader.readAsDataUrl($scope.file, $scope)
-                .then(function(result) {
-                      $scope.imageSrc = result;
-                  });
-      };
-
       $scope.addImage = function(){
-        $scope.imageInstrument = $scope.dummy.images;
+        $scope.imageInstrument = $scope.dummy.images[0];
       }
 
       $scope.selectMarque = function(marque) {
