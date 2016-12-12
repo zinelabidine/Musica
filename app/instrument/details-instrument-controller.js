@@ -17,14 +17,14 @@
         '$rootScope',
         'globalService',
         'cartService',
+	'ngDialog',
         function (
-          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService, cartService
+          $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService, cartService, ngDialog
         ) {
       // The content of the controller.
       // Instead of using this use the variable self.
       var self = this;
       // TODO selecte current user autenticated
-      $scope.utilisateurid = globalService.personalDatas().utilisateurid;
       $scope.instrumentId = $stateParams.instrumentId;
       // TODO Add window to select quantite to add
       $scope.quantite = 1;
@@ -39,10 +39,25 @@
         $scope.mainImageSrc = newSrc;
       };
 
+	$scope.goConnectionPage = function() {
+		$location.path('register');	
+		ngDialog.close($scope.opendialog);
+	}
+
       $scope.addInstrumentToCart = function() {
         $log.log("[DetailsInstCtrl] Add instrument to cart");
+
+	if (globalService.personalDatas()==null)  {
+		$scope.opendialog = ngDialog.open({
+			template: '../dialog/yesno.html',
+			className: 'ngdialog-theme-default',
+			controller: 'DetailsInstCtrl'
+		});
+		return null;
+	}
+
         cartService.addInstrumentToCart(
-          $scope.utilisateurid,
+          globalService.personalDatas().utilisateurid,
           $scope.instrumentId,
           $scope.quantite
         )

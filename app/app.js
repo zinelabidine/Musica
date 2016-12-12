@@ -11,6 +11,7 @@ angular.module(appName, [
     'ngRoute',
     'app.config',
     'app.env',
+    'ngDialog',
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
