@@ -36,56 +36,68 @@ angular.module(appName, [
         }
         //url: '/app',
         //templateUrl: 'app.html'
-      }).state('app.home', {
-      url: '/home',
+      })
 
-      views: {
-        'content@': {
-          templateUrl: 'home/home.html',
-          controller: 'HomeCtrl as home'
-        }
-      }
-    }).state('app.recherche', {
-      url: '/recherche?motcles&categorieName',
-      views: {
-        'content@': {
-          templateUrl: 'recherche/recherche.html',
-          controller: 'RechercheCtrl as recherche'
-        }
-      }
-    }).state('app.cart', {
-      url: '/cart',
-      views: {
-        'content@': {
-          templateUrl: 'cart/basket.html',
-          controller: 'CartCtrl as cart'
-        }
-      }
-    }).state('app.checkout', {
-      url: '/checkout/personalinfo',
-      views: {
-        'content@': {
-          templateUrl: 'checkout/personalinfo.html',
-          controller: 'CheckoutCtrl as checkout'
-        }
-      }
-    }).state('app.paymentinfo', {
-      url: '/checkout/paymentinfo',
-      views: {
-        'content@': {
-          templateUrl: 'checkout/paymentinfo.html',
-          controller: 'CheckoutCtrl as checkout'
-        }
-      }
-    }).state('app.orderreview', {
-        url: '/checkout/orderreview',
+      .state('app.recherche', {
+        url: '/recherche?motcles&categorieName',
         views: {
           'content@': {
-            templateUrl: 'checkout/orderreview.html',
-            controller: 'CartCtrl as checkout'
+            templateUrl: 'recherche/recherche.html',
+            controller: 'RechercheCtrl as recherche'
           }
         }
       })
+
+      .state('app.home', {
+          url: '/home',
+        views: {
+          'content@': {
+            templateUrl: 'home/home.html',
+            controller: 'HomeCtrl as home'
+          }
+        }
+      })
+
+      .state('app.cart', {
+        url: '/cart',
+        views: {
+          'content@': {
+            templateUrl: 'cart/basket.html',
+            controller: 'CartCtrl as cart'
+          }
+        }
+      })
+
+      .state('app.checkout', {
+        url: '/checkout/personalinfo',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/personalinfo.html',
+            controller: 'CheckoutCtrl as checkout'
+          }
+        }
+      })
+
+      .state('app.paymentinfo', {
+        url: '/checkout/paymentinfo',
+        views: {
+          'content@': {
+            templateUrl: 'checkout/paymentinfo.html',
+            controller: 'CheckoutCtrl as checkout'
+          }
+        }
+      })
+
+      .state('app.orderreview', {
+          url: '/checkout/orderreview',
+          views: {
+            'content@': {
+              templateUrl: 'checkout/orderreview.html',
+              controller: 'CartCtrl as checkout'
+            }
+          }
+        })
+
       .state('app.displaycommand', {
         url: '/checkout/displaycommand/:commande',
         views: {
@@ -114,7 +126,9 @@ angular.module(appName, [
             controller: 'DetailsInstCtrl as detailsInstCtrl'
           }
         }
-      }).state('app.register', {
+      })
+
+      .state('app.register', {
       url: '/register',
       views: {
         'content@': {
@@ -122,7 +136,9 @@ angular.module(appName, [
           controller: 'RegisterCtrl as register'
         }
       }
-    }).state('app.addInstrument', {
+      })
+
+      .state('app.addInstrument', {
         url: '/addInstrument',
         views: {
           'content@': {
@@ -136,6 +152,17 @@ angular.module(appName, [
           }
         }
       })
+
+      .state('app.profilUtilisateur', {
+        url: '/profilUtilisateur',
+        views: {
+          'content@': {
+            templateUrl: './utilisateur/profil-utilisateur.html',
+            controller: 'ProfilCtrl as profilCtrl'
+          }
+        }
+      })
+
       .state('app.addUtilisateur', {
         url: '/addUtilisateur',
         views: {
@@ -146,6 +173,7 @@ angular.module(appName, [
         }
       });
   }])
+
   .service('globalService', ['$cookies', '$cookieStore',
     function ($cookies, $cookieStore) {
       function overrideAndReturn(name, value) {

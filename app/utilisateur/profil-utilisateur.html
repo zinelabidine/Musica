@@ -1,0 +1,109 @@
+<div class="container">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="#/home">Accueil</a>
+            </li>
+            <li>My account</li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-3">
+        <!-- *** MENUS ***
+_________________________________________________________ -->
+        <div class="panel panel-default sidebar-menu">
+            <div class="panel-heading">
+                <h3 class="panel-title">Customer section</h3>
+            </div>
+
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href=""><i class="fa fa-user"></i> My account</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-list"></i> My orders</a>
+                    </li>                   
+                    <li>
+                        <a href="#/home"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="box">          
+            <h3>Personal details</h3>
+            <form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="firstname">Firstname</label>
+                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="lastname">Lastname</label>
+                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" ng-model=resultat_client.address>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" ng-model="resultat_client.city">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="zip">ZIP</label>
+                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input class="form-control" id="country" ng-model="resultat_client.country">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phone">Telephone</label>
+                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" ng-model="resultat_client.email">
+                        </div>
+                    </div>
+                     <div class="col-sm-12 text-center">
+                        <p ng-model="alert">{{alert}}</p>
+                        <button type="submit" class="btn btn-primary" ng-click="updateClientPersonalInformation()"><i class="fa fa-save"></i> Save changes</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.col-md-9 -->
+</div>
+<!-- /.container -->
