@@ -154,7 +154,7 @@ angular.module(appName, [
       })
 
       .state('app.profilUtilisateur', {
-        url: '/profilUtilisateur',
+        url: '/profil',
         views: {
           'content@': {
             templateUrl: './utilisateur/profil-utilisateur.html',

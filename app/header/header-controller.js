@@ -54,6 +54,10 @@
             $location.path('register');
           };
 
+          $scope.profil = function(){
+            $location.path("/profil");
+          }
+          
           $scope.getToRegister = function () {
             $location.path('register');
           };
