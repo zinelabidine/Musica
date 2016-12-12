@@ -49,12 +49,17 @@
 
           $scope.logout = function () {
             registerService.logout();
-            $location.path('home');
+            $scope.isConnected = registerService.isConnected();
+            $location.path('register');
           };
 
           $scope.getToRegister = function () {
             $location.path('register');
           };
+
+          $rootScope.$on('authentificationEvent', function (event, args) {
+            $scope.isConnected = registerService.isConnected();
+          });
           //headerService.initHeader().then(function (response) {
           //  $log.log("initHeader-service");
           //  $scope.categories = response;
