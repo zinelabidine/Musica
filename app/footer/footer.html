@@ -25,11 +25,9 @@
                 <h5>Catégories</h5>
 
                 <ul>
-                    <li><a href="">Batteries</a></li>
-                    <li><a href="">Guitares</a></li>
-                    <li><a href="">Sonos</a></li>
-                    <li><a href="">Violons</a></li>
-                    <li><a href="">Basses</a></li>
+                    <li ng-repeat="categorie in categories">
+                        <a href="" ng-click="goToCategorie(categorie.libelle)">{{categorie.libelle}}</a>
+                    </li>
                 </ul>
 
                 <hr class="hidden-md hidden-lg">
