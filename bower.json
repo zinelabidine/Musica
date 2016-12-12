@@ -26,6 +26,7 @@
     "waypoints": "^4.0.1",
     "angular-touch": "^1.5.8",
     "angular-owl-carousel": "^0.2.3",
-    "pdfmake": "^0.1.20"
+    "pdfmake": "^0.1.20",
+    "ng-dialog": "^0.6.4"
   }
 }
