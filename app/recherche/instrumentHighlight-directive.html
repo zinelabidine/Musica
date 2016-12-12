@@ -1,0 +1,14 @@
+<div class="product" >
+    <div class="text">
+        <h3><a href="" ng-click="openInstrumentDetailsLocal(instrument.instrumentId)">{{instrument.reference}}</a></h3>
+        <center><h5><p>{{instrument.marque.libelle}}</p></h5></center>
+        <p class="price">{{instrument.prix}}€</p>
+
+        <p class="buttons">
+            <a ng-click="openInstrumentDetailsLocal(instrument.instrumentId)" class="btn btn-default">View detail</a>
+            <a ng-click="addInstrumentToCart(instrument.instrumentId)" class="btn btn-primary">
+                <i class="fa fa-shopping-cart"></i>Add to cart</a>
+        </p>
+    </div>
+    <!-- /.text -->
+</div>
