@@ -46,7 +46,7 @@ angular.module(appName, [
         }
       }
     }).state('app.recherche', {
-      url: '/recherche/:motcles',
+      url: '/recherche?motcles&categorieName',
       views: {
         'content@': {
           templateUrl: 'recherche/recherche.html',

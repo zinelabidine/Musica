@@ -10,8 +10,9 @@
 
                 <div class="col-sm-12 col-md-3">
                     <label for="Categorie"> <strong> Categorie</strong> </label>
-                    <select ng-model="categorie" id="Categorie" class="form-control" ng-options="storedCategorie.libelle as storedCategorie.libelle for storedCategorie in storedCategories track by storedCategorie.categorieId">
+                    <select ng-model="categorie" id="Categorie" class="form-control">
                         <option value="">Sélectionner une catégorie</option>
+                        <option ng-repeat="storedCategorie in storedCategories track by storedCategorie.categorieId" value="{{storedCategorie.libelle}}">{{storedCategorie.libelle}}</option>
                     </select>
                 </div>  
 

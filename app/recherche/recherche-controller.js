@@ -40,15 +40,9 @@
       var self = this;
 
       $scope.resultats =[];
-
-      // $scope.marque = $stateParams.marque;
-      // $scope.categorie = $stateParams.categorie; 
-      $scope.motcles = $stateParams.motcles;
-
-      //$scope.marque = $scope.marque;
-      $scope.categorie = "";
-      //$scope.ref = $scope.ref;
       $scope.storedCategories = headerService.getCategories();
+      $scope.motcles = $stateParams.motcles;
+      $scope.categorieName = $stateParams.categorieName;
 
       $scope.options = ["Nom", "Prix croissant", "Prix décroissant" , "Marque"];
       $scope.orderByPredicate = "reference";
@@ -62,9 +56,9 @@
           return Math.ceil($scope.resultats.length/$scope.pageSize);
       };
 
-
-
-      search();
+      if(angular.isUndefinedOrNull($scope.motcles)){
+        $scope.motcles = "";
+      }
 
       function search() {
         rechercheService.searchWithKey($scope.motcles).then(function (response) {
@@ -74,7 +68,7 @@
         });
       }
 
-      $scope.searchAvance  = function (){
+      $scope.searchAvance = function (){
         if (angular.isUndefinedOrNull($scope.marque)){
           $scope.marque = "";
         }
@@ -146,6 +140,28 @@
       $scope.openInstrumentDetails = function(instrumentid) {
         $location.path("instrument/"+instrumentid);
       };
+
+      if(angular.isUndefinedOrNull($scope.categorieName)){
+        $scope.categorie = "";
+        search();
+      } else {
+        $log.info($scope.storedCategories);
+        angular.forEach($scope.storedCategories, function(value, key) {
+          if (value.hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === value.libelle.toLowerCase()) {
+            $scope.categorie = value.libelle;
+          }
+        });
+        $scope.searchAvance();
+      }
+
+      //$scope.initDefaultCategorie = function (categorieName) {
+      //  if($scope.categorie === "") {
+      //    return false;
+      //  } else if($scope.categorie.toLowerCase() === categorieName.toLowerCase()){
+      //    return true;
+      //  }
+      //  return false;
+      //};
 
     }]);
 }());

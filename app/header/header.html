@@ -10,7 +10,7 @@
 
         <ul class="nav navbar-nav navbar-left">
             <li><a href="#/home">Accueil</a></li>
-            <li ng-repeat="categorie in categories"><a href="">{{categorie.libelle}}</a></li>
+            <li ng-repeat="categorie in categories"><a href="" ng-click="goToCategorie(categorie.libelle)">{{categorie.libelle}}</a></li>
         </ul>
 
     </div>

@@ -78,12 +78,6 @@
             return deferred.reject(failedDetail);
           });
         return deferred.promise;
-        //return $http.post(EnvironmentConfig.GlobalBaseUrl + "/auth/login", data)
-        //  .then(function (response) {
-        //    return response.data;
-        //  }, function (errResponse) {
-        //    $log.log("Error in AJAX call " + errResponse);
-        //  })
       },
       logout: function () {
         globalService.cleanSessionStorage();

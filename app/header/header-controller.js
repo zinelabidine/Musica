@@ -24,7 +24,8 @@
           $scope.isConnected = registerService.isConnected();
           
           $scope.searchAction = function () {
-            $location.path("/recherche/" + $scope.motcles);
+            $location.search({});
+            $location.path("/recherche").search('motcles', $scope.motcles);
           };
 
           $scope.cartAction = function () {
@@ -57,13 +58,14 @@
             $location.path('register');
           };
 
+          $scope.goToCategorie = function (categorieName) {
+            $location.search({});
+            $location.path("/recherche").search('categorieName', categorieName);
+          };
+
           $rootScope.$on('authentificationEvent', function (event, args) {
             $scope.isConnected = registerService.isConnected();
           });
-          //headerService.initHeader().then(function (response) {
-          //  $log.log("initHeader-service");
-          //  $scope.categories = response;
-          //});
 
         }]);
 
