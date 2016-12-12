@@ -39,6 +39,11 @@
         $scope.mainImageSrc = newSrc;
       };
 
+	$scope.goConnectionPage = function() {
+		$location.path('register');	
+		ngDialog.close($scope.opendialog);
+	}
+
       $scope.addInstrumentToCart = function() {
         $log.log("[DetailsInstCtrl] Add instrument to cart");
 
