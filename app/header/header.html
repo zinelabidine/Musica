@@ -28,7 +28,7 @@
                aria-haspopup="true"
                aria-expanded="false"><span class="fa fa-user"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Mon profile</a></li>
+                <li ng-show="isConnected"><a href="#">Mon profile</a></li>
                 <li><a href="#">A propos</a></li>
                 <li ng-switch="isConnected">
                     <button ng-switch-when="true" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="logout()">

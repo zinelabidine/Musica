@@ -37,20 +37,9 @@
         <!-- PRODUCT-->
         <div class="row">
             <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
-                <div class="product" >
-                    <div class="text">
-                        <h3><a href="" ng-click="openInstrumentDetails(resultat.instrumentId)">{{resultat.reference}}</a></h3>
-                        <center><h5><p>{{resultat.marque.libelle}}</p></h5></center>
-                        <p class="price">{{resultat.prix}}€</p>
 
-                        <p class="buttons">
-                            <a ng-click="openInstrumentDetails(resultat.instrumentId)" class="btn btn-default">View detail</a>
-                            <a ng-click="addInstrumentToCart(resultat.instrumentId)" class="btn btn-primary">
-                              <i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </p>
-                    </div>
-                    <!-- /.text -->
-                </div>
+                <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
+                                      add-instrument-tocart="addInstrumentToCart(instrumentId)"></instrument-highlight>
                 <!-- /.product -->
             </div>
         </div>
