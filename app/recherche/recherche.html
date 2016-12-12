@@ -17,7 +17,7 @@
                 </div>  
 
                 <div class="col-sm-12 col-md-3">
-                    <label for="keys"> <strong> Mot-Cles</strong> </label>
+                    <label for="keys"> <strong> Mots-Clées</strong> </label>
                     <input type="text" class="form-control" ng-model="ref" id="keys" value="" placeholder="Piano, Guitare..." >
                 </div>
 
@@ -30,7 +30,7 @@
             </div>  
 
             <div class="row form-search">                
-                <button type="submit" class="btn btn-primary btn-search" ng-click="searchAvance()">Search</button>
+                <button type="submit" class="btn btn-primary btn-search" ng-click="searchAvance()">Chercher</button>
             </div>          
         </div>
 
@@ -40,6 +40,14 @@
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
                                       add-instrument-tocart="addInstrumentToCart(instrumentId)"></instrument-highlight>
+                        <!--p class="buttons">
+                            <a ng-click="openInstrumentDetails(resultat.instrumentId)" class="btn btn-default">Voir details</a>
+                            <a ng-click="addInstrumentToCart(resultat.instrumentId)" class="btn btn-primary">
+                              <i class="fa fa-shopping-cart"></i>Ajouter au panier</a>
+                        </p>
+                    </div-->
+                    <!-- /.text 
+                </div-->
                 <!-- /.product -->
             </div>
         </div>

@@ -10,10 +10,10 @@
 
             <div class="col-md-12">
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a>
+                    <li><a href="#">Accueil</a>
                     </li>
-                    <li>Payment</li>
-                    <li>Payment information</li>
+                    <li>Paiement</li>
+                    <li>Informations paiement</li>
                 </ul>
             </div>
 
@@ -21,13 +21,13 @@
 
                   <div class="box">
                       <form>
-                          <h1>Checkout - Payment method</h1>
+                          <h1>Commande - Methode de paiement</h1>
                           <ul class="nav nav-pills nav-justified">
-                              <li><a><i class="fa fa-map-marker"></i><br>Address</a>
+                              <li><a><i class="fa fa-map-marker"></i><br>Adresse</a>
                               </li>
-                              <li class="active"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                              <li class="active"><a href="#"><i class="fa fa-money"></i><br>Methode de paiement</a>
                               </li>
-                              <li><a><i class="fa fa-eye"></i><br>Order Review</a>
+                              <li><a><i class="fa fa-eye"></i><br>Révision de commande</a>
                               </li>
                           </ul>
 
@@ -35,7 +35,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="form-group">
-                                          <label for="name">Card name</label>
+                                          <label for="name">Nom sur la carte</label>
                                           <input type="text" class="form-control" id="cardname" ng-model="resultat_client.cardname">
                                       </div>
                                   </div>
@@ -43,7 +43,7 @@
                               <div class="row">
                                   <div class="col-sm-6">
                                       <div class="form-group">
-                                          <label for="name">Card number</label>
+                                          <label for="name">Numero de la carte</label>
                                           <input type="text" class="form-control" id="cardnumber" ng-model="resultat_client.cardnumber">
                                       </div>
                                   </div>
@@ -51,13 +51,13 @@
                               <div class="row">
                                   <div class="col-sm-6 col-md-3">
                                       <div class="form-group">
-                                        <label for="month">Month</label>
+                                        <label for="month">Mois</label>
                                           <input type="text" class="form-control" id="cardmonth" ng-model="resultat_client.cardmonth">
                                       </div>
                                   </div>
                                   <div class="col-sm-6 col-md-3">
                                       <div class="form-group">
-                                        <label for="year">Year</label>
+                                        <label for="year">Année</label>
                                           <input type="text" class="form-control" id="cardyear" ng-model="resultat_client.cardyear">
                                       </div>
                                   </div>
@@ -75,14 +75,14 @@
                                   >
                                   <i class="fa fa-chevron-left"
                                   ></i>
-                                  Back to Personal information
+                                  Retour aux informations personelles
                                 </a>
                               </div>
                               <div class="pull-right">
                                   <button
                                     class="btn btn-primary"
                                     ng-click='updateClientPaymentInformation()'
-                                    >Continue to Order review
+                                    >Passer la commande
                                     <i class="fa fa-chevron-right"></i>
                                   </button>
                               </div>
@@ -95,40 +95,36 @@
               </div>
               <!-- /.col-md-9 -->
 
-              <div class="col-md-3">
+                <div class="col-md-3">
 
-                  <div class="box" id="order-summary">
-                      <div class="box-header">
-                          <h3>Order summary</h3>
-                      </div>
-                      <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                    <div class="box" id="order-summary">
+                        <div class="box-header">
+                            <h3>Resumé des choix</h3>
+                        </div>
+                        <p class="text-muted">Les frais d'expédition et les frais supplémentaires sont calculés en fonction des valeurs saisies.</p>
 
-                      <div class="table-responsive">
-                          <table class="table">
-                              <tbody>
-                                  <tr>
-                                      <td>Order subtotal</td>
-                                      <th>$446.00</th>
-                                  </tr>
-                                  <tr>
-                                      <td>Shipping and handling</td>
-                                      <th>$10.00</th>
-                                  </tr>
-                                  <tr>
-                                      <td>Tax</td>
-                                      <th>$0.00</th>
-                                  </tr>
-                                  <tr class="total">
-                                      <td>Total</td>
-                                      <th>$456.00</th>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Total HT</td>
+                                        <th>TODO $446.00</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Taxe</td>
+                                        <th>TODO $0.00</th>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Total TTC</td>
+                                        <th>TODO $456.00</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                  </div>
+                    </div>
 
-              </div>
+                </div>
               <!-- /.col-md-3 -->
 
           </div>

@@ -2,15 +2,15 @@
 
     <div class="col-md-12">
         <ul class="breadcrumb">
-            <li><a href="#">Home</a>
+            <li><a href="#">Accueil</a>
             </li>
-            <li>Add Instrument</li>
+            <li>Ajouter instrument</li>
         </ul>
     </div>
 
     <div class="col-md-12">
         <div class="box">
-            <h1>Add Instrument</h1>   
+            <h1>Ajouter instrument</h1>   
 
             <div class="content">                                       
                 <div class="row">      
@@ -37,7 +37,7 @@
                         </div>   -->  
 
                         <div class="form-group">
-                            <label for="Reference">Reference</label>
+                            <label for="Reference">Réference</label>
                             <input type="text" class="form-control" id="Reference" ng-model="referenceInstrument">
                         </div>        
 
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label for="Quantite">Quantite</label>
+                            <label for="Quantite">Quantité</label>
                             <input type="text" class="form-control" id="Quantite" ng-model="quantiteInstrument">
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="Description">Description</label>
+                            <label for="Description">Déscription</label>
                             <textarea type="text-area" rows="10" class="form-control" id="Description" ng-model="descriptionInstrument">                                    
                             </textarea> 
                         </div>
@@ -83,8 +83,8 @@
 
                 <div class="" style="text-align: center">
                     <p ng-model="alert">{{alert}}</p>
-                    <button class="btn btn-primary" ng-click="addInstrument()">Save</button>
-                    <button type="submit" class="btn" ng-click="">Cancel</button>
+                    <button class="btn btn-primary" ng-click="addInstrument()">Sauvegarder</button>
+                    <button type="submit" class="btn" ng-click="">Quitter</button>
                 </div>               
             </div>
 
