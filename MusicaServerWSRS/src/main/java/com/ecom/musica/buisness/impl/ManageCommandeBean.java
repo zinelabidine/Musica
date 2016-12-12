@@ -97,9 +97,9 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     @Override
-    public List<Commande> getCommandesByUtilisateur(int clientId) throws Exception {
+    public List<Commande> getCommandesByUtilisateur(int utilisateurId) throws Exception {
         // TODO Auto-generated method stub
-        Utilisateur utilisateur = entityManager.find(Utilisateur.class, clientId);
+        Utilisateur utilisateur = entityManager.find(Utilisateur.class, utilisateurId);
         if (utilisateur == null)
             throw new Exception("Le client n'existe pas!");
         return findCommandesByUtilisateur(utilisateur);
