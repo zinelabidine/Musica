@@ -28,9 +28,8 @@
                aria-haspopup="true"
                aria-expanded="false"><span class="fa fa-user"></span></a>
             <ul class="dropdown-menu">
-                <li ng-switch="isConnected">
-                    <a href="" ng-switch-when="true" ng-click="profil()">Mon profile</a>
-                    <a href="" ng-switch-when="false" style="display:none;">Mon profile</a>
+                <li ng-show="isConnected">
+                    <a href="" ng-click="profil()" ng-model="utilisateurLogin">{{utilisateurLogin}}</a>
                 </li>
                 <li>
                     <a href="#">A propos</a>

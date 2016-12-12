@@ -57,7 +57,7 @@
           $scope.profil = function(){
             $location.path("/profil");
           }
-          
+
           $scope.getToRegister = function () {
             $location.path('register');
           };
@@ -69,6 +69,7 @@
 
           $rootScope.$on('authentificationEvent', function (event, args) {
             $scope.isConnected = registerService.isConnected();
+            $scope.utilisateurLogin = args.message.userId;
           });
 
         }]);
