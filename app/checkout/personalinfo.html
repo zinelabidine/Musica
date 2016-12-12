@@ -10,10 +10,10 @@
 
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li><a href="#">Home</a>
+                        <li><a href="#">Accueil</a>
                         </li>
-                        <li>Payment</li>
-                        <li>Personal information</li>
+                        <li>Paiement</li>
+                        <li>Informaions personelles</li>
                     </ul>
                 </div>
 
@@ -21,13 +21,13 @@
 
                     <div class="box">
                         <form method="post">
-                            <h1>Checkout</h1>
+                            <h1>Commande</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Personal information</a>
+                                <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Informations personelles</a>
                                 </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Methodes de paiement</a>
                                 </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                                <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Révision de commande</a>
                                 </li>
                             </ul>
 
@@ -35,13 +35,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">Firstname</label>
+                                            <label for="firstname">Prénom(s)</label>
                                             <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="lastname">Lastname</label>
+                                            <label for="lastname">Nom</label>
                                             <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="address">Address</label>
+                                            <label for="address">Adresse</label>
                                             <input type="text" class="form-control" id="address" ng-model=resultat_client.address>
                                         </div>
                                     </div>
@@ -61,26 +61,26 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
-                                            <label for="city">City</label>
+                                            <label for="city">Ville</label>
                                             <input type="text" class="form-control" id="city" ng-model="resultat_client.city">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
-                                            <label for="zip">ZIP</label>
+                                            <label for="zip">Code postal</label>
                                             <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
-                                            <label for="country">Country</label>
+                                            <label for="country">Pays</label>
                                             <input class="form-control" id="country" ng-model="resultat_client.country">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="phone">Telephone</label>
+                                            <label for="phone">Téléphone</label>
                                             <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel">
                                         </div>
                                     </div>
@@ -97,10 +97,10 @@
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to basket</a>
+                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Retour au panier</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultat_client)'>Continue to Delivery Method<i class="fa fa-chevron-right"></i>
+                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultat_client)'>Continuer<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
