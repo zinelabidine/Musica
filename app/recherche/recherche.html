@@ -35,7 +35,7 @@
         </div>
 
         <!-- PRODUCT-->
-        <div class="row">
+        <div class="row products">
             <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
