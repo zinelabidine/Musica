@@ -62,6 +62,7 @@
             globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
+            data.login = clientLoginData.login;
             globalService.personalDatas(JSON.stringify(data));
 
             deferred.resolve(data, status);
@@ -104,6 +105,7 @@
             globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
+            data.login = clientRegisterData.login;
             globalService.personalDatas(JSON.stringify(data));
 
             deferred.resolve(data, status);

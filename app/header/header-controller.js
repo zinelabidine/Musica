@@ -69,7 +69,7 @@
 
           $rootScope.$on('authentificationEvent', function (event, args) {
             $scope.isConnected = registerService.isConnected();
-            $scope.utilisateurLogin = args.message.userId;
+            $scope.utilisateurLogin = args.message.login;
           });
 
         }]);
