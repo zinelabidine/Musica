@@ -62,8 +62,6 @@
             globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
-            data.userId = clientLoginData.login;
-            console.log(data);
             globalService.personalDatas(JSON.stringify(data));
 
             deferred.resolve(data, status);
@@ -106,8 +104,6 @@
             globalService.expirationDate(dateAdd(new Date, 'hour', 1).getTime());
 
             // Store personal data
-            data.userId = clientRegisterData.login;
-            console.log(data);
             globalService.personalDatas(JSON.stringify(data));
 
             deferred.resolve(data, status);
