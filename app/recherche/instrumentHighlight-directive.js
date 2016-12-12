@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module('app')
-    .directive('instrumentHighlight', function ($timeout) {
+    .directive('instrumentHighlight', function () {
       return {
         restrict: 'E',
         scope: {
