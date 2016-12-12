@@ -38,22 +38,22 @@ angular.module(appName, [
         //templateUrl: 'app.html'
       })
 
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'content@': {
+            templateUrl: 'home/home.html',
+            controller: 'HomeCtrl as home'
+          }
+        }
+      })
+
       .state('app.recherche', {
         url: '/recherche?motcles&categorieName',
         views: {
           'content@': {
             templateUrl: 'recherche/recherche.html',
             controller: 'RechercheCtrl as recherche'
-          }
-        }
-      })
-
-      .state('app.home', {
-          url: '/home',
-        views: {
-          'content@': {
-            templateUrl: 'home/home.html',
-            controller: 'HomeCtrl as home'
           }
         }
       })

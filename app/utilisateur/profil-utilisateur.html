@@ -4,7 +4,7 @@
         <ul class="breadcrumb">
             <li><a href="#/home">Accueil</a>
             </li>
-            <li>My account</li>
+            <li>Mon compte</li>
         </ul>
 
     </div>
@@ -14,19 +14,19 @@
 _________________________________________________________ -->
         <div class="panel panel-default sidebar-menu">
             <div class="panel-heading">
-                <h3 class="panel-title">Customer section</h3>
+                <h3 class="panel-title">Mon compte </h3>
             </div>
 
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active">
-                        <a href=""><i class="fa fa-user"></i> My account</a>
+                        <a href=""><i class="fa fa-user"></i> Mes informations</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-list"></i> My orders</a>
+                        <a href=""><i class="fa fa-list"></i> Mes commandes</a>
                     </li>                   
                     <li>
-                        <a href="#/home"><i class="fa fa-sign-out"></i> Logout</a>
+                        <a href="#/home"><i class="fa fa-sign-out"></i> Deconnecter</a>
                     </li>
                 </ul>
             </div>
@@ -35,18 +35,18 @@ _________________________________________________________ -->
 
     <div class="col-md-9">
         <div class="box">          
-            <h3>Personal details</h3>
+            <h3>Information Personnelles</h3>
             <form>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="firstname">Firstname</label>
+                            <label for="firstname">Nom</label>
                             <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="lastname">Lastname</label>
+                            <label for="lastname">Prenom</label>
                             <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
                         </div>
                     </div>
@@ -56,7 +56,7 @@ _________________________________________________________ -->
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Adresse</label>
                             <input type="text" class="form-control" id="address" ng-model=resultat_client.address>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ _________________________________________________________ -->
                 <div class="row">
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label for="city">City</label>
+                            <label for="city">Ville</label>
                             <input type="text" class="form-control" id="city" ng-model="resultat_client.city">
                         </div>
                     </div>
@@ -78,7 +78,7 @@ _________________________________________________________ -->
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label for="country">Country</label>
+                            <label for="country">Pay</label>
                             <input class="form-control" id="country" ng-model="resultat_client.country">
                         </div>
                     </div>
@@ -97,7 +97,7 @@ _________________________________________________________ -->
                     </div>
                      <div class="col-sm-12 text-center">
                         <p ng-model="alert">{{alert}}</p>
-                        <button type="submit" class="btn btn-primary" ng-click="updateClientPersonalInformation()"><i class="fa fa-save"></i> Save changes</button>
+                        <button type="submit" class="btn btn-primary" ng-click="updateClientPersonalInformation()"><i class="fa fa-save"></i> Enregistrer</button>
                     </div>
 
                 </div>

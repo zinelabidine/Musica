@@ -41,7 +41,7 @@
               $scope.resultat_client.utilisateurid = $scope.client;
               checkoutService.updateClientPersonalInformation($scope.resultat_client)
               .success(function() {
-                $scope.alert ="Update client personal information avec success !!!"   
+                  $scope.alert ="Vos informations ont été mises à jour avec succès !!!"   
               });
             }
       }]);
