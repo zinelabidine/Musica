@@ -84,14 +84,12 @@
               rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
                 .then(function (response) {
                   $scope.resultats = response;
-                  $log.log($scope.resultats);
                 });
             }
             else {
               rechercheService.searchWithKey($scope.ref).then(function (response) {
                 $log.log("Search with key:" + $scope.ref);
                 $scope.resultats = response;
-                $log.log($scope.resultats);
               });
             }
             // $scope.marque = "";
@@ -138,12 +136,14 @@
             $scope.categorie = "";
             search();
           } else {
-            $log.info($scope.storedCategories);
-            angular.forEach($scope.storedCategories, function (value, key) {
-              if (value.hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === value.libelle.toLowerCase()) {
-                $scope.categorie = value.libelle;
+            if(!angular.isEmpty($scope.storedCategories)) {
+              for (var i = 0; i < $scope.storedCategories.length; i++) {
+                if ($scope.storedCategories[i].hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === $scope.storedCategories[i].libelle.toLowerCase()) {
+                  $scope.categorie = $scope.storedCategories[i].libelle;
+                  break;
+                }
               }
-            });
+            }
             $scope.searchAvance();
           }
 

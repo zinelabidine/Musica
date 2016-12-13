@@ -184,11 +184,6 @@ angular.module(appName, [
         return $cookies[name];
       }
 
-      function getPreferences(preferences) {
-        var data = overrideAndReturnFromLocalStorage('clePortalPreferences', JSON.stringify(preferences));
-        return angular.fromJson(data);
-      }
-
       function overrideAndReturnFromLocalStorage(name, value) {
         if (typeof(Storage) !== "undefined") {
           if (value) {
