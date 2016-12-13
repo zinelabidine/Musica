@@ -85,16 +85,30 @@ public class CommandeService {
         // System.out.println(facturedto.getFacturebase64());
         mail.sendMail(facturedto.getFacturebase64(), facturedto.getCommandeid());
     }
+    
+
     @GET
     @Path("/getcommandesbyutilisateur/{utilisateurid}")
     @Produces("application/json")
-    public void annulerValidationPanier(@PathParam("utilisateurid") String utilisateurParam)
-            throws Exception {
+    public List<Commande> getAllCommande(@PathParam("utilisateurid") String utilisateurParam) throws Exception {
         try {
             int utilisateurId = Integer.parseInt(utilisateurParam);
-            commande.getCommandesByUtilisateur(utilisateurId);
+            return commande.getCommandesByUtilisateur(utilisateurId);
         } catch (NumberFormatException e) {
             throw new Exception("Erreur dans les parametres");
         }
     }
+    
+//    @GET
+//    @Path("/getcommandesbyutilisateur/{utilisateurid}")
+//    @Produces("application/json")
+//    public void annulerValidationPanier(@PathParam("utilisateurid") String utilisateurParam)
+//            throws Exception {
+//        try {
+//            int utilisateurId = Integer.parseInt(utilisateurParam);
+//            commande.getCommandesByUtilisateur(utilisateurId);
+//        } catch (NumberFormatException e) {
+//            throw new Exception("Erreur dans les parametres");
+//        }
+//    }
 }

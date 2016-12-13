@@ -1,6 +1,9 @@
 package com.ecom.musica.buisness.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -187,7 +190,11 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         return commande.getCommandeId();
     }
     private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
-        commande.setUtilisateur(panier.getUtilisateur());
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	Date date = new Date();
+    	System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+    	commande.setUtilisateur(panier.getUtilisateur());
+    	commande.setDate(dateFormat.format(date));
         commande.setMontantHT(panier.getMontantHT());
         commande.setMontantTTC(panier.getMontantTTC());
         List<PanierInstrument> lignesPanier = panier.getLignesPanier();

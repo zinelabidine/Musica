@@ -1,6 +1,7 @@
 package com.ecom.musica.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +30,11 @@ public class Commande implements Serializable {
     @ManyToOne
     @JoinColumn(name = "UtilisateurId")
     private Utilisateur utilisateur;
+    
+    @Column(name = "Date")
+    private String date;
 
-    @Column(name = "MontantTTC")
+	@Column(name = "MontantTTC")
     private float montantTTC;
 
     @Column(name = "MontantHT")
@@ -58,6 +62,14 @@ public class Commande implements Serializable {
         this.utilisateur = utilisateur;
     }
 
+    public String getDate() {
+		return date;
+	}
+
+	public void setDate(String string) {
+		this.date = string;
+	}
+	
     public float getMontantTTC() {
         return montantTTC;
     }
