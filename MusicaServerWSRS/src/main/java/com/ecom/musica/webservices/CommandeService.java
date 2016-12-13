@@ -83,7 +83,7 @@ public class CommandeService {
     public void factureCommande(FactureCommandeDTO facturedto) throws Exception {
         // System.out.println(facturedto.getCommandeid());
         // System.out.println(facturedto.getFacturebase64());
-        mail.sendMail(facturedto.getFacturebase64());
+        mail.sendMail(facturedto.getFacturebase64(), facturedto.getCommandeid());
     }
     @GET
     @Path("/getcommandesbyutilisateur/{utilisateurid}")

@@ -4,5 +4,5 @@ import javax.ejb.Remote;
 
 @Remote
 public interface ManageMailBeanRemote {
-    public void sendMail(String encodedFile) throws Exception;
+    public void sendMail(String encodedFile, int commandeId) throws Exception;
 }
