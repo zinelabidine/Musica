@@ -23,7 +23,7 @@
 
                 <div class="col-sm-12 col-md-3">
                     <label for="keys"> <strong> Trier par</strong> </label>
-                    <select ng-model="selection" ng-change="filtre()" class="form-control" ng-options="option for option in options">
+                    <select ng-model="selectedOrderOption" class="form-control" ng-options="orderOption.propName for orderOption in orderOptions">
                         <option value="">--Option--</option>
                     </select>                              
                 </div>      
@@ -36,7 +36,7 @@
 
         <!-- PRODUCT-->
         <div class="row products">
-            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
+            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
                                       add-instrument-tocart="addInstrumentToCart(instrumentId)"></instrument-highlight>

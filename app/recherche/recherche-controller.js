@@ -42,9 +42,12 @@
           $scope.motcles = $stateParams.motcles;
           $scope.categorieName = $stateParams.categorieName;
 
-          $scope.options = ["Nom", "Prix croissant", "Prix décroissant", "Marque"];
-          $scope.orderByPredicate = "reference";
-          $scope.orderByReverse = true;
+          $scope.orderOptions = [
+            {propName : "Nom", orderByPredicate: "reference", orderByReverse:false},
+            {propName : "Prix croissant", orderByPredicate: "prix", orderByReverse:false},
+            {propName : "Prix décroissant", orderByPredicate: "prix", orderByReverse:true},
+            {propName : "Marque", orderByPredicate: "marque", orderByReverse:false}
+          ];
 
           $scope.utilisateurid = globalService.personalDatas().utilisateurid;
 
@@ -58,11 +61,10 @@
             $scope.motcles = "";
           }
 
-          function search() {
-            rechercheService.searchWithKey($scope.motcles).then(function (response) {
-              $log.log("Search with key:" + $scope.motcles);
+          // Recherche avec mot clé.
+          function searchWithKey(keyword) {
+            rechercheService.searchWithKey(keyword).then(function (response) {
               $scope.resultats = response;
-              $log.log($scope.resultats);
             });
           }
 
@@ -79,39 +81,10 @@
               $scope.ref = "";
             }
 
-            if (($scope.marque !== "") || ($scope.categorie !== "")) {
-              $log.log("Search avance");
-              rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
-                .then(function (response) {
-                  $scope.resultats = response;
-                });
-            }
-            else {
-              rechercheService.searchWithKey($scope.ref).then(function (response) {
-                $log.log("Search with key:" + $scope.ref);
+            rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
+              .then(function (response) {
                 $scope.resultats = response;
               });
-            }
-            // $scope.marque = "";
-            // $scope.categorie = "";
-            // $scope.ref = "";
-          };
-
-          $scope.filtre = function () {
-            if ($scope.selection == "Nom") {
-              $scope.orderByPredicate = '-reference';
-            }
-            else if ($scope.selection == "Prix croissant") {
-              $scope.orderByReverse = false;
-              $scope.orderByPredicate = 'prix';
-            }
-            else if ($scope.selection == "Prix décroissant") {
-              $scope.orderByReverse = true;
-              $scope.orderByPredicate = 'prix';
-            }
-            else if ($scope.selection == "Marque") {
-              $scope.orderByPredicate = 'marque';
-            }
           };
 
           $scope.addInstrumentToCart = function (instrumentid) {
@@ -134,7 +107,7 @@
 
           if (angular.isUndefinedOrNull($scope.categorieName)) {
             $scope.categorie = "";
-            search();
+            searchWithKey($scope.motcles);
           } else {
             if(!angular.isEmpty($scope.storedCategories)) {
               for (var i = 0; i < $scope.storedCategories.length; i++) {
@@ -146,15 +119,5 @@
             }
             $scope.searchAvance();
           }
-
-          //$scope.initDefaultCategorie = function (categorieName) {
-          //  if($scope.categorie === "") {
-          //    return false;
-          //  } else if($scope.categorie.toLowerCase() === categorieName.toLowerCase()){
-          //    return true;
-          //  }
-          //  return false;
-          //};
-
         }]);
 }());
