@@ -19,15 +19,17 @@ import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.ecom.musica.buisness.ManageMailBeanRemote;
 import com.ecom.musica.entities.Commande;
 
 @Stateless
-public class ManageMailBean {
+public class ManageMailBean implements ManageMailBeanRemote{
 
     @PersistenceContext(unitName = "EntityManagerPU")
     private EntityManager entityManager;
 
-    public void sendMail(String encodedFile,int commandeId) throws Exception {
+    @Override
+    public void sendMail(String encodedFile, int commandeId) throws Exception {
         Commande commande = entityManager.find(Commande.class, commandeId);
         String smtpHost = "smtp.gmail.com";
         String from = "dridi.med.abderezak@gmail.com";
