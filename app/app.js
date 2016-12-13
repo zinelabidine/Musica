@@ -31,8 +31,8 @@ angular.module(appName, [
             }
           },
           'footer@': {
-            templateUrl: 'partials/blocks/footer.html'
-            //controller: 'AppCtrl as AppCtrl'
+            templateUrl: 'footer/footer.html',
+            controller: 'FooterCtrl as footerCtrl'
           }
         }
         //url: '/app',
