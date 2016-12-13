@@ -30,7 +30,11 @@
           };
 
           $scope.cartAction = function () {
-            $location.path("/cart");
+		if (!registerService.isConnected()) {
+			$scope.$emit('needUserConnection');
+			return;
+		}
+		$location.path("/cart");
           };
 
           setCartSize();
