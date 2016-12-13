@@ -130,6 +130,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         panier.getLignesPanier().size();
         for (PanierInstrument lignePanier : panier.getLignesPanier()) {
             lignePanier.getInstrument().getPromotions().size();
+            lignePanier.getInstrument().getMusiciens().size();
         }
         return panier;      
     }
