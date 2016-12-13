@@ -35,7 +35,7 @@
               cartService.deleteInstrumentPanier(cartId, instrumentId)
               .then(function() {
                 getCart();
-                $rootScope.$broadcast('cartInstrumentChanged');
+                $scope.$emit('cartInstrumentChanged');
               });
             }
 

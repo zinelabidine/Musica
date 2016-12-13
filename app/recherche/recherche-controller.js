@@ -116,11 +116,6 @@
             }
           };
 
-          $scope.goToInstrument = function (id) {
-            $log.log("goToInstrument");
-            $location.path(instrumentDestination + '/' + id);
-          };
-
           $scope.addInstrumentToCart = function (instrumentid) {
             $log.log("[rechercheInstCtrl] Add instrument " + instrumentid + " to cart");
             cartService.addInstrumentToCart(
@@ -130,7 +125,7 @@
               )
               .success(function () {
                 $log.log("[rechercheInstCtrl] Add instrument to cart end successfully");
-                $rootScope.$broadcast('cartInstrumentChanged');
+                $scope.$emit('cartInstrumentChanged');
                 // TODO notify client instrument add successfully
               });
           };

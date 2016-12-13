@@ -48,7 +48,7 @@
         )
         .success(function() {
           $log.log("[DetailsInstCtrl] Add instrument to cart end successfully");
-          $rootScope.$broadcast('cartInstrumentChanged');
+          $scope.$emit('cartInstrumentChanged');
           // TODO notify client instrument add successfully
         });
       }
