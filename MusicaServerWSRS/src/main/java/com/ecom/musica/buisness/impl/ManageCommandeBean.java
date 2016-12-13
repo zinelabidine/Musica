@@ -33,6 +33,7 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
         commande.getLignesCommande().size();
         for (CommandeInstrument ligneCommande : commande.getLignesCommande()) {
             ligneCommande.getInstrument().getPromotions().size();
+            ligneCommande.getInstrument().getMusiciens().size();
         }
         return commande;
     }
