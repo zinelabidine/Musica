@@ -32,10 +32,10 @@ public class ManageMailBean implements ManageMailBeanRemote{
     public void sendMail(String encodedFile, int commandeId) throws Exception {
         Commande commande = entityManager.find(Commande.class, commandeId);
         String smtpHost = "smtp.gmail.com";
-        String from = "dridi.med.abderezak@gmail.com";
+        String from = "musicashopm2@gmail.com";
         String to = commande.getUtilisateur().getEmail();
-        String username = "dridi.med.abderezak@gmail.com";
-        String password = "chichirendan";
+        String username = "musicashopm2@gmail.com";
+        String password = "youness2016";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", smtpHost);
@@ -49,8 +49,12 @@ public class ManageMailBean implements ManageMailBeanRemote{
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(from));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-        message.setSubject("Hello");
-        MimeMultipart mimeMultipart = construireMsg(encodedFile,commande.getUtilisateur().getUtilisateurId());
+        message.setSubject("Notification de facture Musica");
+        MimeMultipart mimeMultipart = construireMsg(
+		encodedFile,
+		commande.getUtilisateur().getUtilisateurId(),
+		commandeId
+	);
         message.setContent(mimeMultipart);
         Transport tr = session.getTransport("smtp");
         tr.connect(smtpHost, username, password);
@@ -67,10 +71,10 @@ public class ManageMailBean implements ManageMailBeanRemote{
 
     }
 
-    private MimeMultipart construireMsg(String encodedFile,int utilisateurId) {
+    private MimeMultipart construireMsg(String encodedFile,int utilisateurId,int commandeId) {
         byte[] bytes = Base64.getDecoder().decode(encodedFile);
 
-        File file = new File("facture"+utilisateurId);
+        File file = new File("/tmp/facture"+utilisateurId+".pdf");
         try {
             FileOutputStream fop = new FileOutputStream(file);
             fop.write(bytes);
@@ -89,7 +93,13 @@ public class ManageMailBean implements ManageMailBeanRemote{
         }
         MimeBodyPart content = new MimeBodyPart();
         try {
-            content.setContent("Texte du message", "text/plain");
+            content.setContent(
+		"Bonjour,\n\n" +
+		"Vous trouverez en pièce jointe votre facture Musica.\n\n" +
+		"Nous vous remercions de votre confiance.\n\n" +
+		"L'équipe Musica.\n",
+		"text/plain"
+	    );
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -100,7 +110,6 @@ public class ManageMailBean implements ManageMailBeanRemote{
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-        file.delete();
         return mimeMultipart;
     }
 }
