@@ -20,7 +20,7 @@
                 <div class="col-md-9" id="checkout">
 
                     <div class="box">
-                        <form method="post">
+                        <form method="post" ng-submit='updateClientPersonalInformation(resultat_client)'>
                             <h1>Commande</h1>
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active"><i class="fa fa-map-marker"></i><br>Informations personelles</a>
@@ -103,7 +103,7 @@
                                     <a class="btn btn-default"><i class="fa fa-chevron-left"></i>Retour au panier</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultat_client)'>Continuer<i class="fa fa-chevron-right"></i>
+                                    <button class="btn btn-primary" >Continuer<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
