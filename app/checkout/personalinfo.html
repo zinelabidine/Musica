@@ -36,13 +36,15 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">Prénom(s)</label>
-                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
+                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname"
+							pattern="^[a-zA-Z][a-zA-Z_]*" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">Nom</label>
-                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
+                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname" 
+						pattern="^[a-zA-Z][a-zA-Z_]*" required>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +70,7 @@
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="zip">Code postal</label>
-                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip">
+                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip" pattern="[0-9]{5}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
@@ -81,13 +83,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="phone">Téléphone</label>
-                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel">
+                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" ng-model="resultat_client.email">
+                                            <input type="email" class="form-control" id="email" ng-model="resultat_client.email">
                                         </div>
                                     </div>
 
