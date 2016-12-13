@@ -1,10 +1,13 @@
 package com.ecom.musica.buisness.impl;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Base64;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
+import javax.ejb.Stateless;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -13,13 +16,22 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-public class MailSender {
+import com.ecom.musica.entities.Commande;
 
-    public void sendMail() throws Exception {
+@Stateless
+public class ManageMailBean {
+
+    @PersistenceContext(unitName = "EntityManagerPU")
+    private EntityManager entityManager;
+
+    public void sendMail(String encodedFile,int commandeId) throws Exception {
+        Commande commande = entityManager.find(Commande.class, commandeId);
         String smtpHost = "smtp.gmail.com";
         String from = "dridi.med.abderezak@gmail.com";
-        String to = "m_dridi@esi.dz";
+        String to = commande.getUtilisateur().getEmail();
         String username = "dridi.med.abderezak@gmail.com";
         String password = "chichirendan";
 
@@ -36,7 +48,7 @@ public class MailSender {
         message.setFrom(new InternetAddress(from));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
         message.setSubject("Hello");
-        MimeMultipart mimeMultipart = construireMsg();
+        MimeMultipart mimeMultipart = construireMsg(encodedFile,commande.getUtilisateur().getUtilisateurId());
         message.setContent(mimeMultipart);
         Transport tr = session.getTransport("smtp");
         tr.connect(smtpHost, username, password);
@@ -53,8 +65,17 @@ public class MailSender {
 
     }
 
-    private MimeMultipart construireMsg() {
-        File file = new File("C:/Users/zico/Downloads/procedurestage.docx");
+    private MimeMultipart construireMsg(String encodedFile,int utilisateurId) {
+        byte[] bytes = Base64.getDecoder().decode(encodedFile);
+
+        File file = new File("facture"+utilisateurId);
+        try {
+            FileOutputStream fop = new FileOutputStream(file);
+            fop.write(bytes);
+            fop.flush();
+            fop.close();
+        } catch (Exception ex) {
+        }
         FileDataSource datasource = new FileDataSource(file);
         DataHandler handler = new DataHandler(datasource);
         MimeBodyPart pj = new MimeBodyPart();
@@ -77,7 +98,7 @@ public class MailSender {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+        file.delete();
         return mimeMultipart;
     }
 }
-
