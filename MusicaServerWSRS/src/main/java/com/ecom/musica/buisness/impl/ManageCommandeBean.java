@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import com.ecom.musica.buisness.ManageCommandeBeanRemote;
 import com.ecom.musica.entities.Commande;
 import com.ecom.musica.entities.CommandeInstrument;
+import com.ecom.musica.entities.Instrument;
 import com.ecom.musica.entities.Panier;
 import com.ecom.musica.entities.PanierInstrument;
 import com.ecom.musica.entities.Utilisateur;
@@ -92,9 +93,19 @@ public class ManageCommandeBean implements ManageCommandeBeanRemote {
     }
 
     private List<Commande> findCommandesByUtilisateur(Utilisateur utilisateur) {
-        Query req = entityManager.createQuery("select c from Commande c  where c.utilisateur=:utilisateur ");
+        Query req = entityManager.createQuery("select distinct c from Commande c "
+        		+ "JOIN FETCH c.lignesCommande li "
+        		+ "where c.utilisateur=:utilisateur");
         req.setParameter("utilisateur", utilisateur);
-        return req.getResultList();
+        List<Commande> commandes = req.getResultList();
+        for(Commande commande:commandes){
+        	commande.getLignesCommande().size();
+        	for (CommandeInstrument ligneCommande : commande.getLignesCommande()) {
+                ligneCommande.getInstrument().getPromotions().size();
+                ligneCommande.getInstrument().getMusiciens().size();
+            }
+        }
+        return commandes;        
     }
 
     @Override

@@ -67,6 +67,7 @@ public class Utilisateur implements Serializable {
     @Column(name = "Cardyear")
     private String cardyear;
 
+    @JsonIgnore
     @OneToMany(mappedBy="utilisateur")
     private List<Commande> commandes;
 
