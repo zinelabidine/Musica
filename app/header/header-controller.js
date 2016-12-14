@@ -23,6 +23,9 @@
           $scope.categories = headerData.categories;
           $scope.cartsize = 0;
           $scope.isConnected = registerService.isConnected();
+          if (!$scope.isConnected) {
+            globalService.cleanSessionStorage();
+          }
           
           $scope.searchAction = function () {
             $location.search({});
@@ -30,22 +33,21 @@
           };
 
           $scope.cartAction = function () {
-		if (!registerService.isConnected()) {
-			$scope.$emit('needUserConnection');
-			return;
-		}
-		$location.path("/cart");
+            if (!registerService.isConnected()) {
+              $scope.$emit('needUserConnection');
+              return;
+            }
+            $location.path("/cart");
           };
 
           setCartSize();
 
           function setCartSize() {
-            $scope.cartsize = 0;
             if (globalService.personalDatas() != null)
-            headerService.initCartSize(globalService.personalDatas().utilisateurid)
-              .then(function (response) {
-                $scope.cartsize = response;
-              });
+              headerService.initCartSize(globalService.personalDatas().utilisateurid)
+                .then(function (response) {
+                  $scope.cartsize = response;
+                });
           }
 
           $rootScope.$on('cartInstrumentChanged', function () {
@@ -53,23 +55,24 @@
             setCartSize();
           });
 
-	  $rootScope.$on('needUserConnection', function() {
-		$scope.opendialog = ngDialog.open({
-			template: '../dialog/yesno.html',
-			className: 'ngdialog-theme-default',
-			controller: 'DialogCtrl'
-		});
-	  });
+          $rootScope.$on('needUserConnection', function() {
+            $scope.opendialog = ngDialog.open({
+              template: '../dialog/yesno.html',
+              className: 'ngdialog-theme-default',
+              controller: 'DialogCtrl'
+            });
+          });
 
           $scope.logout = function () {
             registerService.logout();
             $scope.isConnected = registerService.isConnected();
+            $scope.cartsize = 0;
             $location.path('register');
           };
 
           $scope.profil = function(){
             $location.path("/profil");
-          }
+          };
 
           $scope.getToRegister = function () {
             $location.path('register');

@@ -44,7 +44,7 @@
             <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
-                                      add-instrument-tocart="addInstrumentToCart(instrumentId)"></instrument-highlight>
+                                      add-instrument-to-cart="addInstrumentToCart(instrumentId)"></instrument-highlight>
                         <!--p class="buttons">
                             <a ng-click="openInstrumentDetails(resultat.instrumentId)" class="btn btn-default">Voir details</a>
                             <a ng-click="addInstrumentToCart(resultat.instrumentId)" class="btn btn-primary">
