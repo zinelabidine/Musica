@@ -70,7 +70,8 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
                                                                                            // mt
                                                                                            // du
                                                                                            // panier
-            panier.setMontantHT(panier.getMontantHT() + instrument.getPrix() * quantite);
+            panier.setMontantHT(
+                    panier.getMontantHT() + (instrument.getPrix() - instrument.getPrix() * 17 / 100) * quantite);
             entityManager.merge(panier);
         } else
             throw new Exception("quantité insuffisante");
@@ -111,13 +112,14 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         if (lignePanier == null)
             throw new Exception("La ligne n'existe pas");
         Panier panier = lignePanier.getPanier();
-        panier.setMontantHT(
-                panier.getMontantHT() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite()));
+        panier.setMontantHT(panier.getMontantHT()
+                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
+                        * lignePanier.getQuantite()));
         panier.setMontantTTC(
                 panier.getMontantTTC() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite()));
         entityManager.merge(panier);
         entityManager.remove(lignePanier);
-        //TODO updater le montant du panier
+        // TODO updater le montant du panier
     }
 
     @Override
@@ -131,7 +133,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         for (PanierInstrument lignePanier : panier.getLignesPanier()) {
             lignePanier.getInstrument().getPromotions().size();
         }
-        return panier;      
+        return panier;
     }
 
     @Override
@@ -141,7 +143,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         Panier panier = findPanierByUtilisateur(client);
         if (panier == null)
             throw new Exception("Ce client n'a pas de panier");
-        return panier.getLignesPanier().size();      
+        return panier.getLignesPanier().size();
     }
 
     @Override
@@ -151,12 +153,14 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         PanierInstrument lignePanier = entityManager.find(PanierInstrument.class, panierInstrumentId);
         if (lignePanier == null)
             throw new Exception("Cette ligne n'existe pas");
-        if (lignePanier.getInstrument().getQuantite()<quantite)
+        if (lignePanier.getInstrument().getQuantite() < quantite)
             throw new Exception("quantité insuffisante");
         Panier panier = lignePanier.getPanier();
-        panier.setMontantHT(
-                panier.getMontantHT() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite())
-                        + (lignePanier.getInstrument().getPrix() * quantite));
+        panier.setMontantHT(panier.getMontantHT()
+                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
+                        * lignePanier.getQuantite())
+                + ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
+                        * quantite));
         panier.setMontantTTC(
                 panier.getMontantTTC() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite())
                         + (lignePanier.getInstrument().getPrix() * quantite));
@@ -164,6 +168,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         entityManager.merge(lignePanier);
         entityManager.merge(panier);
     }
+
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public int payerPanier(int panierId, int utilisateurId) throws Exception {
@@ -185,6 +190,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         entityManager.remove(panier);
         return commande.getCommandeId();
     }
+
     private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
         commande.setUtilisateur(panier.getUtilisateur());
         commande.setMontantHT(panier.getMontantHT());
