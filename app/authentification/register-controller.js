@@ -12,6 +12,7 @@
         registerService.register($scope.clientInfos).then(function (response) {
           // Save informations to user story or to cookies
           $scope.$emit('authentificationEvent', { message: response });
+          $scope.$emit('cartInstrumentChanged', {});
           $location.path('home');
         }, function () {
         })
@@ -20,6 +21,7 @@
       $scope.signin = function () {
         registerService.signin($scope.clientLoginData).then(function (response) {
           $scope.$emit('authentificationEvent', { message: response });
+          $scope.$emit('cartInstrumentChanged', {});
           $location.path('home');
         }, function () {
           $log.error("Je ne peux pas s'authentifier");
