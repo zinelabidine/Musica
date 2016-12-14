@@ -28,7 +28,7 @@
                         text: EnvironmentConfig.AppName + '\n',
                         color: 'blue'
                     },
-                    { width: '*',	text: '.'},{width: '*',text: '.'},
+                    { width: '*',	text: ''},{width: '*',text: ''},
                     {
                         width: 180,
                         text: 'Commande N° ' + data.commandeId + ' \n'
@@ -43,12 +43,12 @@
                 style: 'infoheader',
                 columns: [
                     { width: 180, text: 'Emetteur: '},
-                    { width: '*',	text: '.'},{width: '*',text: '.'},
+                    { width: '*',	text: ''},{width: '*',text: ''},
                     { width: 180, text: 'Adressé à:'}
                 ]
             } // End information header
           }
-          function getFactureInfo(data) {
+          function getFactureInfo(data,clientInfo) {
             return { // Start Facture information
                 style : 'information',
                 columns: [
@@ -61,13 +61,13 @@
                             EnvironmentConfig.Tel + '\n'
                         ]
                     },
-                    { width: '*',	text: '.'},{width: '*',text: '.'},
+                    { width: '*',	text: ''},{width: '*',text: ''},
                     {
                         width: 160,
                         text: [
-                            'Nom: \n',
-                            'Adresse: \n',
-                            'Téléphone: \n'
+                            'Nom: '+ clientInfo.firstname +'\n',
+                            'Adresse: '+ clientInfo.address +' \n',
+                            'Téléphone: '+ clientInfo.tel +'\n'
                         ]
                     }
                 ]
@@ -80,18 +80,20 @@
                 table: {
                     widths: ['*', 30, 60, 40, 120],
                     body: [
-                        [ 'Désignation', 'Qté', 'P.U HT', 'TVA', 'Total HT'],
+                        [ 'Désignation', 'Qté', 'P.U HT', 'TVA', 'Total TTC'],
                     ]
                 }
             };
             var cpt = 1;
+            var TVA = 17;
             instruments.forEach(function(instrument) {
               table.table.body[cpt] = [
                 instrument.instrument.reference,
                 instrument.quantite + '',
                 instrument.instrument.prix + '',
-                '17%',
+                TVA+'%',
                 instrument.quantite*instrument.instrument.prix + ''
+                // (instrument.quantite*instrument.instrument.prix*TVA/100 + instrument.instrument.prix*instrument.quantite) + ''
               ];
               cpt++;
             });
@@ -102,7 +104,7 @@
             return {
                 style: 'total',
                 columns: [
-                    { width: '*',	text: '.'},
+                    { width: '*',	text: ''},
                     {
                         width: 120,
                         text:  'Total H.T\nTotal T.V.A\nTotal T.T.C',
@@ -119,7 +121,7 @@
             };
           }
 
-          function createPdf(data) {
+          function createPdf(data,clientInfo) {
             // Set pdf header
             content[0] = getHeader(data);
 
@@ -127,7 +129,7 @@
             content[1] = getFactureInfoHeader();
 
             // Set facture information
-            content[2] = getFactureInfo(data);
+            content[2] = getFactureInfo(data,clientInfo);
 
             // Add instruments to facture
             content[3] = getFactureInstrumentContent(data.lignesCommande);
@@ -144,8 +146,8 @@
           }
 
           return {
-            getCommandeAsPdf: function(data) {
-              return createPdf(data);
+            getCommandeAsPdf: function(data,clientInfo) {
+              return createPdf(data,clientInfo);
             }
           }
         }
