@@ -89,6 +89,7 @@
               cartService.getCart(globalService.personalDatas().utilisateurid).then(function (response) {
                   $scope.resultats = response;
                   $log.log($scope.resultats);
+		  $scope.resultats.totalTaxes =  Math.round(($scope.resultats.montantTTC - $scope.resultats.montantHT)*100)/100;
                 });
             }
 

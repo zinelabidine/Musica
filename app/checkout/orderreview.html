@@ -54,27 +54,18 @@
                                                       value="{{resultat.quantite}}"
                                                       ng-model="Qinstr"
                                                       class="form-control"
-                                                      ng-change="updateCartInstrumentQuantity(resultat.panierInstrumentId,Qinstr)"
+						      disabled
                                                     >
                                                 </td>
                                                 <td>${{resultat.instrument.prix}}</td>
-                                                <td>A faire<td>
+                                                <td>A faire</td>
                                                 <td>${{resultat.instrument.prix*resultat.quantite}}</td>
-                                                <td>
-                                                  <button
-                                                    class="fa fa-trash-o"
-                                                    ng-click="deleteInstrumentPanier(
-                                                                resultats.panierId
-                                                                ,resultat.panierInstrumentId
-                                                              )"
-                                                  ></button>
-                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th colspan="5">Total</th>
-                                                <th>TODO </th>
+                                                <th>${{resultats.montantTTC}}</th>
                                             </tr>
                                         </tfoot>
                                     </table>
