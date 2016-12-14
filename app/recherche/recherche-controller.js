@@ -41,6 +41,8 @@
           $scope.storedCategories = headerService.getCategories();
           $scope.motcles = $stateParams.motcles;
           $scope.categorieName = $stateParams.categorieName;
+          $scope.marqueName = $stateParams.marqueName;
+          $scope.orderByName = $stateParams.orderByName;
 
           $scope.orderOptions = [
             {propName : "Nom", orderByPredicate: "reference", orderByReverse:false},
@@ -62,13 +64,40 @@
           }
 
           // Recherche avec mot clé.
-          function searchWithKey(keyword) {
+          function searchWithKey (keyword) {
             rechercheService.searchWithKey(keyword).then(function (response) {
               $scope.resultats = response;
             });
           }
-
+          
           $scope.searchAvance = function () {
+            $location.search({});
+            if (!angular.isUndefinedOrNull($scope.marque) && !angular.isEmpty($scope.marque)) {
+              $location.search({"marqueName":marque});
+            } else {
+              $scope.marque = "";
+            }
+            if (!angular.isUndefinedOrNull($scope.categorie) && !angular.isEmpty($scope.categorie)) {
+              $location.search({"categorieName":categorie});
+            } else {
+              $scope.categorie = "";
+            }
+
+            if (!angular.isUndefinedOrNull($scope.ref) && !angular.isEmpty($scope.ref)) {
+              $location.search({"motcles":motcles});
+            } else {
+              $scope.ref = "";
+            }
+            //if (!angular.isUndefinedOrNull($scope.ref) && !angular.isEmpty($scope.ref)) {
+            //  $location.search({"categorieName":categorie});
+            //} else {
+            //  $scope.ref = "";
+            //}
+
+            searchAvance();
+          };
+
+          function validateAllSearchParams() {
             if (angular.isUndefinedOrNull($scope.marque)) {
               $scope.marque = "";
             }
@@ -80,12 +109,18 @@
             if (angular.isUndefinedOrNull($scope.ref)) {
               $scope.ref = "";
             }
+          }
 
-            rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
-              .then(function (response) {
-                $scope.resultats = response;
-              });
-          };
+          function searchAvance() {
+            if (($scope.marque !== "") || ($scope.categorie !== "")) {
+              rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
+                .then(function (response) {
+                  $scope.resultats = response;
+                });
+            } else {
+              searchWithKey($scope.ref);
+            }
+          }
 
           $scope.addInstrumentToCart = function (instrumentid) {
             $log.log("[rechercheInstCtrl] Add instrument " + instrumentid + " to cart");
@@ -117,7 +152,8 @@
                 }
               }
             }
-            $scope.searchAvance();
+            validateAllSearchParams();
+            searchAvance();
           }
         }]);
 }());
