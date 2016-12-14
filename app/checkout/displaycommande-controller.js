@@ -21,7 +21,6 @@
             var self = this;
 
             $scope.resultats =[];
-            $scope.resultats =[];
             $scope.commande = $stateParams.commande;
             $scope.orderByReverse = false;
 

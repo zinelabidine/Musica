@@ -34,50 +34,48 @@ _________________________________________________________ -->
     </div>
            
     
-     <div class="col-md-9">
+     <div class="col-md-9" id="customer-order">
         <div class="box">
             <form method="post">
-                <h1>Mes Commandes</h1>
-                <p class="text-muted">Vous avez {{resultats.length}} commandes.</p>
+                <h1>Commandes {{commandeId}}</h1>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Numero</th>
-                                <th>Date</th>
-                                <th>MontantHT</th>
-                                <th>MontantTTC</th>
+                                <th colspan="2">Instrument</th>
+                                <th>Quantite</th>
+                                <th>Prix</th>
                                 <th>Total</th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody ng-repeat="resultat in resultats">
+                        <tbody ng-repeat="resultat in resultats.lignesCommande">
                             <tr>
                                 <td>
-                                    <p>{{resultat.commandeId}}</p>
+                                    <img style="width:50px;height:50px;" ng-src="{{resultat.instrument.imageInstrument.image}}" alt="" class="img-responsive">
+                                    <p>{{}}</p>
                                 </td>
                                 <td>
-                                    <p>{{resultat.date}}</p>
+                                    <p>{{resultat.instrument.reference}}</p>
                                 </td>
                                 <td>
-                                    <p>{{resultat.montantHT}}</p>
+                                    <p>{{resultat.quantite}}</p>
                                 </td>
                                 <td>
-                                    <p>{{resultat.montantTTC}}</p>
+                                    <p>${{resultat.instrument.prix}}</p>
                                 </td>
                                 <td>
-                                    <p>{{resultat.montantTTC}}</p>
-                                </td>
-                                 <td>
-                                    <a class="btn btn-primary btn-sm" ng-click="getCommandeDetails(resultat.commandeId)">Details</a>
+                                    <p>${{resultat.instrument.prix*resultat.quantite}}</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
-                </div>
-
+                </div>             
             </form>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" ng-click="retourClientCommandes()"><i></i> Retour</button>
+            </div>
 
         </div>
         <!-- /.box -->
