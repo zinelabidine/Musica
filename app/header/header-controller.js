@@ -23,6 +23,9 @@
           $scope.categories = headerData.categories;
           $scope.cartsize = 0;
           $scope.isConnected = registerService.isConnected();
+          if (!$scope.isConnected) {
+            globalService.cleanSessionStorage();
+          }
           
           $scope.searchAction = function () {
             $location.search({});
