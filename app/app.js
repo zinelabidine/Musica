@@ -49,7 +49,8 @@ angular.module(appName, [
       })
 
       .state('app.recherche', {
-        url: '/recherche?motcles&categorieName',
+        url: '/recherche?motcles&categorieName&marque&order',
+        reloadOnSearch : false,
         views: {
           'content@': {
             templateUrl: 'recherche/recherche.html',

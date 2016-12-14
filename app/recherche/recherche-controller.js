@@ -39,10 +39,10 @@
 
           $scope.resultats = [];
           $scope.storedCategories = headerService.getCategories();
-          $scope.motcles = $stateParams.motcles;
           $scope.categorieName = $stateParams.categorieName;
-          $scope.marqueName = $stateParams.marqueName;
-          $scope.orderByName = $stateParams.orderByName;
+          $scope.marque = $stateParams.marque;
+          $scope.ref = $stateParams.motcles;
+          $scope.order = $stateParams.order;
 
           $scope.orderOptions = [
             {propName : "Nom", orderByPredicate: "reference", orderByReverse:false},
@@ -59,10 +59,6 @@
             return Math.ceil($scope.resultats.length / $scope.pageSize);
           };
 
-          if (angular.isUndefinedOrNull($scope.motcles)) {
-            $scope.motcles = "";
-          }
-
           // Recherche avec mot clé.
           function searchWithKey (keyword) {
             rechercheService.searchWithKey(keyword).then(function (response) {
@@ -71,28 +67,25 @@
           }
           
           $scope.searchAvance = function () {
-            $location.search({});
-            if (!angular.isUndefinedOrNull($scope.marque) && !angular.isEmpty($scope.marque)) {
-              $location.search({"marqueName":marque});
+            if (!angular.isUndefinedOrNull($scope.marque) && $scope.marque !== "") {
+              $location.search("marque", $scope.marque);
             } else {
+              $location.search("marque", null);
               $scope.marque = "";
             }
-            if (!angular.isUndefinedOrNull($scope.categorie) && !angular.isEmpty($scope.categorie)) {
-              $location.search({"categorieName":categorie});
+            if (!angular.isUndefinedOrNull($scope.categorie) && $scope.categorie !== "") {
+              $location.search("categorieName", $scope.categorie);
             } else {
+              $location.search("categorieName", null);
               $scope.categorie = "";
             }
 
-            if (!angular.isUndefinedOrNull($scope.ref) && !angular.isEmpty($scope.ref)) {
-              $location.search({"motcles":motcles});
+            if (!angular.isUndefinedOrNull($scope.ref) && $scope.ref !== "") {
+              $location.search("motcles", $scope.ref);
             } else {
+              $location.search("motcles", null);
               $scope.ref = "";
             }
-            //if (!angular.isUndefinedOrNull($scope.ref) && !angular.isEmpty($scope.ref)) {
-            //  $location.search({"categorieName":categorie});
-            //} else {
-            //  $scope.ref = "";
-            //}
 
             searchAvance();
           };
@@ -140,10 +133,7 @@
             $location.path("instrument/" + instrumentid);
           };
 
-          if (angular.isUndefinedOrNull($scope.categorieName)) {
-            $scope.categorie = "";
-            searchWithKey($scope.motcles);
-          } else {
+          if (!angular.isUndefinedOrNull($scope.categorieName) && $scope.categorieName !== "") {
             if(!angular.isEmpty($scope.storedCategories)) {
               for (var i = 0; i < $scope.storedCategories.length; i++) {
                 if ($scope.storedCategories[i].hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === $scope.storedCategories[i].libelle.toLowerCase()) {
@@ -154,6 +144,12 @@
             }
             validateAllSearchParams();
             searchAvance();
+          } else if (!angular.isUndefinedOrNull($scope.marque) && $scope.marque !== ""){
+            validateAllSearchParams();
+            searchAvance();
+          } else {
+            validateAllSearchParams();
+            searchWithKey($scope.ref);
           }
         }]);
 }());
