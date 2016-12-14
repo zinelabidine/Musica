@@ -56,6 +56,10 @@
               // TODD go to payment form
             }
 
+            $scope.retourPanier = function(){
+              $location.path("cart");
+            }
+
             loadClient();
 
             function loadClient() {
