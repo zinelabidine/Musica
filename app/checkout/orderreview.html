@@ -15,7 +15,7 @@
                   </ul>
               </div>
 
-                <div class="col-md-9" id="checkout">
+                <div class="col-md-12" id="checkout">
 
                     <div class="box">
                         <form>
@@ -38,15 +38,13 @@
                                                 <th>quantité</th>
                                                 <th>Prix unitaire</th>
                                                 <th>Remise</th>
-                                                <th>Total</th>
+                                                <th colspan="2">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody ng-repeat="resultat in resultats.lignesPanier">
                                             <tr>
                                                 <td>
-                                                    <a href="#">
-                                                        <img alt="White Blouse Armani">
-                                                    </a>
+                                                    <img style="width:50px;height:50px;" ng-src="{{resultat.instrument.imageInstrument.image}}" alt="" class="img-responsive">
                                                 </td>
                                                 <td><a href="#">{{resultat.instrument.reference}}</a>
                                                 </td>
@@ -60,7 +58,8 @@
                                                     >
                                                 </td>
                                                 <td>${{resultat.instrument.prix}}</td>
-                                                <td>TODO Qunatity * Prix</td>
+                                                <td>A faire<td>
+                                                <td>${{resultat.instrument.prix*resultat.quantite}}</td>
                                                 <td>
                                                   <button
                                                     class="fa fa-trash-o"
@@ -75,7 +74,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th colspan="5">Total</th>
-                                                <th>TODO $446.00</th>
+                                                <th>TODO </th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -112,38 +111,6 @@
 
                 </div>
                 <!-- /.col-md-9 -->
-
-                <div class="col-md-3">
-
-                    <div class="box" id="order-summary">
-                        <div class="box-header">
-                            <h3>Resumé des choix</h3>
-                        </div>
-                        <p class="text-muted">Les frais d'expédition et les frais supplémentaires sont calculés en fonction des valeurs saisies.</p>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Total HT</td>
-                                        <th>TODO $446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Taxe</td>
-                                        <th>TODO $0.00</th>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>Total TTC</td>
-                                        <th>TODO $456.00</th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- /.col-md-3 -->
 
             </div>
             <!-- /.container -->
