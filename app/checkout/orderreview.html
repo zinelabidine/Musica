@@ -38,15 +38,13 @@
                                                 <th>quantité</th>
                                                 <th>Prix unitaire</th>
                                                 <th>Remise</th>
-                                                <th>Total</th>
+                                                <th colspan="2">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody ng-repeat="resultat in resultats.lignesPanier">
                                             <tr>
                                                 <td>
-                                                    <a href="#">
-                                                        <img alt="White Blouse Armani">
-                                                    </a>
+                                                    <img style="width:50px;height:50px;" ng-src="{{resultat.instrument.imageInstrument.image}}" alt="" class="img-responsive">
                                                 </td>
                                                 <td><a href="#">{{resultat.instrument.reference}}</a>
                                                 </td>
@@ -60,7 +58,8 @@
                                                     >
                                                 </td>
                                                 <td>${{resultat.instrument.prix}}</td>
-                                                <td>TODO Qunatity * Prix</td>
+                                                <td>A faire<td>
+                                                <td>${{resultat.instrument.prix*resultat.quantite}}</td>
                                                 <td>
                                                   <button
                                                     class="fa fa-trash-o"
@@ -75,7 +74,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th colspan="5">Total</th>
-                                                <th>TODO $446.00</th>
+                                                <th>TODO </th>
                                             </tr>
                                         </tfoot>
                                     </table>

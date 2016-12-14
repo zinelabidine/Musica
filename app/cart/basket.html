@@ -37,9 +37,7 @@
                                     <tbody ng-repeat="resultat in resultats.lignesPanier">
                                         <tr>
                                             <td>
-                                                <a href="#">
-                                                    <img alt="White Blouse Armani">
-                                                </a>
+                                                <img style="width:50px;height:50px;" ng-src="{{resultat.instrument.imageInstrument.image}}" alt="" class="img-responsive">
                                             </td>
                                             <td><a href="#">{{resultat.instrument.reference}}</a>
                                             </td>
