@@ -22,11 +22,13 @@
           $scope, $http, $log, $location, $stateParams, instrumentService, headerService, $rootScope, globalService, cartService, ngDialog
         ) {
       
-	$scope.goConnectionPage = function() {
-		console.log('[DialogCtrl] goConnectionPage');
-		$location.path('register');	
-		ngDialog.close($scope.opendialog);
-	}
+        $scope.goConnectionPage = function() {
+          $log.log('[DialogCtrl] goConnectionPage');
+          var switch_url = $location.path();
+          $log.log(switch_url);
+          $location.path('register').search({"switch_url": switch_url});
+          ngDialog.close($scope.opendialog);
+        }
 
     }]);
 }());
