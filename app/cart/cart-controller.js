@@ -24,6 +24,7 @@
             $scope.resultats =[];
             $scope.client = $stateParams.client;
             $scope.orderByReverse = false;
+            $scope.avoirPanier = false;
 
             $scope.deleteInstrumentPanier = function(cartId, instrumentId) {
               $log.log(
@@ -87,6 +88,13 @@
             function getCart() {
               cartService.getCart(globalService.personalDatas().utilisateurid).then(function (response) {
                   $scope.resultats = response;
+                  if(angular.isUndefinedOrNull($scope.resultats)){
+                      $scope.nombreArticles = 0;
+                  }
+                  else{
+                      $scope.nombreArticles = $scope.resultats.lignesPanier.length
+                      $scope.avoirPanier = true;
+                  }
                   $log.log($scope.resultats);
                 });
             }
