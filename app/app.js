@@ -50,7 +50,8 @@ angular.module(appName, [
       })
 
       .state('app.recherche', {
-        url: '/recherche?motcles&categorieName',
+        url: '/recherche?motcles&categorieName&marque&order',
+        // reloadOnSearch : false,
         views: {
           'content@': {
             templateUrl: 'recherche/recherche.html',
@@ -114,7 +115,17 @@ angular.module(appName, [
         views: {
           'content@': {
             templateUrl: 'profil/clientcommande.html',
-            controller: 'ProfilCommandeCtrl as profilcommande'
+            controller: 'ClientCommandeCtrl as clientCommandeCtrl'
+          }
+        }
+      })
+
+      .state('app.profilcommandeDetail', {
+        url: '/profil/commande/:commandeId',
+        views: {
+          'content@': {
+            templateUrl: 'profil/commandedetails.html',
+            controller: 'CommandeDetailsCtrl as commandeDetailsCtrl'
           }
         }
       })
@@ -162,17 +173,17 @@ angular.module(appName, [
             controller: 'ProfilCtrl as profilCtrl'
           }
         }
-      })
-
-      .state('app.addUtilisateur', {
-        url: '/addUtilisateur',
-        views: {
-          'content@': {
-            templateUrl: './utilisateur/ajout-utilisateur.html',
-            controller: 'UtilsateurCtrl as utilisateurCtrl'
-          }
-        }
       });
+
+      // .state('app.addUtilisateur', {
+      //   url: '/addUtilisateur',
+      //   views: {
+      //     'content@': {
+      //       templateUrl: './utilisateur/ajout-utilisateur.html',
+      //       controller: 'UtilsateurCtrl as utilisateurCtrl'
+      //     }
+      //   }
+      // });
   }])
 
   .service('globalService', ['$cookies', '$cookieStore',
@@ -183,11 +194,6 @@ angular.module(appName, [
           $cookies[name] = value;
         }
         return $cookies[name];
-      }
-
-      function getPreferences(preferences) {
-        var data = overrideAndReturnFromLocalStorage('clePortalPreferences', JSON.stringify(preferences));
-        return angular.fromJson(data);
       }
 
       function overrideAndReturnFromLocalStorage(name, value) {

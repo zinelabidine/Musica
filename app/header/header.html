@@ -56,11 +56,11 @@
     </div>
 
     <div class="collapse clearfix  row" id="search">
-        <form class="navbar-form" role="search">
+        <form class="navbar-form" ng-submit="searchAction()" role="search">
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="motcles" placeholder="Search" >
                 <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary" ng-click="searchAction()" data-toggle="collapse" data-target="#search" ><i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#search" ><i class="fa fa-search"></i></button>
                  </span>
             </div>
         </form>

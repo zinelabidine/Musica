@@ -48,11 +48,7 @@
         $log.log("[DetailsInstCtrl] Add instrument to cart");
 
 	if (globalService.personalDatas()==null)  {
-		$scope.opendialog = ngDialog.open({
-			template: '../dialog/yesno.html',
-			className: 'ngdialog-theme-default',
-			controller: 'DetailsInstCtrl'
-		});
+		$scope.$emit('needUserConnection');
 		return null;
 	}
 
@@ -63,7 +59,7 @@
         )
         .success(function() {
           $log.log("[DetailsInstCtrl] Add instrument to cart end successfully");
-          $rootScope.$broadcast('cartInstrumentChanged');
+          $scope.$emit('cartInstrumentChanged');
           // TODO notify client instrument add successfully
         });
       }

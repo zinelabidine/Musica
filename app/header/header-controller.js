@@ -12,7 +12,8 @@
         'globalService',
         'registerService',
         '$rootScope',
-        function ($scope, $log, $location, headerData, headerService, globalService, registerService, $rootScope) {
+	'ngDialog',
+        function ($scope, $log, $location, headerData, headerService, globalService, registerService, $rootScope, ngDialog) {
 
           var self = this;
 
@@ -29,7 +30,11 @@
           };
 
           $scope.cartAction = function () {
-            $location.path("/cart");
+		if (!registerService.isConnected()) {
+			$scope.$emit('needUserConnection');
+			return;
+		}
+		$location.path("/cart");
           };
 
           setCartSize();
@@ -47,6 +52,14 @@
             console.log("on: cartInstrumentChanged");
             setCartSize();
           });
+
+	  $rootScope.$on('needUserConnection', function() {
+		$scope.opendialog = ngDialog.open({
+			template: '../dialog/yesno.html',
+			className: 'ngdialog-theme-default',
+			controller: 'DialogCtrl'
+		});
+	  });
 
           $scope.logout = function () {
             registerService.logout();

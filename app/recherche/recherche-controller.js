@@ -39,14 +39,17 @@
 
           $scope.resultats = [];
           $scope.storedCategories = headerService.getCategories();
-          $scope.motcles = $stateParams.motcles;
           $scope.categorieName = $stateParams.categorieName;
+          $scope.marque = $stateParams.marque;
+          $scope.ref = $stateParams.motcles;
+          $scope.order = $stateParams.order;
 
-          $scope.options = ["Nom", "Prix croissant", "Prix décroissant", "Marque"];
-          $scope.orderByPredicate = "reference";
-          $scope.orderByReverse = true;
-
-          $scope.utilisateurid = globalService.personalDatas().utilisateurid;
+          $scope.orderOptions = [
+            {propName : "Nom", orderByPredicate: "reference", orderByReverse:false},
+            {propName : "Prix croissant", orderByPredicate: "prix", orderByReverse:false},
+            {propName : "Prix décroissant", orderByPredicate: "prix", orderByReverse:true},
+            {propName : "Marque", orderByPredicate: "marque.libelle", orderByReverse:false}
+          ];
 
           $scope.currentPage = 0;
           $scope.pageSize = 8;
@@ -54,19 +57,38 @@
             return Math.ceil($scope.resultats.length / $scope.pageSize);
           };
 
-          if (angular.isUndefinedOrNull($scope.motcles)) {
-            $scope.motcles = "";
-          }
-
-          function search() {
-            rechercheService.searchWithKey($scope.motcles).then(function (response) {
-              $log.log("Search with key:" + $scope.motcles);
+          // Recherche avec mot clé.
+          function searchWithKey (keyword) {
+            rechercheService.searchWithKey(keyword).then(function (response) {
               $scope.resultats = response;
-              $log.log($scope.resultats);
             });
           }
-
+          
           $scope.searchAvance = function () {
+            if (!angular.isUndefinedOrNull($scope.marque) && $scope.marque !== "") {
+              $location.search("marque", $scope.marque);
+            } else {
+              $location.search("marque", null);
+              $scope.marque = "";
+            }
+            if (!angular.isUndefinedOrNull($scope.categorie) && $scope.categorie !== "") {
+              $location.search("categorieName", $scope.categorie);
+            } else {
+              $location.search("categorieName", null);
+              $scope.categorie = "";
+            }
+
+            if (!angular.isUndefinedOrNull($scope.ref) && $scope.ref !== "") {
+              $location.search("motcles", $scope.ref);
+            } else {
+              $location.search("motcles", null);
+              $scope.ref = "";
+            }
+
+            searchAvance();
+          };
+
+          function validateAllSearchParams() {
             if (angular.isUndefinedOrNull($scope.marque)) {
               $scope.marque = "";
             }
@@ -78,59 +100,35 @@
             if (angular.isUndefinedOrNull($scope.ref)) {
               $scope.ref = "";
             }
+          }
 
+          function searchAvance() {
             if (($scope.marque !== "") || ($scope.categorie !== "")) {
-              $log.log("Search avance");
               rechercheService.searchAvance($scope.marque, $scope.categorie, $scope.ref)
                 .then(function (response) {
                   $scope.resultats = response;
-                  $log.log($scope.resultats);
                 });
+            } else {
+              searchWithKey($scope.ref);
             }
-            else {
-              rechercheService.searchWithKey($scope.ref).then(function (response) {
-                $log.log("Search with key:" + $scope.ref);
-                $scope.resultats = response;
-                $log.log($scope.resultats);
-              });
-            }
-            // $scope.marque = "";
-            // $scope.categorie = "";
-            // $scope.ref = "";
-          };
-
-          $scope.filtre = function () {
-            if ($scope.selection == "Nom") {
-              $scope.orderByPredicate = '-reference';
-            }
-            else if ($scope.selection == "Prix croissant") {
-              $scope.orderByReverse = false;
-              $scope.orderByPredicate = 'prix';
-            }
-            else if ($scope.selection == "Prix décroissant") {
-              $scope.orderByReverse = true;
-              $scope.orderByPredicate = 'prix';
-            }
-            else if ($scope.selection == "Marque") {
-              $scope.orderByPredicate = 'marque';
-            }
-          };
-
-          $scope.goToInstrument = function (id) {
-            $log.log("goToInstrument");
-            $location.path(instrumentDestination + '/' + id);
-          };
+          }
 
           $scope.addInstrumentToCart = function (instrumentid) {
             $log.log("[rechercheInstCtrl] Add instrument " + instrumentid + " to cart");
+
+	    if (globalService.personalDatas() == null) {
+		$scope.$emit('needUserConnection');
+		return;
+	    }
+
             cartService.addInstrumentToCart(
-              $scope.utilisateurid,
+              globalService.personalDatas().utilisateurid,
               instrumentid,
               1
               )
               .success(function () {
                 $log.log("[rechercheInstCtrl] Add instrument to cart end successfully");
-                $rootScope.$broadcast('cartInstrumentChanged');
+                $scope.$emit('cartInstrumentChanged');
                 // TODO notify client instrument add successfully
               });
           };
@@ -139,27 +137,23 @@
             $location.path("instrument/" + instrumentid);
           };
 
-          if (angular.isUndefinedOrNull($scope.categorieName)) {
-            $scope.categorie = "";
-            search();
-          } else {
-            $log.info($scope.storedCategories);
-            angular.forEach($scope.storedCategories, function (value, key) {
-              if (value.hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === value.libelle.toLowerCase()) {
-                $scope.categorie = value.libelle;
+          if (!angular.isUndefinedOrNull($scope.categorieName) && $scope.categorieName !== "") {
+            if(!angular.isEmpty($scope.storedCategories)) {
+              for (var i = 0; i < $scope.storedCategories.length; i++) {
+                if ($scope.storedCategories[i].hasOwnProperty('libelle') && $scope.categorieName.toLowerCase() === $scope.storedCategories[i].libelle.toLowerCase()) {
+                  $scope.categorie = $scope.storedCategories[i].libelle;
+                  break;
+                }
               }
-            });
-            $scope.searchAvance();
+            }
+            validateAllSearchParams();
+            searchAvance();
+          } else if (!angular.isUndefinedOrNull($scope.marque) && $scope.marque !== ""){
+            validateAllSearchParams();
+            searchAvance();
+          } else {
+            validateAllSearchParams();
+            searchWithKey($scope.ref);
           }
-
-          //$scope.initDefaultCategorie = function (categorieName) {
-          //  if($scope.categorie === "") {
-          //    return false;
-          //  } else if($scope.categorie.toLowerCase() === categorieName.toLowerCase()){
-          //    return true;
-          //  }
-          //  return false;
-          //};
-
         }]);
 }());

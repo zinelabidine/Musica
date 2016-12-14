@@ -2,41 +2,46 @@
     <div class="col-md-12">        
         <!-- show result et filtre -->
         <div class="box info-bar">
-            <div class="row">               
-                <div class="col-sm-12 col-md-3">
-                    <label for="Marque"> <strong> Marque</strong> </label>
-                    <input type="text" class="form-control" ng-model="marque" value="marque" id="Marque" placeholder="Casio...">                    
+            <form ng-submit="searchAvance()">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="Marque"> <strong> Marque</strong> </label>
+                        <input type="text" class="form-control" ng-model="marque" id="Marque" placeholder="Casio...">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="Categorie"> <strong> Categorie</strong> </label>
+                        <select ng-model="categorie" id="Categorie" class="form-control">
+                            <option value="">Sélectionner une catégorie</option>
+                            <option ng-repeat="storedCategorie in storedCategories track by storedCategorie.categorieId"
+                                    value="{{storedCategorie.libelle}}">{{storedCategorie.libelle}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="keys"> <strong> Mots-Clées</strong> </label>
+                        <input type="text" class="form-control" ng-model="ref" id="keys"                          placeholder="Piano, Guitare...">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="keys"> <strong> Trier par</strong> </label>
+                        <select ng-model="selectedOrderOption" class="form-control"
+                                ng-options="orderOption.propName for orderOption in orderOptions">
+                            <option value="">--Option--</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col-sm-12 col-md-3">
-                    <label for="Categorie"> <strong> Categorie</strong> </label>
-                    <select ng-model="categorie" id="Categorie" class="form-control">
-                        <option value="">Sélectionner une catégorie</option>
-                        <option ng-repeat="storedCategorie in storedCategories track by storedCategorie.categorieId" value="{{storedCategorie.libelle}}">{{storedCategorie.libelle}}</option>
-                    </select>
-                </div>  
-
-                <div class="col-sm-12 col-md-3">
-                    <label for="keys"> <strong> Mots-Clées</strong> </label>
-                    <input type="text" class="form-control" ng-model="ref" id="keys" value="" placeholder="Piano, Guitare..." >
+                <div class="row form-search">
+                    <button type="submit" class="btn btn-primary btn-search">Chercher</button>
                 </div>
-
-                <div class="col-sm-12 col-md-3">
-                    <label for="keys"> <strong> Trier par</strong> </label>
-                    <select ng-model="selection" ng-change="filtre()" class="form-control" ng-options="option for option in options">
-                        <option value="">--Option--</option>
-                    </select>                              
-                </div>      
-            </div>  
-
-            <div class="row form-search">                
-                <button type="submit" class="btn btn-primary btn-search" ng-click="searchAvance()">Chercher</button>
-            </div>          
+            </form>
         </div>
 
         <!-- PRODUCT-->
         <div class="row products">
-            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: orderByPredicate : orderByReverse">
+            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
                                       add-instrument-tocart="addInstrumentToCart(instrumentId)"></instrument-highlight>

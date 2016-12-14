@@ -20,12 +20,13 @@
               <div class="col-md-9" id="checkout">
 
                   <div class="box">
-                      <form>
+                      <form ng-submit='updateClientPaymentInformation()'
+>
                           <h1>Commande - Methode de paiement</h1>
                           <ul class="nav nav-pills nav-justified">
                               <li><a><i class="fa fa-map-marker"></i><br>Adresse</a>
                               </li>
-                              <li class="active"><a href="#"><i class="fa fa-money"></i><br>Methode de paiement</a>
+                              <li class="active"><i class="fa fa-money"></i><br>Methode de paiement</a>
                               </li>
                               <li><a><i class="fa fa-eye"></i><br>Révision de commande</a>
                               </li>
@@ -36,7 +37,8 @@
                                   <div class="col-sm-6">
                                       <div class="form-group">
                                           <label for="name">Nom sur la carte</label>
-                                          <input type="text" class="form-control" id="cardname" ng-model="resultat_client.cardname">
+                                          <input type="text" class="form-control" id="cardname" ng-model="resultat_client.cardname"
+						pattern="[a-zA-Z\ \.]+" required>
                                       </div>
                                   </div>
                               </div>
@@ -44,7 +46,8 @@
                                   <div class="col-sm-6">
                                       <div class="form-group">
                                           <label for="name">Numero de la carte</label>
-                                          <input type="text" class="form-control" id="cardnumber" ng-model="resultat_client.cardnumber">
+                                          <input type="text" class="form-control" id="cardnumber" ng-model="resultat_client.cardnumber"
+						pattern="[0-9]{4}(\ [0-9]{4}){3}" required>
                                       </div>
                                   </div>
                               </div>
@@ -52,13 +55,15 @@
                                   <div class="col-sm-6 col-md-3">
                                       <div class="form-group">
                                         <label for="month">Mois</label>
-                                          <input type="text" class="form-control" id="cardmonth" ng-model="resultat_client.cardmonth">
+                                          <input type="text" class="form-control" id="cardmonth" ng-model="resultat_client.cardmonth"
+						pattern="(0[1-9])|(1[0-2])" required>
                                       </div>
                                   </div>
                                   <div class="col-sm-6 col-md-3">
                                       <div class="form-group">
                                         <label for="year">Année</label>
-                                          <input type="text" class="form-control" id="cardyear" ng-model="resultat_client.cardyear">
+                                          <input type="text" class="form-control" id="cardyear" ng-model="resultat_client.cardyear"
+						pattern="[0-9]{2}" required>
                                       </div>
                                   </div>
                               </div>
@@ -80,9 +85,7 @@
                               </div>
                               <div class="pull-right">
                                   <button
-                                    class="btn btn-primary"
-                                    ng-click='updateClientPaymentInformation()'
-                                    >Passer la commande
+                                    class="btn btn-primary">Passer la commande
                                     <i class="fa fa-chevron-right"></i>
                                   </button>
                               </div>

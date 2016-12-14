@@ -20,14 +20,14 @@
                 <div class="col-md-9" id="checkout">
 
                     <div class="box">
-                        <form method="post">
+                        <form method="post" ng-submit='updateClientPersonalInformation(resultat_client)'>
                             <h1>Commande</h1>
                             <ul class="nav nav-pills nav-justified">
-                                <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Informations personelles</a>
+                                <li class="active"><i class="fa fa-map-marker"></i><br>Informations personelles</a>
                                 </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Methodes de paiement</a>
+                                <li class="disabled"><i class="fa fa-money"></i><br>Methodes de paiement</a>
                                 </li>
-                                <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Révision de commande</a>
+                                <li class="disabled"><i class="fa fa-eye"></i><br>Révision de commande</a>
                                 </li>
                             </ul>
 
@@ -36,13 +36,15 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">Prénom(s)</label>
-                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname">
+                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname"
+							pattern="^[a-zA-Z][a-zA-Z_]*" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">Nom</label>
-                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname">
+                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname" 
+						pattern="^[a-zA-Z][a-zA-Z_]*" required>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +70,7 @@
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="zip">Code postal</label>
-                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip">
+                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip" pattern="[0-9]{5}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
@@ -81,13 +83,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="phone">Téléphone</label>
-                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel">
+                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" ng-model="resultat_client.email">
+                                            <input type="email" class="form-control" id="email" ng-model="resultat_client.email">
                                         </div>
                                     </div>
 
@@ -97,10 +99,11 @@
 
                             <div class="box-footer">
                                 <div class="pull-left">
-                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Retour au panier</a>
+					<!-- BACK TO CART -->
+                                    <a class="btn btn-default"><i class="fa fa-chevron-left"></i>Retour au panier</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn btn-primary" ng-click='updateClientPersonalInformation(resultat_client)'>Continuer<i class="fa fa-chevron-right"></i>
+                                    <button class="btn btn-primary" >Continuer<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
