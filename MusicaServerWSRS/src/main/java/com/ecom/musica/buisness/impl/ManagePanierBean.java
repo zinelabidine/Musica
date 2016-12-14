@@ -195,7 +195,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         return commande.getCommandeId();
     }
 
-    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
+    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) throws Exception{
     	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     	Date date = new Date();
     	System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
@@ -205,6 +205,8 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         commande.setMontantTTC(panier.getMontantTTC());
         List<PanierInstrument> lignesPanier = panier.getLignesPanier();
         for (PanierInstrument lignePanier : lignesPanier) {
+            if (lignePanier.getQuantite() > lignePanier.getInstrument().getQuantite())
+                throw new Exception("Quantité insuffisante");
             lignesCommande
                     .add(new CommandeInstrument(commande, lignePanier.getInstrument(), lignePanier.getQuantite()));
             entityManager.remove(lignePanier);
