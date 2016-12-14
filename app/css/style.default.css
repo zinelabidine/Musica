@@ -1768,14 +1768,19 @@ hr {
     font-size: 14px;
     line-height: 1.42857143;
     border-radius: 3px;
+    margin-right: 3px;
 }
 
 .btn-primary {
     color: #ffffff;
-    background-color: #4fbfa8;
-    border-color: #41b39c;
+   /* background-color: #4fbfa8;
+    border-color: #41b39c;*/
 }
 
+.btn-primary:hover,
+.btn-primary:focus{
+    background-position: 0 -35px;
+}
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -1784,6 +1789,7 @@ hr {
     color: #ffffff;
     background-color: #3da892;
     border-color: #318675;
+
 }
 
 .btn-primary:active,
