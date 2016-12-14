@@ -16,7 +16,7 @@
           $scope.$emit('cartInstrumentChanged');
           if(!angular.isUndefinedOrNull($scope.switch_url)){
             $location.search({});
-            $location.path($scope.switch_url);
+            $location.url($scope.switch_url);
           } else
             $location.path('home');
         }, function (error) {
@@ -30,7 +30,7 @@
 
           if(!angular.isUndefinedOrNull($scope.switch_url)){
             $location.search({});
-            $location.path($scope.switch_url);
+            $location.url($scope.switch_url);
           } else
             $location.path('home');
         }, function () {
