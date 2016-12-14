@@ -141,7 +141,7 @@ angular.module(appName, [
       })
 
       .state('app.register', {
-      url: '/register',
+      url: '/register?switch_url',
       views: {
         'content@': {
           templateUrl: 'authentification/register.html',

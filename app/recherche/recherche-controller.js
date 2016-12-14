@@ -116,11 +116,10 @@
           $scope.addInstrumentToCart = function (instrumentid) {
             $log.log("[rechercheInstCtrl] Add instrument " + instrumentid + " to cart");
 
-	    if (globalService.personalDatas() == null) {
-		$scope.$emit('needUserConnection');
-		return;
-	    }
-
+            if (globalService.personalDatas() == null) {
+              $scope.$emit('needUserConnection');
+              return;
+            }
             cartService.addInstrumentToCart(
               globalService.personalDatas().utilisateurid,
               instrumentid,
