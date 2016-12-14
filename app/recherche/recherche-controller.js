@@ -48,7 +48,7 @@
             {propName : "Nom", orderByPredicate: "reference", orderByReverse:false},
             {propName : "Prix croissant", orderByPredicate: "prix", orderByReverse:false},
             {propName : "Prix décroissant", orderByPredicate: "prix", orderByReverse:true},
-            {propName : "Marque", orderByPredicate: "marque", orderByReverse:false}
+            {propName : "Marque", orderByPredicate: "marque.libelle", orderByReverse:false}
           ];
 
           $scope.utilisateurid = globalService.personalDatas().utilisateurid;
