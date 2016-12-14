@@ -51,8 +51,6 @@
             {propName : "Marque", orderByPredicate: "marque.libelle", orderByReverse:false}
           ];
 
-          $scope.utilisateurid = globalService.personalDatas().utilisateurid;
-
           $scope.currentPage = 0;
           $scope.pageSize = 8;
           $scope.numberOfPages = function () {
@@ -117,8 +115,14 @@
 
           $scope.addInstrumentToCart = function (instrumentid) {
             $log.log("[rechercheInstCtrl] Add instrument " + instrumentid + " to cart");
+
+	    if (globalService.personalDatas() == null) {
+		$scope.$emit('needUserConnection');
+		return;
+	    }
+
             cartService.addInstrumentToCart(
-              $scope.utilisateurid,
+              globalService.personalDatas().utilisateurid,
               instrumentid,
               1
               )
