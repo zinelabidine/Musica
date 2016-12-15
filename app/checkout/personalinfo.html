@@ -25,7 +25,7 @@
                             <ul class="nav nav-pills nav-justified">
                                 <li class="active"><a><i class="fa fa-map-marker"></i><br>Informations personelles</a>
                                 </li>
-                                <li class="disabled"><a><i class="fa fa-money"></i><br>Methodes de paiement</a>
+                                <li class="disabled"><a><i class="fa fa-money"></i><br>Méthodes de paiement</a>
                                 </li>
                                 <li class="disabled"><a><i class="fa fa-eye"></i><br>Révision de commande</a>
                                 </li>
@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">Prénom(s)</label>
+                                            <label for="firstname">PrÃ©nom(s)</label>
                                             <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname"
 							pattern="^[a-zA-Z][a-zA-Z_]*" required>
                                         </div>
@@ -82,7 +82,7 @@
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="phone">Téléphone</label>
+                                            <label for="phone">TÃ©lÃ©phone</label>
                                             <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}">
                                         </div>
                                     </div>
@@ -99,8 +99,7 @@
 
                             <div class="box-footer">
                                 <div class="pull-left">
-					<!-- BACK TO CART -->
-                                    <a class="btn btn-default"><i class="fa fa-chevron-left"></i>Retour au panier</a>
+                                     <a class="btn btn-default" ng-click="retourPanier()"><i class="fa fa-chevron-left"></i>Retour au panier</a>
                                 </div>
                                 <div class="pull-right">
                                     <button class="btn btn-primary" >Continuer<i class="fa fa-chevron-right"></i>

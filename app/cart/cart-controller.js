@@ -24,6 +24,7 @@
             $scope.resultats =[];
             $scope.client = $stateParams.client;
             $scope.orderByReverse = false;
+            $scope.avoirPanier = false;
 
             $scope.deleteInstrumentPanier = function(cartId, instrumentId) {
               $log.log(
@@ -83,11 +84,22 @@
               });
             }
 
+            $scope.openInstrumentDetailsLocal = function(instrumentid){
+              $location.path("instrument/" + instrumentid);
+            }
+
             getCart();
 
             function getCart() {
               cartService.getCart(globalService.personalDatas().utilisateurid).then(function (response) {
                   $scope.resultats = response;
+                  if(angular.isUndefinedOrNull($scope.resultats)){
+                      $scope.nombreArticles = 0;
+                  }
+                  else{
+                      $scope.nombreArticles = $scope.resultats.lignesPanier.length
+                      $scope.avoirPanier = true;
+                  }
                   $log.log($scope.resultats);
 		  $scope.resultats.totalTaxes =  Math.round(($scope.resultats.montantTTC - $scope.resultats.montantHT)*100)/100;
                 });

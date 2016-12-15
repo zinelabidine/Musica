@@ -38,12 +38,12 @@ _________________________________________________________ -->
         <div class="box">
             <form method="post">
                 <h1>Mes Commandes</h1>
-                <p class="text-muted">Vous avez {{resultats.length}} commandes.</p>
-                <div class="table-responsive">
+                <p class="text-muted">Vous avez {{nombreCommandes}} commandes.</p>
+                <div class="table-responsive" ng-show="avoirCommande">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Numero</th>
+                                <th>Numéro</th>
                                 <th>Date</th>
                                 <th>MontantHT</th>
                                 <th>MontantTTC</th>
@@ -69,7 +69,7 @@ _________________________________________________________ -->
                                     <p>{{resultat.montantTTC}}</p>
                                 </td>
                                  <td>
-                                    <a class="btn btn-primary btn-sm" ng-click="getCommandeDetails(resultat.commandeId)">Details</a>
+                                    <a class="btn btn-primary btn-sm" ng-click="getCommandeDetails(resultat.commandeId)">Détails</a>
                                 </td>
                             </tr>
                         </tbody>
