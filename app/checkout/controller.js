@@ -56,6 +56,10 @@
               // TODD go to payment form
             }
 
+            $scope.openInstrumentDetailsLocal = function(instrumentid){
+              $location.path("instrument/" + instrumentid);
+            }
+
             $scope.retourPanier = function(){
               $location.path("cart");
             }
