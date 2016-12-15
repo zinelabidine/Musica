@@ -38,6 +38,10 @@
           $scope.retourClientCommandes = function(){
               $location.path("/profil/commande");
           }
+
+          $scope.openInstrumentDetailsLocal = function(instrumentid){
+              $location.path("instrument/" + instrumentid);
+          }
          
           $scope.openPdf = function() {
               $log.log(

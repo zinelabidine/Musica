@@ -25,6 +25,8 @@
           $scope.isConnected = registerService.isConnected();
           if (!$scope.isConnected) {
             globalService.cleanSessionStorage();
+          } else {
+            $scope.utilisateurLogin = globalService.login();
           }
           
           $scope.searchAction = function () {

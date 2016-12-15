@@ -38,8 +38,8 @@ _________________________________________________________ -->
         <div class="box">
             <form method="post">
                 <h1>Mes Commandes</h1>
-                <p class="text-muted">Vous avez {{resultats.length}} commandes.</p>
-                <div class="table-responsive">
+                <p class="text-muted">Vous avez {{nombreCommandes}} commandes.</p>
+                <div class="table-responsive" ng-show="avoirCommande">
                     <table class="table">
                         <thead>
                             <tr>

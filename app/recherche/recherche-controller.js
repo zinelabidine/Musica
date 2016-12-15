@@ -51,11 +51,15 @@
             {propName : "Marque", orderByPredicate: "marque.libelle", orderByReverse:false}
           ];
 
-          $scope.currentPage = 0;
+          $scope.totalItems = 12;
+          $scope.currentPage = 1;
+          $scope.maxSize = 4;
           $scope.pageSize = 8;
-          $scope.numberOfPages = function () {
-            return Math.ceil($scope.resultats.length / $scope.pageSize);
-          };
+
+          // $scope.currentPage = 0;
+          // $scope.numberOfPages = function () {
+          //   return Math.ceil($scope.resultats.length / $scope.pageSize);
+          // };
 
           // Recherche avec mot clé.
           function searchWithKey (keyword) {

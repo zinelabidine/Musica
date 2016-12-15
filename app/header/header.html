@@ -3,6 +3,23 @@
         <a class="navbar-brand home" href="#/home" data-animate-hover="bounce">
             <img src="img/logo.png" alt="Musica logo" class="logo">
         </a>
+        <div class="navbar-buttons">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-align-justify"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                <span class="sr-only">Toggle search</span>
+                <i class="fa fa-search"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#profil">
+                <span class="sr-only">Toggle logout</span>
+                <i class="fa fa-user"></i>
+            </button>
+            <a class="btn btn-default navbar-toggle" href=""  ng-click="cartAction()">
+                <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{{cartsize}} Article(s) dans le panier</span>
+            </a>
+        </div>
     </div>
     <!--/.navbar-header -->
 
@@ -31,9 +48,7 @@
                 <li ng-show="isConnected">
                     <a href="" ng-click="profil()" ng-model="utilisateurLogin">{{utilisateurLogin}}</a>
                 </li>
-                <li>
-                    <a href="#">À propos</a>
-                </li>
+
                 <li ng-switch="isConnected">
                     <button ng-switch-when="true" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="logout()">
                         <span class="fa fa-sign-out"></span> Se déconnecter
@@ -65,6 +80,19 @@
             </div>
         </form>
 
+    </div>
+
+    <div class="collapse clearfix  row" id="profil">
+        <a ng-show="isConnected" href="" ng-click="profil()" class="col-xs-offset-5 col-xs-6" ng-model="utilisateurLogin">{{utilisateurLogin}}</a>
+        <div ng-switch="isConnected">
+            <button ng-switch-when="true" type="submit" class="col-xs-offset-5 col-xs-6 btn btn-primary navbar-btn" ng-click="logout()">
+                <span class="fa fa-sign-out"></span> Se déconnecter
+            </button>
+
+            <button ng-switch-when="false" type="submit" class="col-xs-offset-5 col-xs-6 btn btn-primary navbar-btn" ng-click="getToRegister()">
+                <span class="fa fa-sign-out"></span> Se connecter
+            </button>
+        </div>
     </div>
     <!--/.nav-collapse -->
 
