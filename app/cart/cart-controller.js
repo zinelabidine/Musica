@@ -83,6 +83,10 @@
               });
             }
 
+            $scope.openInstrumentDetailsLocal = function(instrumentid){
+              $location.path("instrument/" + instrumentid);
+            }
+
             getCart();
 
             function getCart() {
