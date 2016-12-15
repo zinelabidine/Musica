@@ -20,6 +20,7 @@
                                 <th colspan="2">Produit</th>
                                 <th>Quantié</th>
                                 <th>Prix Unitaire</th>
+				<td>Remise</td>
                                 <th colspan="2">Total</th>
                             </tr>
                         </thead>
@@ -42,8 +43,9 @@
                                       ng-change="updateCartInstrumentQuantity(resultat.panierInstrumentId,Qinstr)"
                                     >
                                 </td>
-                                <td>${{resultat.instrument.prix}}</td>
-                                <td>${{resultat.instrument.prix*resultat.quantite}}</td>
+                                <td>${{resultat.instrument.prix}}</td>	
+                                <td>${{resultat.instrument.remise}}</td>
+                                <td>${{(resultat.instrument.prix-resultat.instrument.remise)*resultat.quantite}}</td>
                                 <td>
                                   <a href=""
                                     class="fa fa-trash-o"

@@ -80,7 +80,7 @@
                 table: {
                     widths: ['*', 30, 60, 40, 120],
                     body: [
-                        [ 'Désignation', 'Qté', 'P.U HT', 'TVA', 'Total TTC'],
+                        [ 'Désignation', 'Qté', 'P.U ' , 'Remise', 'TotaHT'],
                     ]
                 }
             };
@@ -90,9 +90,9 @@
               table.table.body[cpt] = [
                 instrument.instrument.reference,
                 instrument.quantite + '',
-                instrument.instrument.prix + '',
-                TVA+'%',
-                instrument.quantite*instrument.instrument.prix + ''
+                Math.round(instrument.instrument.prix*100)/100 + '',
+                Math.round(instrument.instrument.remise*100)/100 + '',
+                Math.round(instrument.quantite*(instrument.instrument.prix-instrument.instrument.remise)*100)/100 + ''
                 // (instrument.quantite*instrument.instrument.prix*TVA/100 + instrument.instrument.prix*instrument.quantite) + ''
               ];
               cpt++;
@@ -113,9 +113,9 @@
                         width: 120,
                         alignment: 'right',
                         text:
-                          commande.montantHT + '\n'
-                          + (commande.montantTTC - commande.montantHT) +'\n'
-                          + commande.montantTTC
+                          Math.round(commande.montantHT*100)/100 + '\n'
+                          + Math.round((commande.montantTTC - commande.montantHT)*100)/100 +'\n'
+                          + Math.round(commande.montantTTC*100)/100
                     }
                 ]
             };

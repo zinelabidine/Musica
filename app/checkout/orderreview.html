@@ -59,13 +59,17 @@
                                                     >
                                                 </td>
                                                 <td>${{resultat.instrument.prix}}</td>
-                                                <td>A faire</td>
-                                                <td>${{resultat.instrument.prix*resultat.quantite}}</td>
+                                                <td>${{resultat.instrument.remise}}</td>
+                                                <td>${{(resultat.instrument.prix-resultat.instrument.remise)*resultat.quantite}}</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th colspan="5">Total</th>
+                                                <th colspan="5">Total HT</th>
+                                                <th>${{resultats.montantHT}}</th>
+                                            </tr>
+					    <tr>
+                                                <th colspan="5">Total TTC</th>
                                                 <th>${{resultats.montantTTC}}</th>
                                             </tr>
                                         </tfoot>
