@@ -122,8 +122,8 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
                 - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
                         * lignePanier.getQuantite()));
         panier.setMontantTTC(panier.getMontantTTC()
-                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
-                        * lignePanier.getQuantite()));
+                - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
+                        * lignePanier.getQuantite());
         entityManager.merge(panier);
         entityManager.remove(lignePanier);
         // TODO updater le montant du panier
@@ -172,9 +172,9 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
                         * quantite));
         calculerRemise(lignePanier.getInstrument());
         panier.setMontantTTC(panier.getMontantTTC()
-                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
-                        * lignePanier.getQuantite())
-                + ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise()) * quantite));
+                - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
+                        * lignePanier.getQuantite()
+                + (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise()) * quantite);
         lignePanier.setQuantite(quantite);
         entityManager.merge(lignePanier);
         entityManager.merge(panier);
