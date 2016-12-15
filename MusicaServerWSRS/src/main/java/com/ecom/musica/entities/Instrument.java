@@ -80,6 +80,16 @@ public class Instrument implements Serializable {
 
     @OneToOne(mappedBy = "instrument", fetch = FetchType.LAZY)
 	private ImageInstrument imageInstrument;
+    
+    private float remise;
+
+    public float getRemise() {
+        return remise;
+    }
+
+    public void setRemise(float remise) {
+        this.remise = remise;
+    }
 
     public int getInstrumentId() {
         return instrumentId;
