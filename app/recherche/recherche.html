@@ -41,7 +41,7 @@
 
         <!-- PRODUCT-->
         <div class="row products">
-            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
+            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:(currentPage-1)*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
 
                 <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
                                       add-instrument-to-cart="addInstrumentToCart(instrumentId)"></instrument-highlight>
@@ -56,10 +56,13 @@
                 <!-- /.product -->
             </div>
         </div>
+
         <!-- PAGES -->
         <div class="row">
-          <div class="col-md-9 col-md-offset-3">
-            <button
+            <div class="col-md-12 text-center">
+                <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></ul>
+
+<!--             <button
               class="btn btn-default"
               ng-disabled="currentPage == 0"
               ng-click="currentPage=currentPage-1"
@@ -68,8 +71,8 @@
             <button
               class="btn btn-default"
               ng-disabled="currentPage >= resultats.length/pageSize -1"
-              ng-click="currentPage=currentPage+1"
-            >Suivant</button>
+              ng-click="currentPage"
+            >Suivant</button> -->
             </div>
         </div>
     </div>
