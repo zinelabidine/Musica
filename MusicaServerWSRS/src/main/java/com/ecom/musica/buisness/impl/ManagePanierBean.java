@@ -237,6 +237,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
     }
 
     private void calculerRemise(Instrument instrument) {
+        instrument.setRemise(0);
         if (instrument.getPromotions().size() > 0) {
             for (Promotion promotion : instrument.getPromotions()) {
                 Date today = new Date();
