@@ -51,7 +51,7 @@
             {propName : "Marque", orderByPredicate: "marque.libelle", orderByReverse:false}
           ];
 
-          $scope.totalItems = 12;
+          $scope.totalItems = $scope.resultats.length;
           $scope.currentPage = 1;
           $scope.maxSize = 4;
           $scope.pageSize = 8;
