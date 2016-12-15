@@ -67,6 +67,7 @@
               );
               cartService.finaliseCommande(globalService.personalDatas().utilisateurid).
               then(function(response) {
+		$scope.$emit('cartInstrumentChanged');
                 $location.path("checkout/displaycommand/" + response.data);
               });
             }
