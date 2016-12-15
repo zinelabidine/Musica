@@ -70,13 +70,12 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         {
             entityManager.persist(lignePanier);
             calculerRemise(instrument);
-            panier.setMontantTTC(panier.getMontantTTC() + (instrument.getPrix() - instrument.getRemise()) * quantite);// update
+            panier.setMontantHT(panier.getMontantHT() + (instrument.getPrix() - instrument.getRemise()) * quantite);
+            panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);// update
             // le
             // mt
             // du
             // panier
-            panier.setMontantHT(
-                    panier.getMontantHT() + (instrument.getPrix() - instrument.getPrix() * 17 / 100) * quantite);
             entityManager.merge(panier);
         } else
             throw new Exception("quantité insuffisante");
@@ -119,11 +118,9 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         Panier panier = lignePanier.getPanier();
         calculerRemise(lignePanier.getInstrument());
         panier.setMontantHT(panier.getMontantHT()
-                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
-                        * lignePanier.getQuantite()));
-        panier.setMontantTTC(panier.getMontantTTC()
                 - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
                         * lignePanier.getQuantite());
+        panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);
         entityManager.merge(panier);
         entityManager.remove(lignePanier);
         // TODO updater le montant du panier
@@ -165,16 +162,12 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         if (lignePanier.getInstrument().getQuantite() < quantite)
             throw new Exception("quantité insuffisante");
         Panier panier = lignePanier.getPanier();
-        panier.setMontantHT(panier.getMontantHT()
-                - ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
-                        * lignePanier.getQuantite())
-                + ((lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getPrix() * 17 / 100)
-                        * quantite));
         calculerRemise(lignePanier.getInstrument());
-        panier.setMontantTTC(panier.getMontantTTC()
+        panier.setMontantHT(panier.getMontantHT()
                 - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
                         * lignePanier.getQuantite()
                 + (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise()) * quantite);
+        panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);
         lignePanier.setQuantite(quantite);
         entityManager.merge(lignePanier);
         entityManager.merge(panier);
