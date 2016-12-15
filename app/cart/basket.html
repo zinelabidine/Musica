@@ -45,20 +45,20 @@
                                 <td>${{resultat.instrument.prix}}</td>
                                 <td>${{resultat.instrument.prix*resultat.quantite}}</td>
                                 <td>
-                                  <button
+                                  <a href=""
                                     class="fa fa-trash-o"
                                     ng-click="deleteInstrumentPanier(
                                                 resultats.panierId
                                                 ,resultat.panierInstrumentId
                                               )"
-                                  ></button>
+                                  ></a>
                                 </td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="5">Total</th>
-                                <th colspan="2">${{resultats.montantTTC}}</th>
+                                <th colspan="2">${{resultats.montantHT}}</th>
                             </tr>
                         </tfoot>
                     </table>
