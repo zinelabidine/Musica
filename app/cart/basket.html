@@ -33,6 +33,8 @@
                                 <td>
                                     <input
                                       type="number"
+				      min="1"
+				      max="{{resultat.instrument.quantite}}"
                                       value="{{resultat.quantite}}"
                                       ng-model="Qinstr"
                                       class="form-control"
