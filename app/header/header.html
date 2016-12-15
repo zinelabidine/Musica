@@ -3,6 +3,23 @@
         <a class="navbar-brand home" href="#/home" data-animate-hover="bounce">
             <img src="img/logo.png" alt="Musica logo" class="logo">
         </a>
+        <div class="navbar-buttons">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-align-justify"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                <span class="sr-only">Toggle search</span>
+                <i class="fa fa-search"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#logout">
+                <span class="sr-only">Toggle logout</span>
+                <i class="fa fa-user"></i>
+            </button>
+            <a class="btn btn-default navbar-toggle" href=""  ng-click="cartAction()">
+                <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{{cartsize}} Article(s) dans le panier</span>
+            </a>
+        </div>
     </div>
     <!--/.navbar-header -->
 
