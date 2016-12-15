@@ -22,15 +22,23 @@
         ) {
           var self = this;
           $scope.client = globalService.personalDatas().utilisateurid;
-          $scope.resultats = [];       
+          $scope.resultats = [];      
+          $scope.avoirCommande = false; 
 
           loadClientCommande();
 
           function loadClientCommande() {
             clientcommandeService.getCommande($scope.client).then(function (response) {
                 $scope.resultats = response;
+                if(angular.isEmpty($scope.resultats)){
+                      $scope.nombreCommandes = 0;
+                  }
+                else{
+                      $scope.nombreCommandes = $scope.resultats.length
+                      $scope.avoirCommande = true;
+                  }
                 $log.log($scope.resultats);
-                $log.log($scope.resultats.length);
+                $log.log($scope.nombreCommandes);
             });
           }
 
