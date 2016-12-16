@@ -33,6 +33,10 @@
                 $scope.resultats = response;
                 $log.log($scope.resultats);
             });
+
+            checkoutService.getClient($scope.client).then(function(response){                  
+                  $scope.clientInfo = response;
+            });
           }
 
           $scope.retourClientCommandes = function(){
@@ -48,7 +52,7 @@
                 '[CommandeDetailsCtrl] Open pdf commande '
               );
               checkoutService.getCommande($scope.commandeId).success(function(response) {
-                var pdf = pdfService.getCommandeAsPdf(response);
+                var pdf = pdfService.getCommandeAsPdf(response,$scope.clientInfo);
                 pdf.open();
                 // pdf.getBase64(function(data) {
                 //   var facture = {};
