@@ -102,6 +102,9 @@
                   }
                   $log.log($scope.resultats);
 		  $scope.resultats.totalTaxes =  Math.round(($scope.resultats.montantTTC - $scope.resultats.montantHT)*100)/100;
+		  angular.forEach($scope.resultats.lignesPanier, function (value, key){
+				value.instrument.remise = Math.round(value.instrument.remise*100)/100;
+			});
                 });
             }
 
