@@ -60,7 +60,6 @@ public class Instrument implements Serializable {
     @OneToMany(mappedBy = "instrument")
     private List<PanierInstrument> lignesPanier;
 
-    @Transient
     @ManyToMany(mappedBy = "instruments")
     private List<Musicien> musiciens;
 
@@ -81,6 +80,16 @@ public class Instrument implements Serializable {
 
     @OneToOne(mappedBy = "instrument", fetch = FetchType.LAZY)
 	private ImageInstrument imageInstrument;
+    
+    private float remise;
+
+    public float getRemise() {
+        return remise;
+    }
+
+    public void setRemise(float remise) {
+        this.remise = remise;
+    }
 
     public int getInstrumentId() {
         return instrumentId;

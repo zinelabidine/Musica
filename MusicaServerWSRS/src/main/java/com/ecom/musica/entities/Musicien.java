@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "musicien")
 public class Musicien implements Serializable {
@@ -24,7 +26,34 @@ public class Musicien implements Serializable {
 	@Column(name = "NomDeScene")
 	private String nomDeScene ; 
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "instrument_musicien", joinColumns = @JoinColumn(name = "MusicienId", referencedColumnName = "MusicienId"), inverseJoinColumns = @JoinColumn(name = "InstrumentId", referencedColumnName = "InstrumentId"))
 	private List<Instrument> instruments;
+
+	public int getMusicienId() {
+		return musicienId;
+	}
+
+	public void setMusicienId(int musicienId) {
+		this.musicienId = musicienId;
+	}
+
+	public String getNomDeScene() {
+		return nomDeScene;
+	}
+
+	public void setNomDeScene(String nomDeScene) {
+		this.nomDeScene = nomDeScene;
+	}
+
+	public List<Instrument> getInstruments() {
+		return instruments;
+	}
+
+	public void setInstruments(List<Instrument> instruments) {
+		this.instruments = instruments;
+	}
+	
+	
 }

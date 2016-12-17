@@ -1,6 +1,9 @@
 package com.ecom.musica.buisness.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -18,6 +21,7 @@ import com.ecom.musica.entities.CommandeInstrument;
 import com.ecom.musica.entities.Instrument;
 import com.ecom.musica.entities.Panier;
 import com.ecom.musica.entities.PanierInstrument;
+import com.ecom.musica.entities.Promotion;
 import com.ecom.musica.entities.Utilisateur;
 
 @Stateless
@@ -65,12 +69,13 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         if (instrument.getQuantite() >= quantite) // on verifie la quantité
         {
             entityManager.persist(lignePanier);
-            panier.setMontantTTC(panier.getMontantTTC() + instrument.getPrix() * quantite);// update
-                                                                                           // le
-                                                                                           // mt
-                                                                                           // du
-                                                                                           // panier
-            panier.setMontantHT(panier.getMontantHT() + instrument.getPrix() * quantite);
+            calculerRemise(instrument);
+            panier.setMontantHT(panier.getMontantHT() + (instrument.getPrix() - instrument.getRemise()) * quantite);
+            panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);// update
+            // le
+            // mt
+            // du
+            // panier
             entityManager.merge(panier);
         } else
             throw new Exception("quantité insuffisante");
@@ -111,13 +116,14 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         if (lignePanier == null)
             throw new Exception("La ligne n'existe pas");
         Panier panier = lignePanier.getPanier();
-        panier.setMontantHT(
-                panier.getMontantHT() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite()));
-        panier.setMontantTTC(
-                panier.getMontantTTC() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite()));
+        calculerRemise(lignePanier.getInstrument());
+        panier.setMontantHT(panier.getMontantHT()
+                - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
+                        * lignePanier.getQuantite());
+        panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);
         entityManager.merge(panier);
         entityManager.remove(lignePanier);
-        //TODO updater le montant du panier
+        // TODO updater le montant du panier
     }
 
     @Override
@@ -130,8 +136,10 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         panier.getLignesPanier().size();
         for (PanierInstrument lignePanier : panier.getLignesPanier()) {
             lignePanier.getInstrument().getPromotions().size();
+            lignePanier.getInstrument().getMusiciens().size();
+            calculerRemise(lignePanier.getInstrument());
         }
-        return panier;      
+        return panier;
     }
 
     @Override
@@ -141,7 +149,7 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         Panier panier = findPanierByUtilisateur(client);
         if (panier == null)
             throw new Exception("Ce client n'a pas de panier");
-        return panier.getLignesPanier().size();      
+        return panier.getLignesPanier().size();
     }
 
     @Override
@@ -151,19 +159,20 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         PanierInstrument lignePanier = entityManager.find(PanierInstrument.class, panierInstrumentId);
         if (lignePanier == null)
             throw new Exception("Cette ligne n'existe pas");
-        if (lignePanier.getInstrument().getQuantite()<quantite)
+        if (lignePanier.getInstrument().getQuantite() < quantite)
             throw new Exception("quantité insuffisante");
         Panier panier = lignePanier.getPanier();
-        panier.setMontantHT(
-                panier.getMontantHT() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite())
-                        + (lignePanier.getInstrument().getPrix() * quantite));
-        panier.setMontantTTC(
-                panier.getMontantTTC() - (lignePanier.getInstrument().getPrix() * lignePanier.getQuantite())
-                        + (lignePanier.getInstrument().getPrix() * quantite));
+        calculerRemise(lignePanier.getInstrument());
+        panier.setMontantHT(panier.getMontantHT()
+                - (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise())
+                        * lignePanier.getQuantite()
+                + (lignePanier.getInstrument().getPrix() - lignePanier.getInstrument().getRemise()) * quantite);
+        panier.setMontantTTC(panier.getMontantHT() + panier.getMontantHT() * 17 / 100);
         lignePanier.setQuantite(quantite);
         entityManager.merge(lignePanier);
         entityManager.merge(panier);
     }
+
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public int payerPanier(int panierId, int utilisateurId) throws Exception {
@@ -185,12 +194,20 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
         entityManager.remove(panier);
         return commande.getCommandeId();
     }
-    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande) {
+
+    private void transformPanierToCommande(Panier panier, Commande commande, List<CommandeInstrument> lignesCommande)
+            throws Exception {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date)); // 2016/11/16 12:08:43
         commande.setUtilisateur(panier.getUtilisateur());
+        commande.setDate(dateFormat.format(date));
         commande.setMontantHT(panier.getMontantHT());
         commande.setMontantTTC(panier.getMontantTTC());
         List<PanierInstrument> lignesPanier = panier.getLignesPanier();
         for (PanierInstrument lignePanier : lignesPanier) {
+            if (lignePanier.getQuantite() > lignePanier.getInstrument().getQuantite())
+                throw new Exception("Quantité insuffisante");
             lignesCommande
                     .add(new CommandeInstrument(commande, lignePanier.getInstrument(), lignePanier.getQuantite()));
             entityManager.remove(lignePanier);
@@ -210,6 +227,17 @@ public class ManagePanierBean implements ManagePanierBeanRemote {
             throw new Exception("Ce panier est vide");
         panier.setValide(false);
         entityManager.merge(panier);
+    }
+
+    private void calculerRemise(Instrument instrument) {
+        instrument.setRemise(0);
+        if (instrument.getPromotions().size() > 0) {
+            for (Promotion promotion : instrument.getPromotions()) {
+                Date today = new Date();
+                if (promotion.getDateFin().after(today))
+                    instrument.setRemise(instrument.getRemise() + instrument.getPrix() * promotion.getTaux());
+            }
+        }
     }
 
 }

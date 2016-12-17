@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "profil")
 public class Profil implements Serializable {
@@ -20,7 +22,8 @@ public class Profil implements Serializable {
 	
 	@Column(name = "Libelle")
 	private String libelle;
-	
+
+	@JsonIgnore	
 	@OneToMany(mappedBy="profil")
 	private List<Utilisateur> utilisateur;
 	
