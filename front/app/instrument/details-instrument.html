@@ -1,0 +1,123 @@
+<div class="container">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="#/home">Accueil</a>
+            </li>
+            <li><a href="" class="text-capitalize">{{detailsInstrument.categorie.libelle}}</a>
+            </li>
+            <li>{{detailsInstrument.reference}}</li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-3">
+        <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+        <div class="panel panel-default sidebar-menu">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked category-menu">
+                    <li>
+                        <!--<a href="category.html">Men <span class="badge pull-right">42</span></a>-->
+                        <ul>
+                            <li ng-repeat="categorie in categories"><a class="text-uppercase" href="">{{categorie.libelle}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <div class="row" id="productMain">
+            <div class="col-sm-6">
+                <div id="mainImage">
+                    <img ng-src="{{detailsInstrument.imageInstrument.image}}" alt="" class="img-responsive">
+                </div>
+
+                <!--<div class="ribbon sale">-->
+                <!--<div class="theribbon">SALE</div>-->
+                <!--<div class="ribbon-background"></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.ribbon &ndash;&gt;-->
+
+                <!--<div class="ribbon new">-->
+                <!--<div class="theribbon">NEW</div>-->
+                <!--<div class="ribbon-background"></div>-->
+                <!--</div>-->
+                <!-- /.ribbon -->
+
+            </div>
+            <div class="col-sm-6">
+                <div class="box">
+                    <h1 class="text-center">{{detailsInstrument.reference}}</h1>
+
+                    <p class="price">{{detailsInstrument.prix}} €</p>
+
+                    <p class="text-center buttons">
+                        <a class="btn btn-primary" ng-click="addInstrumentToCart()">
+                        <i class="fa fa-shopping-cart">
+                        </i>Ajouter au panier</a>
+                    </p>
+
+
+                </div>
+
+                <div class="row" id="thumbs">
+                    <!--<div class="col-xs-4" ng-repeat="image in detailsInstrument.imageInstrument">-->
+                        <!--<a href="" ng-click="reloadMainImage(image)" class="thumb">-->
+                            <!--<img ng-src="{{image}}" alt="" class="img-responsive">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <div class="col-xs-4">
+                        <a href="" class="thumb">
+                            <img ng-src="{{detailsInstrument.imageInstrument.image}}" alt="" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="box" id="details">
+            <p>
+
+            <h3>Details de l'instrument</h3>
+            <ul>
+                <li>Marque : {{detailsInstrument.marque.libelle}}</li>
+                <li>Catégorie : {{detailsInstrument.categorie.libelle}}</li>
+                <li ng-show="detailsInstrument.musiciens"><span>Musiciens : </span><span ng-repeat="musicien in detailsInstrument.musiciens track by $index">{{musicien.nomDeScene}}<span
+                        ng-hide="$last"> - </span></span>
+                </li>
+            </ul>
+            <blockquote>
+                <p><em>{{detailsInstrument.description}}</em>
+                </p>
+            </blockquote>
+
+            <hr>
+            <div class="social">
+                <h4>Partager avec vos amis</h4>
+
+                <p>
+                    <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-md-9 -->
+</div>
+<!-- /.container -->
+</div>

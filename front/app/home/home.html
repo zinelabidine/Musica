@@ -1,0 +1,113 @@
+<div class="container">
+  <!--<div class="col-md-12">-->
+      <!--<ul class="breadcrumb">-->
+          <!--<li>Home</a></li>-->
+      <!--</ul>-->
+  <!--</div>-->
+    <div class="col-md-12 large-12 columns">
+        <div id="main-slider">
+            <wrap-owlcarousel class="owl-carousel owl-theme" data-options="{{owlCarouselMainOptions}}">
+                <div owl-carousel-item style="height: 600px;width: 100%"
+                     ng-repeat="instrumentPromotion in instrumentsPromotions" class="item">
+                    <!--<div class="text">-->
+                    <!--<h3><a href=""-->
+                    <!--ng-click="goToInstrument(instrumentPromotion.instrumentId)">{{instrumentPromotion.reference}}</a>-->
+                    <!--</h3>-->
+                    <!--</div>-->
+                    <a href="" ng-click="goToInstrument(instrumentPromotion.instrumentId)">
+                        <div class="promotion-caption col-xs-offset-2 col-md-offset-3 text col-xs-8 col-md-6 row">
+                            <h3>{{instrumentPromotion.reference}}</h3>
+
+                            <p class="marque">Marque : {{instrumentPromotion.marque.libelle}}</p>
+
+                            <div ng-show="instrumentPromotion.promotions" class="row">
+                                <div class="col-sm-offset-3 col-sm-3">
+                                    <img ng-src="img/logo_promotion.png" alt="">
+                                </div>
+                                <p class="promotion col-sm-6">{{instrumentPromotion.promotions[0].taux*100}} %</p>
+                            </div>
+
+                        </div>
+                    </a>
+                    <img ng-src="{{instrumentPromotion.imageInstrument.image}}" alt="" style="height: 100%;width: 100%;"
+                         class="img-responsive">
+                </div>
+            </wrap-owlcarousel>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container">-->
+<!--<div class="col-md-12">-->
+<!--<div id="main-slider">-->
+<!--<carousel links="promotions" go-to="goToInstrument(id)"></carousel>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!-- *** HOT PRODUCT SLIDESHOW ***
+_________________________________________________________ -->
+<div id="hot">
+    <div class="box">
+        <div class="container">
+            <div class="col-md-12">
+                <h2>Les plus vendus cette semaine</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <wrap-owlcarousel class="owl-carousel owl-theme product-slider"
+                          data-options="{{owlCarouselMeilleurVentesOptions}}">
+            <div owl-carousel-item="" ng-repeat="instrumentsBestSale in instrumentsBestSales">
+                <div class="item">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)">
+                                        <img ng-src="{{instrumentsBestSale.imageInstrument.image}}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)">
+                                        <img ng-src="{{instrumentsBestSale.imageInstrument.image}}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" ng-click="goToInstrument(instrumentsBestSale.instrumentId)" class="invisible">
+                            <img ng-src="{{instrumentsBestSale.imageInstrument.image}}" alt="" class="img-responsive">
+                        </a>
+
+                        <div class="text">
+                            <h3><a href=""
+                                   ng-click="goToInstrument(instrumentsBestSale.instrumentId)">{{instrumentsBestSale.reference}}</a>
+                            </h3>
+
+                            <div class="marque">
+                                <a href="">{{instrumentsBestSale.marque.libelle}}</a>
+                            </div>
+
+                            <p class="price">{{instrumentsBestSale.prix}} €</p>
+                            <!--<p ng-show="detailsInstrument.musiciens"><span>Musiciens : </span><span ng-repeat="musicien in detailsInstrument.musiciens track by $index">{{musicien.nomDeScene}}<span-->
+                                    <!--ng-hide="$last"> - </span></span>-->
+                            <!--</p>-->
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+            </div>
+
+        </wrap-owlcarousel>
+        <!-- /.product-slider -->
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /#hot -->
+
+<!--<div ng-hide="pageReady" class="loading-spinner">-->
+<!--<img src="../img/patientez.gif" class="ajax-loader"/>-->
+<!--</div>-->

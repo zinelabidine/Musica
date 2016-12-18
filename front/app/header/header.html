@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="navbar-header">
+        <a class="navbar-brand home" href="#/home" data-animate-hover="bounce">
+            <img src="img/logo.png" alt="Musica logo" class="logo">
+        </a>
+        <div class="navbar-buttons">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-align-justify"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                <span class="sr-only">Toggle search</span>
+                <i class="fa fa-search"></i>
+            </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#profil">
+                <span class="sr-only">Toggle logout</span>
+                <i class="fa fa-user"></i>
+            </button>
+            <a class="btn btn-default navbar-toggle" href=""  ng-click="cartAction()">
+                <i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{{cartsize}} Article(s) dans le panier</span>
+            </a>
+        </div>
+    </div>
+    <!--/.navbar-header -->
+
+    <div class="navbar-collapse collapse" id="navigation">
+
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#/home">Accueil</a></li>
+            <li ng-repeat="categorie in categories"><a href="" ng-click="goToCategorie(categorie.libelle)">{{categorie.libelle}}</a></li>
+        </ul>
+
+    </div>
+    <!--/.nav-collapse -->
+
+    <div class="navbar-buttons">
+        <div class="navbar-collapse collapse right" id="basket-overview">
+            <a href="" class="btn btn-primary navbar-btn" ng-click="cartAction()"><i class="fa fa-shopping-cart"></i><span
+                    class="hidden-sm">{{cartsize}} Article(s) dans le panier</span></a>
+        </div>
+        <!--/.nav-collapse -->
+
+        <div class="navbar-collapse collapse right">
+            <a href="" class="dropdown-toggle btn btn-primary navbar-btn" data-toggle="dropdown" role="button"
+               aria-haspopup="true"
+               aria-expanded="false"><span class="fa fa-user"></span></a>
+            <ul class="dropdown-menu">
+                <li ng-show="isConnected">
+                    <a href="" ng-click="profil()" ng-model="utilisateurLogin">{{utilisateurLogin}}</a>
+                </li>
+
+                <li ng-switch="isConnected">
+                    <button ng-switch-when="true" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="logout()">
+                        <span class="fa fa-sign-out"></span> Se déconnecter
+                    </button>
+
+                    <button ng-switch-when="false" type="button" class="dropdown-toggle btn btn-primary navbar-btn" ng-click="getToRegister()">
+                        <span class="fa fa-sign-out"></span> Se connecter
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navbar-collapse collapse right" id="search-not-mobile">
+            <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                <span class="sr-only">Changer de recherche</span>
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="collapse clearfix  row" id="search">
+        <form class="navbar-form" ng-submit="searchAction()" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="motcles" placeholder="Recherche..." >
+                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#search" ><i class="fa fa-search"></i></button>
+                 </span>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="collapse clearfix  row" id="profil">
+        <a ng-show="isConnected" href="" ng-click="profil()" class="col-xs-offset-5 col-xs-6" ng-model="utilisateurLogin">{{utilisateurLogin}}</a>
+        <div ng-switch="isConnected">
+            <button ng-switch-when="true" type="submit" class="col-xs-offset-5 col-xs-6 btn btn-primary navbar-btn" ng-click="logout()">
+                <span class="fa fa-sign-out"></span> Se déconnecter
+            </button>
+
+            <button ng-switch-when="false" type="submit" class="col-xs-offset-5 col-xs-6 btn btn-primary navbar-btn" ng-click="getToRegister()">
+                <span class="fa fa-sign-out"></span> Se connecter
+            </button>
+        </div>
+    </div>
+    <!--/.nav-collapse -->
+
+</div>
+<!-- /.container -->

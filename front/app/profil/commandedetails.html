@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="#/home">Accueil</a>
+            </li>
+            <li>Mon compte</li>
+            <li>Commandes</li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-3">
+        <!-- *** MENUS ***
+_________________________________________________________ -->
+        <div class="panel panel-default sidebar-menu">
+            <div class="panel-heading">
+                <h3 class="panel-title">Mon compte </h3>
+            </div>
+
+            <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="#/profil"><i class="fa fa-user"></i> Mes informations</a>
+                    </li>
+                    <li class="active">
+                        <a href=""><i class="fa fa-list"></i> Mes commandes</a>
+                    </li>                   
+                    <li>
+                        <a href="#/home"><i class="fa fa-sign-out"></i>Déconnecter</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+           
+    
+     <div class="col-md-9" id="customer-order">
+        <div class="box">
+            <form method="post">
+                <h1>Commandes {{commandeId}}</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Instrument</th>
+                                <th>Quantite</th>
+                                <th>Prix</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="resultat in resultats.lignesCommande">
+                            <tr>
+                                <td>
+                                    <img style="width:50px;height:50px;" ng-src="{{resultat.instrument.imageInstrument.image}}" alt="" class="img-responsive">
+                                    <p>{{}}</p>
+                                </td>
+                                <td>
+                                    <a href="" ng-click="openInstrumentDetailsLocal(resultat.instrument.instrumentId)">{{resultat.instrument.reference}}</a>
+                                </td>
+                                <td>
+                                    <p>{{resultat.quantite}}</p>
+                                </td>
+                                <td>
+                                    <p>${{resultat.instrument.prix}}</p>
+                                </td>
+                                <td>
+                                    <p>${{resultat.instrument.prix*resultat.quantite}}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>             
+            </form>
+
+            <div class="text-center">
+                <button class="btn btn-primary" ng-click="retourClientCommandes()"><i></i> Retour</button>
+                <button class="btn btn-primary" ng-click="openPdf()">Facture</button>
+            </div>
+
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col-md-9 -->
+
+</div>
+<!-- /.container -->
+
+

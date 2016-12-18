@@ -1,0 +1,21 @@
+{
+  "categories": [
+    {
+      "categorieId": 1,
+      "libelle": "bateries"
+    },
+    {
+      "categorieId": 2,
+      "libelle": "Guitares"
+    },
+    {
+      "categorieId": 3,
+      "libelle": "Sonos"
+    },
+    {
+      "categorieId": 4,
+      "libelle": "basses"
+    }
+  ]
+
+}

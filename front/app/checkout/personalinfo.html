@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Accueil</a>
+                        </li>
+                        <li>Paiement</li>
+                        <li>Informaions personelles</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-12" id="checkout">
+
+                    <div class="box">
+                        <form method="post" ng-submit='updateClientPersonalInformation(resultat_client)'>
+                            <h1>Commande</h1>
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="active"><a><i class="fa fa-map-marker"></i><br>Informations personelles</a>
+                                </li>
+                                <li class="disabled"><a><i class="fa fa-money"></i><br>Méthodes de paiement</a>
+                                </li>
+                                <li class="disabled"><a><i class="fa fa-eye"></i><br>Révision de commande</a>
+                                </li>
+                            </ul>
+
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="firstname">Prénom(s)</label>
+                                            <input type="text" class="form-control" id="firstname" ng-model="resultat_client.firstname"
+							pattern="^[a-zA-Z][a-zA-Z\s]*" title="Seulement caractères et éspaces autorisé." required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="lastname">Nom</label>
+                                            <input type="text" class="form-control" id="lastname" ng-model="resultat_client.lastname" 
+						pattern="^[a-zA-Z][a-zA-Z\s]*" title="Seulement caractères et éspaces autorisé." required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="address">Adresse</label>
+                                            <input type="text" class="form-control" id="address" ng-model=resultat_client.address>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="city">Ville</label>
+                                            <input type="text" class="form-control" id="city" ng-model="resultat_client.city">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="zip">Code postal</label>
+                                            <input type="text" class="form-control" id="zip" ng-model="resultat_client.zip" pattern="[0-9]{5}" title="Veuillez introduire un code postal correcte. example 38000.">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="country">Pays</label>
+                                            <input class="form-control" id="country" ng-model="resultat_client.country">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="phone">Téléphone</label>
+                                            <input type="text" class="form-control" id="phone" ng-model="resultat_client.tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}" title="Veuillez introduire un numéro de téléphone français correcte. example: +0033751569308.">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" ng-model="resultat_client.email" title="Veuillez introduire une adresse mail valide.">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                     <a class="btn btn-default" ng-click="retourPanier()"><i class="fa fa-chevron-left"></i>Retour au panier</a>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" >Continuer<i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+
+                </div>
+                <!-- /.col-md-9 -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+    </div>
+    <!-- /#all -->
+
+    <!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/bootstrap-hover-dropdown.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/front.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="col-md-12">        
+        <!-- show result et filtre -->
+        <div class="box info-bar">
+            <form ng-submit="searchAvance()">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="Marque"> <strong> Marque</strong> </label>
+                        <input type="text" class="form-control" ng-model="marque" id="Marque" placeholder="Casio...">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="Categorie"> <strong> Catégorie</strong> </label>
+                        <select ng-model="categorie" id="Categorie" class="form-control">
+                            <option value="">Sélectionner une catégorie</option>
+                            <option ng-repeat="storedCategorie in storedCategories track by storedCategorie.categorieId"
+                                    value="{{storedCategorie.libelle}}">{{storedCategorie.libelle}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="keys"> <strong> Mots-Clées</strong> </label>
+                        <input type="text" class="form-control" ng-model="ref" id="keys"                          placeholder="Piano, Guitare...">
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <label for="keys"> <strong> Trier par</strong> </label>
+                        <select ng-model="selectedOrderOption" class="form-control"
+                                ng-options="orderOption.propName for orderOption in orderOptions">
+                            <option value="">--Option--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-search">
+                    <button type="submit" class="btn btn-primary btn-search">Chercher</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- PRODUCT-->
+        <div class="row products">
+            <div class="col-md-3 col-sm-4" ng-repeat="resultat in resultats | startFrom:(currentPage-1)*pageSize | limitTo:pageSize | orderBy: selectedOrderOption.orderByPredicate : selectedOrderOption.orderByReverse">
+
+                <instrument-highlight instrument="resultat" open-instrument-details="openInstrumentDetails(instrumentId)"
+                                      add-instrument-to-cart="addInstrumentToCart(instrumentId)"></instrument-highlight>
+                        <!--p class="buttons">
+                            <a ng-click="openInstrumentDetails(resultat.instrumentId)" class="btn btn-default">Voir details</a>
+                            <a ng-click="addInstrumentToCart(resultat.instrumentId)" class="btn btn-primary">
+                              <i class="fa fa-shopping-cart"></i>Ajouter au panier</a>
+                        </p>
+                    </div-->
+                    <!-- /.text 
+                </div-->
+                <!-- /.product -->
+            </div>
+        </div>
+
+        <!-- PAGES -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul uib-pagination total-items="resultats.length" ng-show="resultats.length>0" ng-model="currentPage" max-size="maxSize" items-per-page="8" class="pagination-sm" boundary-link-numbers="true"></ul>
+
+<!--             <button
+              class="btn btn-default"
+              ng-disabled="currentPage == 0"
+              ng-click="currentPage=currentPage-1"
+            >Précédent</button>
+              {{currentPage+1}}/{{numberOfPages()}}
+            <button
+              class="btn btn-default"
+              ng-disabled="currentPage >= resultats.length/pageSize -1"
+              ng-click="currentPage"
+            >Suivant</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->

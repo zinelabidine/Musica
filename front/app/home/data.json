@@ -1,0 +1,173 @@
+{
+  "InstrumentsPromotions": [
+    {
+      "instrumentId": 1,
+      "marque": {
+        "marqueId": 2,
+        "libelle": "Fender",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [
+        {
+          "promotionId": 1,
+          "libelle": "PromotionFender2",
+          "dateDebut": 1430776800000,
+          "dateFin": 1483138800000,
+          "taux": 5
+        }
+      ],
+      "reference": "Fender bla bla bla bla bla bla bla bla bla bla",
+      "quantite": 5,
+      "prix": 1,
+      "image":"./img/baterie1.png",
+      "description": "Guitare Fender"
+    },{
+      "instrumentId": 2,
+      "marque": {
+        "marqueId": 2,
+        "libelle": "Fender",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [
+        {
+          "promotionId": 1,
+          "libelle": "PromotionFender2",
+          "dateDebut": 1430776800000,
+          "dateFin": 1483138800000,
+          "taux": 5
+        }
+      ],
+      "reference": "Fender1",
+      "quantite": 5,
+      "prix": 1,
+      "image":"./img/pedale1.png",
+      "description": "Guitare Fender"
+    },
+    {
+      "instrumentId": 3,
+      "marque": {
+        "marqueId": 2,
+        "libelle": "Fender",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [
+        {
+          "promotionId": 1,
+          "libelle": "PromotionFender2",
+          "dateDebut": 1430776800000,
+          "dateFin": 1483138800000,
+          "taux": 5
+        }
+      ],
+      "reference": "Fender1",
+      "quantite": 5,
+      "prix": 1,
+      "image": "./img/baterie1.png",
+      "description": "Guitare Fender"
+    }
+  ],
+  "InstrumentsBestSales": [
+    {
+      "instrumentId": 1,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
+    },{
+      "instrumentId": 2,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/guitar1.png"
+    },{
+      "instrumentId": 3,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
+    },{
+      "instrumentId": 4,
+      "marque": {
+        "marqueId": 1,
+        "libelle": "Ibanez",
+        "instruments": null,
+        "promotions": null
+      },
+      "categorie": {
+        "categorieId": 1,
+        "libelle": "Cat 1",
+        "instruments": null
+      },
+      "musiciens": null,
+      "promotions": [],
+      "reference": "Ibanez1",
+      "quantite": 5,
+      "prix": 12,
+      "description": "Guitare Ibanez",
+      "image": "./img/baterie1.png"
+    }
+  ]
+}
